@@ -1,87 +1,86 @@
-import React, { Component, Fragment } from "react";
-import Routes from "./Routes";
-import "./App.css";
-import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { Auth } from "aws-amplify";
-
+import firebase, { auth, provider } from './firebase.js';
+import React, { Component } from 'react';
+import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      isAuthenticated: false,
-      isAuthenticating: true
-    };
-    
-  }
-
-  async componentDidMount() {
-    try {
-      await Auth.currentSession();
-      this.userHasAuthenticated(true);
-    }
-    catch(e) {
-      if (e !== 'No current user') {
-        alert(e);
+    constructor() { 
+      super();
+      this.login = this.login.bind(this); 
+      this.logout = this.logout.bind(this);
+      this.state = {
+        currentItem: '',
+        username: '',
+        items: [],
+        user: null 
       }
     }
-  
-    this.setState({ isAuthenticating: false });
-  }
-  
-  
-  userHasAuthenticated = authenticated => {
-    this.setState({ isAuthenticated: authenticated });
-  }
-  
-  handleLogout = async event => {
-    await Auth.signOut();
-  
-    this.userHasAuthenticated(false);
-    
-    this.props.history.push("/login");
-  }
-  
-  
-  render() {
-    const childProps = {
-      isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated
-    };
-  
-    return (
-      !this.state.isAuthenticating &&
-      <div className="App container">
-        <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Scratch</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              {this.state.isAuthenticated
-                ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
-                : <Fragment>
-                    <LinkContainer to="/signup">
-                      <NavItem>Signup</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/login">
-                      <NavItem>Login</NavItem>
-                    </LinkContainer>
-                  </Fragment>
-              }
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <Routes childProps={childProps} />
-      </div>
-    );
-  }  
-}
 
-export default withRouter(App);
+    handleChange(e) {
+      /* ... */
+    }
+
+    handleSubmit(e) {
+      // ....
+      const item = {
+        title: this.state.currentItem,
+        user: this.state.user.displayName || this.state.user.email
+      }
+      // ....
+    }
+
+    logout() {
+      auth.signOut()
+        .then(() => {
+          this.setState({
+            user: null
+          });
+        });
+    }
+
+    login() {
+      auth.signInWithPopup(provider) 
+        .then((result) => {
+          const user = result.user;
+          this.setState({
+            user
+          });
+        });
+    }
+
+    componentDidMount() {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ user });
+        } 
+      });
+    };
+
+    render() {
+      return (
+        <div className='app'>
+          <header>
+            <div className="wrapper">
+              <h1>Project 3</h1>
+              {this.state.user ?
+                <button onClick={this.logout}>Logout</button>                
+              :
+                <button onClick={this.login}>Log In</button>              
+              }
+            </div>
+          </header>
+          {this.state.user ?
+            <div>
+              <div className='user-profile'>
+                <img src={this.state.user.photoURL} />
+              </div>
+            </div>
+            :
+            <div className='wrapper'>
+              <p>You must be logged in to see the potluck list and submit to it.</p>
+            </div>
+          }
+          </div>      
+          );
+      }
+  }
+export default App;
