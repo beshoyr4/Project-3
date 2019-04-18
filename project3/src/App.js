@@ -8,6 +8,7 @@ class App extends Component {
     this.state = {
       instrument: '',
       expertise: '',
+      experience:'',
       username: '',
       items: [],
       user: null
@@ -45,12 +46,14 @@ class App extends Component {
     const item = {
       title: this.state.instrument,
       user: this.state.user.displayName || this.state.user.email,
-      expertise: this.state.expertise
+      expertise: this.state.expertise,
+      experience: this.state.experience
     }
     itemsRef.push(item);
     this.setState({
       instrument: '',
       expertise: '',
+      experience:'',
       username: ''
     });
   }
@@ -106,6 +109,7 @@ class App extends Component {
               <input type="text" name="username" placeholder="What's your name?" value={this.state.user.displayName || this.state.user.email} />
               <input type="text" name="instrument" placeholder="What instrument do you play?" onChange={this.handleChange} value={this.state.instrument} />
               <input type="text" name="expertise" placeholder="Novice, Ameteur, or Expert" onChange={this.handleChange} value={this.state.expertise} />
+              <input type="text" name="experience" placeholder="Start a Band or Jam Session" onChange={this.handleChange} value={this.state.experience} />
 
               <button>Add Item</button>
             </form>
@@ -117,9 +121,11 @@ class App extends Component {
                   return (
                     <li key={item.id}>
                       <h3>{item.title}</h3>
+                      <p>{item.expertise}</p>
+                      <p>{item.experience}</p>
                       <p>{item.user}
                         {item.user === this.state.user.displayName || item.user === this.state.user.email ?
-                          <button onClick={() => this.removeItem(item.id)}>Remove Item</button> : null}
+                          <button onClick={() => this.removeItem(item.id)}>Delete</button> : null}
                       </p>
                     </li>
                   )
@@ -131,7 +137,7 @@ class App extends Component {
         </div>
         :
         <div className='wrapper'>
-          <p>You must be logged in to see the potluck list and submit to it.</p>
+          <p>You must be logged in to rock and roll.</p>
         </div>
       }
     </div>
