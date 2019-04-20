@@ -1,14 +1,20 @@
 import React from "react";
 import firebase from "../../firebase";
 
+import Container from "../../components/Container";
+import Row from "../../components/Row";
+import Col from "../../components/Col";
+
+import './style.css';
+
 class Discover extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             people: [],
             active: 0
-        }
-    }
+        };
+    };
 
     componentDidMount() {
         firebase.database().ref('items')
@@ -21,24 +27,27 @@ class Discover extends React.Component {
                         title: items[item].title,
                         user: items[item].user
                     });
-                }
+                };
                 this.setState({
                     people: newState
-                })
-            })
-    }
+                });
+            });
+    };
 
     handleBtnClick = event => {
-        // Load next person
+        // Load next person when button is clicked
         console.log("here")
+        let currentActive = this.state.active;
+        if (currentActive === this.state.people.length -1) {
+            currentActive = 0;
+        } else {
+            currentActive ++
+        };
         this.setState(state => {
             return {
-                active: this.state.active + 1
-            }
-        })
-        
-        // Need to add something - if next one is more than there are people, reset to 0
-
+                active: currentActive
+            };
+        });
     };
 
 
@@ -49,15 +58,39 @@ class Discover extends React.Component {
             return null;
         }
         return (
-            <main>
-                <button onClick={this.handleBtnClick}>"Click"</button>
-                <ul>
-                    <h3>{person.title}</h3>
-                    <h3>{person.user}</h3>
-                </ul>
-            </main>
+            <div>
+                <Container id="discover-container">
+                    <section className='display-item'>
+                        <div className="wrapper">
+                            <Row>
+                                <Row>
+                                    <Col size="md-12">
+                                        <Row>
+                                            <h1 className="text-center">Find Musicians</h1>
+                                            <h3 className="text-center">Thumbs up on any musican you would like to save!</h3>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col size="md-12">
+                                        <Row>
+                                            <h3>{person.title}</h3>
+                                        </Row>
+                                        <Row>
+                                            <h3>{person.user}</h3>
+                                        </Row>
+                                        <Row>
+                                            <button onClick={this.handleBtnClick}>"Click"</button>
+                                        </Row>
+                                    </Col>
+                                </Row>
+                            </Row>
+                        </div>
+                    </section>
+                </Container>
+            </div>
         );
-    }
-}
+    };
+};
 
 export default Discover;
