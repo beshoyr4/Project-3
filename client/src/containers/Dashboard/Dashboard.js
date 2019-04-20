@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import firebase, { auth, provider } from '../../firebase.js';
+
+import './Dashboard.css';
 
 class Dashboard extends Component {
   constructor() {
@@ -29,7 +31,7 @@ handleSubmit = (e) => {
   const itemsRef = firebase.database().ref('items');
   const item = {
     title: this.state.instrument,
-    user: this.state.user.displayName || this.state.user.email,
+    user: this.props.user.displayName || this.props.user.email,
     expertise: this.state.expertise,
     experience: this.state.experience
   }
@@ -50,8 +52,7 @@ componentDidMount() {
       for (let item in items) {
         newState.push({
           id: item,
-          title: items[item].title,
-          user: items[item].user
+          ...items[item]
         });
       }
       this.setState({
@@ -66,7 +67,6 @@ removeItem(itemId) {
 }
 
 render () {
-  console.log(this.props);
   if (this.props.user === null) {
     return (
       <Redirect to={{
@@ -78,7 +78,7 @@ render () {
 
   return (
         <div>
-    <Container>
+    <Container id="dashboard-container">
         <Row>
             <Col size="md-12">
             <h1>Dashboard</h1>
@@ -88,7 +88,7 @@ render () {
                 <Col size="md-12">
           <section className='add-item'>
             <form onSubmit={this.handleSubmit}>
-              <input type="text" name="username" placeholder="What's your name?" value={this.props.user.displayName || this.props.user.email} />
+              <input type="text" name="username" placeholder="What's your name?" defaultValue={this.props.user.displayName || this.props.user.email} />
               <input type="text" name="instrument" placeholder="What instrument do you play?" onChange={this.handleChange} value={this.state.instrument} />
               <input type="text" name="expertise" placeholder="Novice, Ameteur, or Expert" onChange={this.handleChange} value={this.state.expertise} />
               <input type="text" name="experience" placeholder="Start a Band or Jam Session" onChange={this.handleChange} value={this.state.experience} />
@@ -109,7 +109,12 @@ render () {
                       <li key={item.id}>
                         <h3>{ item.title }</h3>
                         <p>
+                          { item.expertise }
+                          <br />
+                          { item.experience }
+                          <br />
                           { item.user }
+                          <br />
                           {
                             (item.user === this.props.user.displayName || item.user === this.props.user.email)
                               ? <button onClick={() => this.removeItem(item.id)}>Delete</button>
