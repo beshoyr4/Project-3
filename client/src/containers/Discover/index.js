@@ -5,7 +5,8 @@ class Discover extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            people: []
+            people: [],
+            active: 0
         }
     }
 
@@ -27,25 +28,36 @@ class Discover extends React.Component {
             })
     }
 
+    handleBtnClick = event => {
+        // Load next person
+        console.log("here")
+        this.setState(state => {
+            return {
+                active: this.state.active + 1
+            }
+        })
+        
+        // Need to add something - if next one is more than there are people, reset to 0
+
+    };
+
+
     render() {
         console.log(this.state.people)
+        const person = this.state.people[this.state.active]
+        if (!person) {
+            return null;
+        }
         return (
             <main>
+                <button onClick={this.handleBtnClick}>"Click"</button>
                 <ul>
-                    {this.state.people.map((person) => {
-                        return (
-                            <li key={person.id}>
-                                <h3>{person.title}</h3>
-                                <h3>{person.user}</h3>
-                            </li>
-                )
-                    })}
-            </ul>
+                    <h3>{person.title}</h3>
+                    <h3>{person.user}</h3>
+                </ul>
             </main>
-                );
-            }
-        }
-        
-        export default Discover;
-        
-        
+        );
+    }
+}
+
+export default Discover;
