@@ -46,9 +46,11 @@ handleSubmit = (e) => {
 
 componentDidMount() {
   const itemsRef = firebase.database().ref('items');
-    itemsRef.on('value', (snapshot) => {
+  itemsRef.orderByChild("user").equalTo(this.props.user.displayName || this.props.user.email)  
+  .on('value', (snapshot) => {
       let items = snapshot.val();
       let newState = [];
+      console.log(items);
       for (let item in items) {
         newState.push({
           id: item,
@@ -109,12 +111,13 @@ render () {
                       <li key={item.id}>
                         <h3>{ item.title }</h3>
                         <p>
+                        { item.user }
+                          <br />
                           { item.expertise }
                           <br />
                           { item.experience }
                           <br />
-                          { item.user }
-                          <br />
+                          
                           {
                             (item.user === this.props.user.displayName || item.user === this.props.user.email)
                               ? <button onClick={() => this.removeItem(item.id)}>Delete</button>

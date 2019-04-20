@@ -11,7 +11,8 @@ class Saved extends React.Component {
     }
 
     componentWillMount() {
-        API.getUsers().then(
+        firebase.database().ref('items')
+        getUsers().then(
             (response) => {
                 this.setState({savedUsers: response.data});
             }
