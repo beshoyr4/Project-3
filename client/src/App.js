@@ -70,8 +70,8 @@ class App extends Component {
             <div>
             <NavTabs />
               <Route exact path="/dashboard" render={(props) => <Dashboard user={this.state.user} {...props} />} />
-              <Route exact path="/discover" component={Discover} />
-              {/* <Route exact path="/saved" component={Saved} /> */}
+              <Route exact path="/discover" render={(props) => <Discover user={this.state.user} {...props} />} />
+              <Route exact path="/saved" render={(props) => <Saved user={this.state.user} {...props} />} />
             </div>
           </Router>
           </div>
