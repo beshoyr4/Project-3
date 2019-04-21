@@ -10,6 +10,9 @@ class Saved extends React.Component {
         }
     }
 
+    // Firebase Join of user table items table to user saved
+    //Create a saved table to firebase
+
     componentWillMount() {
         firebase.database().ref('items')
         getUsers().then(
