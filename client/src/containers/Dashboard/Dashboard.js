@@ -46,7 +46,7 @@ handleSubmit = (e) => {
 
 componentDidMount() {
   const itemsRef = firebase.database().ref('items');
-  itemsRef.orderByChild("user").equalTo(this.props.user.displayName || this.props.user.email)  
+  itemsRef.orderByChild("user").equalTo(this.props.user.email)  
   .on('value', (snapshot) => {
       let items = snapshot.val();
       let newState = [];

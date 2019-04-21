@@ -12,7 +12,8 @@ class Discover extends React.Component {
         super(props);
         this.state = {
             people: [],
-            active: 0
+            active: 0,
+            favorites:[]
         };
     };
 
@@ -36,7 +37,6 @@ class Discover extends React.Component {
 
     handleBtnClick = event => {
         // Load next person when button is clicked
-        console.log("here")
         let currentActive = this.state.active;
         if (currentActive === this.state.people.length -1) {
             currentActive = 0;
