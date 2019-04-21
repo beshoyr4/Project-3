@@ -5,7 +5,7 @@ import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 
-import './style.css';
+import "./style.css";
 
 class Discover extends React.Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class Discover extends React.Component {
             favorites:[]
         };
     };
+  }
 
     componentDidMount() {
         firebase.database().ref('items')
@@ -48,49 +49,73 @@ class Discover extends React.Component {
                 active: currentActive
             };
         });
-    };
+      });
+  }
 
+  handleBtnClick = event => {
+    // Load next person when button is clicked
+    console.log("here");
+    let currentActive = this.state.active;
+    if (currentActive === this.state.people.length - 1) {
+      currentActive = 0;
+    } else {
+      currentActive++;
+    }
+    this.setState(state => {
+      return {
+        active: currentActive
+      };
+    });
+  };
 
-    render() {
-        console.log(this.state.people)
-        const person = this.state.people[this.state.active]
-        if (!person) {
-            return null;
-        }
-        return (
-            <div>
-                <Container id="discover-container">
-                    <section className='display-item'>
-                        <div className="wrapper">
-                            <Row>
-                                <Row>
-                                    <Col size="md-12">
-                                        <Row>
-                                            <h1 className="text-center">Find Musicians</h1>
-                                            <h3 className="text-center">Thumbs up on any musican you would like to save!</h3>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col size="md-12">
-                                        <Row>
-                                            <h3>{person.title}</h3>
-                                        </Row>
-                                        <Row>
-                                            <h3>{person.user}</h3>
-                                        </Row>
-                                        <Row>
-                                            <button onClick={this.handleBtnClick}>"Click"</button>
-                                        </Row>
-                                    </Col>
-                                </Row>
-                            </Row>
-                        </div>
-                    </section>
-                </Container>
+  render() {
+    console.log(this.state.people);
+    const person = this.state.people[this.state.active];
+    if (!person) {
+      return null;
+    }
+    return (
+      <div>
+        <Container id="discover-container">
+          <section className="display-item">
+            <div className="wrapper">
+              <Row>
+                <Row>
+                  <Col size="md-12">
+                    <Row>
+                      <h1 className="text-center">Find Musicians</h1>
+                      <h2 className="text-center">
+                        Thumbs up on any musican you would like to save!
+                      </h2>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <div className="card">
+                    <Col size="md-12">
+                      <Row>
+                        <img src="https://place-hold.it/200x200" />
+                      </Row>
+                      <Row>
+                        <h3>{person.user}</h3>
+                      </Row>
+                      <Row>
+                        <h3>{person.title}</h3>
+                      </Row>
+                      <Row>
+                        <button onClick={this.handleBtnClick}>Hell Yea</button>
+                        <button onClick={this.handleBtnClick}>No thanks</button>
+                      </Row>
+                    </Col>
+                  </div>
+                </Row>
+              </Row>
             </div>
-        );
-    };
-};
+          </section>
+        </Container>
+      </div>
+    );
+  }
+}
 
 export default Discover;
