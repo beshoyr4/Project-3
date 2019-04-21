@@ -31,7 +31,7 @@ handleSubmit = (e) => {
   const itemsRef = firebase.database().ref('items');
   const item = {
     title: this.state.instrument,
-    user: this.props.user.displayName || this.props.user.email,
+    user: this.props.user.uid,
     expertise: this.state.expertise,
     experience: this.state.experience
   }
@@ -46,6 +46,7 @@ handleSubmit = (e) => {
 
 componentDidMount() {
   const itemsRef = firebase.database().ref('items');
+  // Change to this.props.user.uid once table is made
   itemsRef.orderByChild("user").equalTo(this.props.user.email)  
   .on('value', (snapshot) => {
       let items = snapshot.val();

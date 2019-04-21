@@ -15,8 +15,9 @@ class Discover extends React.Component {
             active: 0,
             favorites:[]
         };
+        this.state.handleYesBtnClick = this.handleYesBtnClick.bind(this);
     };
-  }
+
 
     componentDidMount() {
         firebase.database().ref('items')
@@ -49,24 +50,23 @@ class Discover extends React.Component {
                 active: currentActive
             };
         });
-      });
-  }
-
-  handleBtnClick = event => {
-    // Load next person when button is clicked
-    console.log("here");
-    let currentActive = this.state.active;
-    if (currentActive === this.state.people.length - 1) {
-      currentActive = 0;
-    } else {
-      currentActive++;
-    }
-    this.setState(state => {
-      return {
-        active: currentActive
+        console.log(this.state.active);
       };
-    });
-  };
+
+      handleYesBtnClick = event => {
+          this.setState(state => {
+              return {
+                  favorites: [...this.state.favorites, this.state.people[this.state.active].id]
+                    };
+                });
+          console.log(this.state.favorites);
+          this.handleBtnClick(event);
+      }
+
+      componentWillUnmount() {
+        firebase.database().ref('items')
+      }
+
 
   render() {
     console.log(this.state.people);
@@ -103,7 +103,7 @@ class Discover extends React.Component {
                         <h3>{person.title}</h3>
                       </Row>
                       <Row>
-                        <button onClick={this.handleBtnClick}>Hell Yea</button>
+                        <button onClick={this.state.handleYesBtnClick}>Hell Yea</button>
                         <button onClick={this.handleBtnClick}>No thanks</button>
                       </Row>
                     </Col>

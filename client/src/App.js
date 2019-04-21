@@ -33,6 +33,8 @@ class App extends Component {
       this.setState({
         user
       });
+      // Search Firebase for user with that uid
+      // Set this.state.user.key to object key 
     });
   }
   
