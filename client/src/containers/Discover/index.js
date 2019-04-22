@@ -13,7 +13,6 @@ class Discover extends React.Component {
     this.state = {
       people: [],
       active: 0,
-      saved: []
     };
   }
 
