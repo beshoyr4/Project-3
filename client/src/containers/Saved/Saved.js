@@ -11,50 +11,46 @@ class Saved extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      people: [],
-      active: 0
+      saved: [],
+      store: 0
     };
   }
 
   componentDidMount() {
-    firebase
-      .database()
-      .ref("items")
-      .on("value", snapshot => {
-        let items = snapshot.val();
-        let newState = [];
-        for (let item in items) {
-          newState.push({
-            id: item,
-            title: items[item].title,
-            user: items[item].user
-          });
-        }
-        this.setState({
-          people: newState
-        });
-      });
+  
+    let ref = firebase.database().ref("saved");
+      
+      ref.orderByChild("currentuser").equalTo(this.props.user.displayName).on("value", snapshot => {
+      let savedVales = snapshot.val()
+      console.log(savedVales);
+      let saveState = [];
+      console.log(savedVales);
+      //saveState.push(snapshot.child('store').child('id').val());
+      //console.log(saveState);
+
+
+      // this.setState({
+      //   id: '',
+      //   instrument: '',
+      //   expertise: '',
+      //   experience:'',
+      //   username: ''
+      // });
+
+    // saved.on('child_added', snapshot => {
+    //   var saved = snapshot.val();
+    //   console.log(this);
+      //  items.child('stored').child(userId.once('user'), function (mediaSnap) {
+      //    console.log(items);
+      //  });
+    });
+
+
   }
 
-  handleBtnClick = event => {
-    // Load next person when button is clicked
-    console.log("here");
-    let currentActive = this.state.active;
-    if (currentActive === this.state.people.length - 1) {
-      currentActive = 0;
-    } else {
-      currentActive++;
-    }
-    this.setState(state => {
-      return {
-        active: currentActive
-      };
-    });
-  };
-
   render() {
-    console.log(this.state.people);
-    const person = this.state.people[this.state.active];
+    console.log(this.state.saved);
+    const person = this.state.saved;
     if (!person) {
       return null;
     }

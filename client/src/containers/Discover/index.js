@@ -13,7 +13,7 @@ class Discover extends React.Component {
     this.state = {
       people: [],
       active: 0,
-      saved: 0
+      saved: []
     };
   }
 
@@ -57,10 +57,10 @@ class Discover extends React.Component {
     console.log("saved");
 
     e.preventDefault();
-    const itemsRef = firebase.database().ref('saved');
-    const item = {
+    const savedRef = firebase.database().ref('saved');
+    const saved = {
       // this is the logged in user:
-      user: this.props.user.displayName || this.props.user.email,
+      currentuser: this.props.user.displayName || this.props.user.email,
       // this is the card info to be saved:
       stored: this.state.people[this.state.active]
 
@@ -68,7 +68,7 @@ class Discover extends React.Component {
       // experience: this.state.experience
       // title: this.state.instrument,
     }
-    itemsRef.push(item);
+    savedRef.push(saved);
     this.setState({
       id: '',
       instrument: '',
