@@ -18,23 +18,33 @@ class Saved extends React.Component {
 
   componentDidMount() {
   
-    let ref = firebase.database().ref("saved");
+    var saved = firebase.database().ref().child('saved');
+    var items = firebase.database().ref().child('items');
+
+    saved.on('child_added', snapshot =>{
+      console.log(snapshot.val());
+      items.child(snapshot.val().currentuser).once('value', items => {
+        console.log(items.val());
+      })
+    })
+    console.log(saved);
+
+    // let ref = firebase.database().ref("saved");
       
-    ref.orderByChild("currentuser").equalTo(this.props.user.displayName).on("value", snapshot => {
-      let saved = snapshot.val()
-      console.log(saved);
-      let saveState = [];
-      for (let saveId in saved) {
-        saveState.push({
-          id: saveId,
-          title: saved[saveId].title,
-          user: saved[saveId].user
+    // ref.orderByChild("currentuser").equalTo(this.props.user.displayName).on("value", snapshot => {
+    //   let saved = snapshot.val()
+    //   console.log(saved);
+    //   let saveState = [];
+    //   for (let saveId in saved) {
+    //     saveState.push({
+    //       id: saveId,
+    //       title: saved[saveId].title,
+    //       user: saved[saveId].user
          
+        // });
 
-        });
-      };
+    };
 
-      console.log(saveState);
       //saveState.push(snapshot.child('store').child('id').val());
       //console.log(saveState);
 
@@ -53,10 +63,10 @@ class Saved extends React.Component {
       //  items.child('stored').child(userId.once('user'), function (mediaSnap) {
       //    console.log(items);
       //  });
-    });
+    // });
 
-
-  }
+  // }
+  
 
   render() {
     console.log(this.state.saved);
