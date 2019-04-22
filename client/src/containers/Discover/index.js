@@ -31,6 +31,7 @@ class Discover extends React.Component {
             user: items[item].user
           });
         }
+        console.log(items);
         this.setState({
           people: newState
         });

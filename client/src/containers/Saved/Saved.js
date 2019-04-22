@@ -20,11 +20,21 @@ class Saved extends React.Component {
   
     let ref = firebase.database().ref("saved");
       
-      ref.orderByChild("currentuser").equalTo(this.props.user.displayName).on("value", snapshot => {
-      let savedVales = snapshot.val()
-      console.log(savedVales);
+    ref.orderByChild("currentuser").equalTo(this.props.user.displayName).on("value", snapshot => {
+      let saved = snapshot.val()
+      console.log(saved);
       let saveState = [];
-      console.log(savedVales);
+      for (let saveId in saved) {
+        saveState.push({
+          id: saveId,
+          title: saved[saveId].title,
+          user: saved[saveId].user
+         
+
+        });
+      };
+
+      console.log(saveState);
       //saveState.push(snapshot.child('store').child('id').val());
       //console.log(saveState);
 
@@ -50,8 +60,8 @@ class Saved extends React.Component {
 
   render() {
     console.log(this.state.saved);
-    const person = this.state.saved;
-    if (!person) {
+    const saved = this.state.saved;
+    if (!saved) {
       return null;
     }
     return (
@@ -77,26 +87,10 @@ class Saved extends React.Component {
                         <img src="https://place-hold.it/100x100" />
                       </Row>
                       <Row>
-                        <h3>{person.user}</h3>
+                        <h3>{saved.user}</h3>
                       </Row>
                       <Row>
-                        <h3>{person.title}</h3>
-                      </Row>
-                      <Row>
-                        <button onClick={this.handleDelete}>Delete</button>
-                      </Row>
-                  </div>
-                  </Col>
-                <Col size="sm-3 md-3 lg-3">
-                  <div className="card">
-                      <Row>
-                        <img src="https://place-hold.it/100x100" />
-                      </Row>
-                      <Row>
-                        <h3>{person.user}</h3>
-                      </Row>
-                      <Row>
-                        <h3>{person.title}</h3>
+                        <h3>{saved.title}</h3>
                       </Row>
                       <Row>
                         <button onClick={this.handleDelete}>Delete</button>
@@ -107,41 +101,8 @@ class Saved extends React.Component {
                     <input type="text" name="currentItem" placeholder="What are you bringing ?" onChange={this.handleChange} value={this.state.currentItem} />
                     <button>Add Item</button>
                   </form>  */}
-
-
-                  </Col>
-                  <Col size="sm-3 md-3 lg-3">
-                  <div className="card">
-                      <Row>
-                        <img src="https://place-hold.it/100x100" />
-                      </Row>
-                      <Row>
-                        <h3>{person.user}</h3>
-                      </Row>
-                      <Row>
-                        <h3>{person.title}</h3>
-                      </Row>
-                      <Row>
-                        <button onClick={this.handleDelete}>Delete</button>
-                      </Row>
-                  </div>
-                  </Col>
-                  <Col size="sm-3 md-3 lg-3">
-                  <div className="card">
-                      <Row>
-                        <img src="https://place-hold.it/100x100" />
-                      </Row>
-                      <Row>
-                        <h3>{person.user}</h3>
-                      </Row>
-                      <Row>
-                        <h3>{person.title}</h3>
-                      </Row>
-                      <Row>
-                        <button onClick={this.handleDelete}>Delete</button>
-                      </Row>
-                  </div>
-                  </Col>
+                </Col>
+                 
 
                 </Row>
               </Row>
