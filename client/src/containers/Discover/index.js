@@ -70,6 +70,7 @@ class Discover extends React.Component {
     }
     itemsRef.push(item);
     this.setState({
+      id: '',
       instrument: '',
       expertise: '',
       experience:'',
@@ -89,6 +90,7 @@ class Discover extends React.Component {
       };
     });
   };
+
 
 
   render() {
