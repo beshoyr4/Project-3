@@ -12,7 +12,8 @@ class Discover extends React.Component {
     super(props);
     this.state = {
       people: [],
-      active: 0
+      active: 0,
+      saved: 0
     };
   }
 
@@ -52,6 +53,44 @@ class Discover extends React.Component {
     });
   };
 
+  handleYeaClick = (e) => {
+    console.log("saved");
+
+    e.preventDefault();
+    const itemsRef = firebase.database().ref('saved');
+    const item = {
+      // this is the logged in user:
+      user: this.props.user.displayName || this.props.user.email,
+      // this is the card info to be saved:
+      stored: this.state.people[this.state.active]
+
+      // expertise: this.state.expertise,
+      // experience: this.state.experience
+      // title: this.state.instrument,
+    }
+    itemsRef.push(item);
+    this.setState({
+      instrument: '',
+      expertise: '',
+      experience:'',
+      username: ''
+  });
+  
+
+    let currentActive = this.state.active;
+    if (currentActive === this.state.people.length - 1) {
+      currentActive = 0;
+    } else {
+      currentActive++;
+    }
+    this.setState(state => {
+      return {
+        active: currentActive
+      };
+    });
+  };
+
+
   render() {
     console.log(this.state.people);
     const person = this.state.people[this.state.active];
@@ -87,7 +126,7 @@ class Discover extends React.Component {
                         <h3>{person.title}</h3>
                       </Row>
                       <Row>
-                        <button onClick={this.handleBtnClick}>Hell Yea</button>
+                        <button onClick={this.handleYeaClick}>Hell Yea</button>
                         <button onClick={this.handleBtnClick}>No thanks</button>
                       </Row>
                     </Col>

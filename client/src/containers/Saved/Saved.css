@@ -25,7 +25,7 @@
     margin: auto;
     box-shadow: 5px 10px 18px yellow;
     margin: 10px;
-    float: left;
+    /* float: left; */
   }
   
 #saved-container .card button {
