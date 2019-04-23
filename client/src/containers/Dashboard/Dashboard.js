@@ -87,11 +87,6 @@ class Dashboard extends Component {
         <Container id="dashboard-container">
           <Row>
             <Col size="md-12">
-              <h1>Dashboard</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col size="md-12">
               <section className="add-item">
                 <form onSubmit={this.handleSubmit}>
                   <input

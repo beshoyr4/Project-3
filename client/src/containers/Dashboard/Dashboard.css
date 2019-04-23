@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #dashboard-container .add-item {
   border-radius: 2px;
   border-top: 3px solid #103d5d;
