@@ -12,7 +12,7 @@ class Discover extends React.Component {
     super(props);
     this.state = {
       people: [],
-      active: 0,
+      active: 0
     };
 };
 
@@ -86,11 +86,11 @@ class Discover extends React.Component {
     //   }
 
 
-  handleYeaClick = (e) => {
+  handleYeaClick = e => {
     console.log("saved");
 
     e.preventDefault();
-    const savedRef = firebase.database().ref('saved');
+    const savedRef = firebase.database().ref("saved");
     const saved = {
       // this is the logged in user:
       currentuser: this.props.user.displayName || this.props.user.email,
@@ -100,16 +100,15 @@ class Discover extends React.Component {
       // expertise: this.state.expertise,
       // experience: this.state.experience
       // title: this.state.instrument,
-    }
+    };
     savedRef.push(saved);
     this.setState({
-      id: '',
-      instrument: '',
-      expertise: '',
-      experience:'',
-      username: ''
-  });
-  
+      id: "",
+      instrument: "",
+      expertise: "",
+      experience: "",
+      username: ""
+    });
 
     let currentActive = this.state.active;
     if (currentActive === this.state.people.length - 1) {
@@ -123,8 +122,6 @@ class Discover extends React.Component {
       };
     });
   };
-
-
 
   render() {
     console.log(this.state.people);
@@ -142,9 +139,11 @@ class Discover extends React.Component {
                   <Col size="md-12">
                     <Row>
                       <h1 className="text-center">Find Musicians</h1>
+                      <br />
                       <h2 className="text-center">
                         Thumbs up on any musican you would like to save!
                       </h2>
+                      <br />
                     </Row>
                   </Col>
                 </Row>
@@ -155,10 +154,10 @@ class Discover extends React.Component {
                         <img src="https://place-hold.it/200x200" />
                       </Row>
                       <Row>
-                        <h3>{person.user}</h3>
+                        <h3>Name: {person.user}</h3>
                       </Row>
                       <Row>
-                        <h3>{person.title}</h3>
+                        <h3>Insterment: {person.title}</h3>
                       </Row>
                       <Row>
                         <button onClick={this.handleYeaClick}>Hell Yea</button>

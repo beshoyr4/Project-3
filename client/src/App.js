@@ -94,7 +94,7 @@ class App extends Component {
                 textAlign: "center",
                 paddingTop: "70px",
                 fontSize: "60px",
-                color: "#FF6430",
+                color: "#0f3d5d",
                 paddingBottom: "5px"
               }}
             >
@@ -104,13 +104,12 @@ class App extends Component {
             <p
               style={{
                 textAlign: "center",
-                color: "#FF6430",
+                color: "#0f3d5d",
                 fontWeight: "bold",
-                fontSize: "35px"
+                fontSize: "25px"
               }}
             >
-              Connect with other musicians for collaboration, whether they want
-              to start a formal project or simply jam with another person
+              Place where you can connect with other musicians
             </p>
           </div>
         )}

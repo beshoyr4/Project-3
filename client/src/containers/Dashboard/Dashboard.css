@@ -1,57 +1,5 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #fff;
-}
-header {
-  color: #fff;
-  background-color: #103D5D;
-  padding: 33px 0 25px 15px;
-}
-header p {
-  width: 400px;
-  margin: 0 auto;
-}
-header .wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-header h1 {
-  font-size: 25px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  display: inline-block;
-  margin: 0;
-  vertical-align: middle;
-  
-}
-.fa {
-  font-size: 22px;
-  transform: translateY(50deg);  
-}
-header i {
-  vertical-align: middle;
-  margin-left: 12px;
-}
-.container {
-  display: flex;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-top: 30px;
-}
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.user-profile {
-  position: fixed;
-  bottom: 20px;
-  right: 40px;
-  width: 100px;
-  height: 100px;
-}
-.user-profile img {
-  border-radius: 50%;
-  max-width: 100%;
+* {
+  box-sizing: border-box;
 }
 
 #dashboard-container .add-item {
