@@ -124,7 +124,7 @@ class Discover extends React.Component {
                         <h3>Name: {person.user}</h3>
                       </Row>
                       <Row>
-                        <h3>Insterment: {person.title}</h3>
+                        <h3>Instrument: {person.title}</h3>
                       </Row>
                       <Row>
                         <button onClick={this.handleYeaClick}>Hell Yea</button>

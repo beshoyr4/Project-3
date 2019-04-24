@@ -91,6 +91,7 @@ class Dashboard extends Component {
                 <form onSubmit={this.handleSubmit}>
                   <input
                     type="text"
+                    required="required"
                     name="username"
                     placeholder="What's your name?"
                     defaultValue={
@@ -99,6 +100,7 @@ class Dashboard extends Component {
                   />
                   <input
                     type="text"
+                    required="required"
                     name="instrument"
                     placeholder="What instrument do you play?"
                     onChange={this.handleChange}
@@ -106,6 +108,7 @@ class Dashboard extends Component {
                   />
                   <input
                     type="text"
+                    required="required"
                     name="expertise"
                     placeholder="Novice, Ameteur, or Expert"
                     onChange={this.handleChange}
@@ -114,6 +117,7 @@ class Dashboard extends Component {
                   <input
                     type="text"
                     name="experience"
+                    required="required"
                     placeholder="Start a Band or Jam Session"
                     onChange={this.handleChange}
                     value={this.state.experience}
@@ -134,7 +138,7 @@ class Dashboard extends Component {
                         <li key={item.id}>
                           <h3>{item.user}</h3>
                           <p>
-                            Insterment: {item.title}
+                            Instrument: {item.title}
                             <br />
                             Experience Level: {item.expertise}
                             <br />

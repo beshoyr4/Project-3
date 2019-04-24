@@ -15,7 +15,7 @@
   margin-right: auto;
 }
 #dashboard-container .display-item {
-  width: 200%;
+  width: 10;
   margin-left: 50px;
 }
 #dashboard-container .display-item button {
@@ -24,8 +24,8 @@
   display: block;
 }
 #dashboard-container .add-item form {
-  width: 100%;
-  overflow: hidden;
+  width: 350px;
+  overflow: scroll;
 }
 #dashboard-container input {
   font-size: 22px;
@@ -44,7 +44,7 @@
   padding: 0;
 }
 #dashboard-container li {
-  width: calc(55% - 50px);
+  width: 550px;
   list-style-type: none;
   margin-right: 50px;
   background-color: rgb(237, 237, 237);
