@@ -86,7 +86,33 @@ class App extends Component {
                 />
               </div>
             </Router>
+            <div className="wrapper">
+            <h1
+              style={{
+                textAlign: "center",
+                paddingTop: "70px",
+                fontSize: "60px",
+                color: "#0f3d5d",
+                paddingBottom: "5px"
+              }}
+            >
+              Welcome
+            </h1>
+
+            <p
+              style={{
+                textAlign: "center",
+                color: "#0f3d5d",
+                fontWeight: "bold",
+                fontSize: "25px"
+              }}
+            >
+              Place where you can connect with other musicians
+            </p>
           </div>
+        )}
+          </div>
+          
         ) : (
           <div className="wrapper">
             <h1
