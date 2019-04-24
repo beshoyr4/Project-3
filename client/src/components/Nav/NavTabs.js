@@ -50,16 +50,6 @@ function NavTabs() {
           Saved
         </Link>
       </li>
-      <li className="nav-item">
-        <Link
-          to="/"
-          className={
-            window.location.pathname === "/" ? "nav-link active" : "nav-link"
-          }
-        >
-          Logout
-        </Link>
-      </li>
     </ul>
   );
 }

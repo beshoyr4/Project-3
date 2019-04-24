@@ -14,7 +14,7 @@ class Discover extends React.Component {
       people: [],
       active: 0
     };
-  }
+};
 
   componentDidMount() {
     firebase
@@ -37,21 +37,54 @@ class Discover extends React.Component {
       });
   }
 
-  handleBtnClick = event => {
-    // Load next person when button is clicked
-    console.log("here");
-    let currentActive = this.state.active;
-    if (currentActive === this.state.people.length - 1) {
-      currentActive = 0;
-    } else {
-      currentActive++;
-    }
-    this.setState(state => {
-      return {
-        active: currentActive
+    componentDidMount() {
+        firebase.database().ref('items')
+            .on('value', (snapshot) => {
+                let items = snapshot.val();
+                let newState = [];
+                for (let item in items) {
+                    newState.push({
+                        id: item,
+                        title: items[item].title,
+                        user: items[item].user
+                    });
+                };
+                this.setState({
+                    people: newState
+                });
+            });
+    };
+
+    handleBtnClick = event => {
+        // Load next person when button is clicked
+        let currentActive = this.state.active;
+        if (currentActive === this.state.people.length -1) {
+            currentActive = 0;
+        } else {
+            currentActive ++
+        };
+        this.setState(state => {
+            return {
+                active: currentActive
+            };
+        });
+        console.log(this.state.active);
       };
-    });
-  };
+
+    //   handleYesBtnClick = event => {
+    //       this.setState(state => {
+    //           return {
+    //               favorites: [...this.state.favorites, this.state.people[this.state.active].id]
+    //                 };
+    //             });
+    //       console.log(this.state.favorites);
+    //       this.handleBtnClick(event);
+    //   }
+
+    //   componentWillUnmount() {
+    //     firebase.database().ref('items')
+    //   }
+
 
   handleYeaClick = e => {
     console.log("saved");
