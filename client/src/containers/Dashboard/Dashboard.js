@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import ImageUploader from 'react-images-upload';
 
 import Container from "../../components/Container";
 import Row from "../../components/Row";
@@ -16,7 +17,8 @@ class Dashboard extends Component {
       expertise: "",
       experience: "",
       username: "",
-      items: []
+      items: [],
+      pictures: []
     };
   }
 
@@ -70,6 +72,12 @@ class Dashboard extends Component {
     itemRef.remove();
   }
 
+  onDrop = (picture) => {
+    this.setState({
+        pictures: this.state.pictures.concat(picture),
+    });
+}
+
   render() {
     if (this.props.user === null) {
       return (
@@ -97,6 +105,13 @@ class Dashboard extends Component {
                     defaultValue={
                       this.props.user.displayName || this.props.user.email
                     }
+                  />
+                  <ImageUploader
+                    withIcon={true}
+                    buttonText='Choose images'
+                    onChange={this.onDrop}
+                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                    maxFileSize={5242880}
                   />
                   <input
                     type="text"

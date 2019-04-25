@@ -6,6 +6,8 @@ import NavTabs from "./components/Nav";
 import Dashboard from "./containers/Dashboard";
 import Discover from "./containers/Discover";
 import Saved from "./containers/Saved";
+import Lyrics from "./containers/Covers";
+import API from "./utils/API";
 
 class App extends Component {
   constructor() {
@@ -41,6 +43,8 @@ class App extends Component {
         this.setState({ user });
       }
     });
+    this.setState({ songList: API.searchSongs()});
+    API.searchLyrics("rxyb9c+U3BzBgIY_hBZZ8A==");
   }
 
   render() {
@@ -83,6 +87,13 @@ class App extends Component {
                   exact
                   path="/saved"
                   render={props => <Saved user={this.state.user} {...props} />}
+                />
+                <Route
+                exact
+                path="/covers"
+                render={props => 
+                  <Lyrics user={this.state.user} {...props} />
+                }
                 />
               </div>
             </Router>
