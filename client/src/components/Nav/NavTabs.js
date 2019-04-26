@@ -50,6 +50,18 @@ function NavTabs() {
           Saved
         </Link>
       </li>
+      <li className="nav-item">
+        <Link
+          to="/covers"
+          className={
+            window.location.pathname === "/covers"
+              ? "nav-link active"
+              : "nav-link"
+          }
+        >
+          Covers
+        </Link>
+      </li>
     </ul>
   );
 }
