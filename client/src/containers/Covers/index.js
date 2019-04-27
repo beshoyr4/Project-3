@@ -3,6 +3,8 @@ import API from "../../utils/API";
 import Songlist from './songlist';
 import Lyrics from "./lyrics";
 
+import "./Covers.css";
+
 class Covers extends Component {
   state = {
     songList: [],
@@ -31,18 +33,9 @@ class Covers extends Component {
     });
   };
 
-  // once the search term is submitted, search the GoogleLyrics API for the value of `this.state.search`
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   this.searchLyrics(this.state.search);
-  // };
-
-  // saves lyric to database
-  // handleSaveLyric = lyricData => {
-  //   API.saveLyric(lyricData)
-  //     .then(res => alert("Lyric Saved!"))
-  //     .catch(err => console.log(err));
-  // };
+  handleClickBack = () => {
+    this.setState({ lyrics: [] });
+  }
 
   componentDidMount() {
     API.searchSongs((songList) => {
@@ -65,7 +58,7 @@ class Covers extends Component {
           </div>
         </div>
         {this.state.lyrics.length ? (
-          <Lyrics lyrics={lyrics}/>
+          <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack}/>
         ) : (
           <Songlist songList={songList} onClickSong={this.handleSongClick} /> 
         )}
