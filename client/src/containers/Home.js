@@ -47,7 +47,7 @@ class Home extends Component {
 
   render() {
   return (
-    <div className="app">
+    <div className="container" id="container-about">
       <header>
         <div className="wrapper">
           <h1>I Play Music</h1>
@@ -92,34 +92,28 @@ class Home extends Component {
                 path="/covers"
                 render={props => <Lyrics user={this.state.user} {...props} />}
               />
-            </div>
+            <Route exact path="/" render={(props)=>{
+              return (
+                <div>
+                  <h1>Welcome</h1>
+                  <p>
+                    here!!!!!!
+                    <br />
+                    Place where you can connect with other musicians
+                  </p>
+                </div>
+              )
+            }} />
+          </div>
           </Router>
-          
         </div>
+        
       ) : (
-          <div className="wrapper">
-            <h1
-              style={{
-                textAlign: "center",
-                paddingTop: "70px",
-                fontSize: "60px",
-                color: "#0f3d5d",
-                paddingBottom: "5px"
-              }}
-            >
-              Welcome
-          </h1>
-
-            <p
-              style={{
-                textAlign: "center",
-                color: "#0f3d5d",
-                fontWeight: "bold",
-                fontSize: "25px"
-              }}
-            >
+          <div className="wrapper" id="wrapper">
+            <h1>Welcome</h1>
+            <p>
               Place where you can connect with other musicians
-          </p>
+            </p>
           </div>
         )}
     </div>
