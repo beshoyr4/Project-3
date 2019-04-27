@@ -1,27 +1,23 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #fff;
-}
-
-body {
   background-image: url(../images/Background.jpg);
   background-size: 100%;
   background-repeat: no-repeat;
+  font-family: 'Open Sans', sans-serif;
 }
-header {
+#container-about header {
   color: #fff;
   background-color: #103D5D;
   padding: 33px 0 25px 15px;
 }
-header p {
+#container-about header p {
   width: 400px;
   margin: 0 auto;
 }
-header .wrapper {
+#container-about header .wrapper {
   display: flex;
   justify-content: space-between;
 }
-header h1 {
+#container-about header h1 {
   font-size: 25px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -30,32 +26,48 @@ header h1 {
   vertical-align: middle;
   
 }
-.fa {
+#container-about .fa {
   font-size: 22px;
   transform: translateY(50deg);  
 }
-header i {
+#container-about header i {
   vertical-align: middle;
   margin-left: 12px;
 }
-.container {
+#container-about .container {
   display: flex;
   max-width: 1100px;
   margin: 0 auto;
   padding-top: 30px;
 }
-.wrapper {
+
+#container-about h1 {
+  text-align: center;
+  padding-top: 70px;
+  font-size: 60px;
+  color: #0f3d5d;
+  padding-bottom: 5px;
+}
+
+#container-about p {
+    text-align: center;
+    color: #0f3d5d;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#container-about .wrapper {
   max-width: 1100px;
   margin: 0 auto;
 }
-.user-profile {
+#container-about .user-profile {
   position: fixed;
   bottom: 20px;
   right: 40px;
   width: 100px;
   height: 100px;
 }
-.user-profile img {
+#container-about .user-profile img {
   border-radius: 50%;
   max-width: 100%;
 }
