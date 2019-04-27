@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import firebase, { auth, provider } from "./firebase.js";
+import { auth, provider } from "./firebase.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from "./components/Nav";
 import Dashboard from "./containers/Dashboard";
 import Discover from "./containers/Discover";
 import Saved from "./containers/Saved";
 import Lyrics from "./containers/Covers";
-import API from "./utils/API";
 
 class App extends Component {
   constructor() {
@@ -17,6 +16,16 @@ class App extends Component {
     };
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+  }
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          user
+        });
+      }
+    });
   }
 
   logout() {
