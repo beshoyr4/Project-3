@@ -33,7 +33,7 @@ class App extends Component {
         user
       });
       // Search Firebase for user with that uid
-      // Set this.state.user.key to object key 
+      // Set this.state.user.key to object key
     });
   }
 
@@ -43,7 +43,7 @@ class App extends Component {
         this.setState({ user });
       }
     });
-    this.setState({ songList: API.searchSongs()});
+    this.setState({ songList: API.searchSongs() });
     API.searchLyrics("rxyb9c+U3BzBgIY_hBZZ8A==");
   }
 
@@ -56,8 +56,8 @@ class App extends Component {
             {this.state.user ? (
               <button onClick={this.logout}>Logout</button>
             ) : (
-              <button onClick={this.login}>Log In</button>
-            )}
+                <button onClick={this.login}>Log In</button>
+              )}
           </div>
         </header>
         {this.state.user ? (
@@ -65,7 +65,6 @@ class App extends Component {
             <div className="user-profile">
               <img src={this.state.user.photoURL} />
             </div>
-
             <Router>
               <div>
                 <NavTabs />
@@ -89,67 +88,40 @@ class App extends Component {
                   render={props => <Saved user={this.state.user} {...props} />}
                 />
                 <Route
-                exact
-                path="/covers"
-                render={props => 
-                  <Lyrics user={this.state.user} {...props} />
-                }
+                  exact
+                  path="/covers"
+                  render={props => <Lyrics user={this.state.user} {...props} />}
                 />
               </div>
             </Router>
-            <div className="wrapper">
-            <h1
-              style={{
-                textAlign: "center",
-                paddingTop: "70px",
-                fontSize: "60px",
-                color: "#0f3d5d",
-                paddingBottom: "5px"
-              }}
-            >
-              Welcome
-            </h1>
-
-            <p
-              style={{
-                textAlign: "center",
-                color: "#0f3d5d",
-                fontWeight: "bold",
-                fontSize: "25px"
-              }}
-            >
-              Place where you can connect with other musicians
-            </p>
+            )}
           </div>
-        )}
-          </div>
-          
         ) : (
-          <div className="wrapper">
-            <h1
-              style={{
-                textAlign: "center",
-                paddingTop: "70px",
-                fontSize: "60px",
-                color: "#0f3d5d",
-                paddingBottom: "5px"
-              }}
-            >
-              Welcome
+            <div className="wrapper">
+              <h1
+                style={{
+                  textAlign: "center",
+                  paddingTop: "70px",
+                  fontSize: "60px",
+                  color: "#0f3d5d",
+                  paddingBottom: "5px"
+                }}
+              >
+                Welcome
             </h1>
 
-            <p
-              style={{
-                textAlign: "center",
-                color: "#0f3d5d",
-                fontWeight: "bold",
-                fontSize: "25px"
-              }}
-            >
-              Place where you can connect with other musicians
+              <p
+                style={{
+                  textAlign: "center",
+                  color: "#0f3d5d",
+                  fontWeight: "bold",
+                  fontSize: "25px"
+                }}
+              >
+                Place where you can connect with other musicians
             </p>
-          </div>
-        )}
+            </div>
+          )}
       </div>
     );
   }

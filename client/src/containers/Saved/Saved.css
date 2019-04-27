@@ -1,40 +1,54 @@
 #saved-container .display-item {
-    text-align: center;
-    width: 100%;
-    margin-left: 50px;
-  }
-  
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+}
+
 #saved-container button {
-    border-radius: 2px;
-    min-width: 44px;
-    background-color: #fa6900;
-    cursor: pointer;
-    border: 0;
-    min-width: 120px;
-    color: #fff;
-    font-size: 10px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    padding: 10px 6px;
-  }
-  
+  border-radius: 2px;
+  min-width: 44px;
+  background-color: #fa6900;
+  cursor: pointer;
+  border: 0;
+  min-width: 120px;
+  color: #fff;
+  font-size: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding: 10px 6px;
+}
+
 #saved-container .card {
-    border: 3px solid black;
-    width: 200px;
-    text-align: center;
-    height: auto;
-    margin: auto;
-    box-shadow: 5px 10px 18px yellow;
-    margin: 10px;
-    /* float: left; */
-  }
-  
+  border: 3px solid #103d5d;
+  width: 275px;
+  height: 275px;
+  margin: 5px 20px;
+  padding: 5px 20px 5px 5px;
+  border-radius: 50px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-left: auto
+}
+
 #saved-container .card button {
-    padding: 15px;
-    margin-left: 12px;
-    margin: auto 30px;
-  }
+  padding: auto;
+  margin: 10px 80px;
+  border-radius: 10px;
+}
 
 #saved-container .card img {
-    margin: 10px;
-  }
-  
+  margin: auto 90px;
+}
+
+#saved-container h2 {
+  margin-left: 60px
+}
+
+#saved-container p {
+  margin-left: 120px
+}
+
+#saved-container .text-center {
+  margin: auto 250px 10px;
+  text-align: center;
+  color: #0f3d5d;
+}

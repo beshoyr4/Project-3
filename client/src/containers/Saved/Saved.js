@@ -12,47 +12,46 @@ class Saved extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentSaved: [],
+      currentSaved: []
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
-
     let ref = firebase.database().ref("saved");
-      
-    ref.orderByChild("currentuser").equalTo(this.props.user.displayName).on("value", snapshot => {
-      let saved = snapshot.val();
-      console.log(saved);
-      const faveArr = [];
 
-      for(let fave in saved) {
+    ref
+      .orderByChild("currentuser")
+      .equalTo(this.props.user.displayName)
+      .on("value", snapshot => {
+        let saved = snapshot.val();
+        console.log(saved);
+        const faveArr = [];
 
-        const user = saved[fave].stored.user;
-        const instrument = saved[fave].stored.title;
-        const userId = saved[fave].stored.id;
-        const faveId = fave;
+        for (let fave in saved) {
+          const user = saved[fave].stored.user;
+          const instrument = saved[fave].stored.title;
+          const userId = saved[fave].stored.id;
+          const faveId = fave;
 
-        faveArr.push({
-          user, 
-          instrument,
-          userId,
-          faveId
-        })
-      }
-      this.setState({
-        currentSaved: faveArr
-      })
-    });
+          faveArr.push({
+            user,
+            instrument,
+            userId,
+            faveId
+          });
+        }
+        this.setState({
+          currentSaved: faveArr
+        });
+      });
     // });
   }
-    handleDelete(objectId) {
-      let ref = firebase.database().ref("saved");
-      ref.child(objectId).remove();
-        console.log(objectId);
-    }
-  
-
+  handleDelete(objectId) {
+    let ref = firebase.database().ref("saved");
+    ref.child(objectId).remove();
+    console.log(objectId);
+  }
 
   render() {
     console.log(this.state.currentSaved);
@@ -60,7 +59,6 @@ class Saved extends React.Component {
       return <h1>No Saved</h1>;
     }
     return (
-
       <div>
         <Container id="saved-container">
           <section className="display-item">
@@ -69,7 +67,6 @@ class Saved extends React.Component {
                 <Row>
                   <Col size="md-12">
                     <Row>
-                      <h1 className="text-center">Saved Musicians</h1>
                       <h2 className="text-center">
                         View or Delete your Saved Musicians
                       </h2>
@@ -77,25 +74,29 @@ class Saved extends React.Component {
                   </Col>
                 </Row>
                 <Row>
-                {this.state.currentSaved.map(fave => (
-                <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
-                <div className="card">
-                    <Row>
-                      <img src="https://place-hold.it/100x100" />
-                    </Row>
-                    <Row>
-                      <h2>{fave.user}</h2>
-                    </Row>
-                    <Row>
-                      <p>{fave.instrument}</p>
-                    </Row>
-                    <Row>
-                      <button onClick={() => this.handleDelete(fave.faveId)}>Delete</button>
-                    </Row>
-                 </div>
-                 <div></div>
-              </Col>
-                ))}
+                  {this.state.currentSaved.map(fave => (
+                    <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
+                      <div className="card">
+                        <Row>
+                          <img src="https://place-hold.it/100x100" />
+                        </Row>
+                        <Row>
+                          <h2>{fave.user}</h2>
+                        </Row>
+                        <Row>
+                          <p>{fave.instrument}</p>
+                        </Row>
+                        <Row>
+                          <button
+                            onClick={() => this.handleDelete(fave.faveId)}
+                          >
+                            Delete
+                          </button>
+                        </Row>
+                      </div>
+                      <div />
+                    </Col>
+                  ))}
                 </Row>
               </Row>
             </div>
