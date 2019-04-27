@@ -10,7 +10,7 @@ export default {
       .header("X-RapidAPI-Key", "Hnlun7SCs5mshYE2zwqPYriwGyafp1oKwnyjsnoYxHbzRxk51A")
       .header("Content-Type", "application/x-www-form-urlencoded")
       .end(function (result) {
-        cb(result.body.results.songlist);
+         cb(result.body.results.songlist);
       });
   },
   searchLyrics: function (id, cb) {
@@ -24,7 +24,7 @@ export default {
           .filter((line) => (line.timing && line.text))
           .map((line) => line.text);
 
-        cb(payload);
+         cb(payload);
       });
   },
   getLyrics: function () {

@@ -46,16 +46,6 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user });
-      }
-    });
-    this.setState({ songList: API.searchSongs() });
-    API.searchLyrics("rxyb9c+U3BzBgIY_hBZZ8A==");
-  }
-
   render() {
     return (
       <div className="app">
