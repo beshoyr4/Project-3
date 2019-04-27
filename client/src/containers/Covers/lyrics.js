@@ -9,7 +9,7 @@ const Lyrics = ({ lyrics, onClickBack }) => {
     return (
         <div className="row">
             <div className="col-md-12">
-            <div onClick={onClickBack}>Go Back!</div>
+            <button className="goback" onClick={onClickBack}>Go Back!</button>
             {lyrics.map((lyric, index) => {
                 return <p key={`${lyric}-${index}`}>{lyric}</p>;
             })}

@@ -51,17 +51,21 @@ class Covers extends Component {
     console.log(lyrics.length);
 
     return (
-      <div className="container">
+      <div className="container" id="covers-container">
         <div className="row">
           <div className="col-md-12">
-            <h1>Cover Band</h1>
+            <h1>Start a Cover Band</h1>
           </div>
         </div>
+        <div className="row">
+          <div className="col-md-12">
         {this.state.lyrics.length ? (
           <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack}/>
         ) : (
           <Songlist songList={songList} onClickSong={this.handleSongClick} /> 
         )}
+          </div>
+        </div>
       </div>
     );
   }
