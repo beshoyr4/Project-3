@@ -6,6 +6,7 @@ import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import firebase, { auth, provider } from "../../firebase.js";
+import axios from "axios";
 
 import "./Dashboard.css";
 
@@ -18,7 +19,7 @@ class Dashboard extends Component {
       experience: "",
       username: "",
       items: [],
-      pictures: []
+      selectedFile: null
     };
   }
 
@@ -72,11 +73,30 @@ class Dashboard extends Component {
     itemRef.remove();
   }
 
-  onDrop = picture => {
+  // Profile Photo Uploader
+
+  fileSelectedHandler = event => {
+    event.preventDefault();
     this.setState({
-      pictures: this.state.pictures.concat(picture)
-    });
+      selectedFile: event.target.files[0]
+    })
+  }
+
+  fileUploadHandler = (event) => {
+    event.preventDefault();
+    const fd = new FormData();
+    fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
+    axios.post("https://us-central1-profile-7ee82.cloudfunctions.net/uploadFile", fd, {
+      onUploadProgress: progressEvent => {
+        console.log("Upload Progress " + Math.round(progressEvent.loaded / progressEvent.total * 100) + "%")
+      }
+    })
+      .then(res => {
+        console.log(res);
+      });
   };
+
+  // End Profile Photo Uploader
 
   render() {
     if (this.props.user === null) {
@@ -160,11 +180,11 @@ class Dashboard extends Component {
                             Looking: {item.experience}
                             <br />
                             {item.user === this.props.user.displayName ||
-                            item.user === this.props.user.email ? (
-                              <button onClick={() => this.removeItem(item.id)}>
-                                Delete
+                              item.user === this.props.user.email ? (
+                                <button onClick={() => this.removeItem(item.id)}>
+                                  Delete
                               </button>
-                            ) : null}
+                              ) : null}
                           </p>
                         </li>
                       );
