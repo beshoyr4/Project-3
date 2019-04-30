@@ -1,32 +1,27 @@
 #covers-container {
-    margin-top: 5%;
-    width: 130%;
+  margin-top: 5%;
+  width: 130%;
 }
 
-
-
 #covers-container .goback {
-    border-radius: 2px;
-    min-width: 88px;
-    background-color: #fa6900;
-    cursor: pointer;
-    border: 0;
-    min-width: 120px;
-    color: #fff;
-    font-size: 14px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    padding: 10px 6px;
-    text-align: center;
+  border-radius: 2px;
+  min-width: 88px;
+  background-color: #fa6900;
+  cursor: pointer;
+  border: 0;
+  min-width: 120px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding: 10px 6px;
+  text-align: center;
 }
 
 #covers-container li {
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 #covers-container ul {
-    cursor: pointer;
-    list-style-type: none;
+  cursor: pointer;
+  list-style-type: none;
 }
-
-
-

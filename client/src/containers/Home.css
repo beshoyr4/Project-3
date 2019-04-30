@@ -1,14 +1,26 @@
 body {
-  background-image: url(../images/Background.jpg);
+  background-image: url(https://render.fineartamerica.com/images/rendered/default/greeting-card/images/artworkimages/medium/1/black-sketches-of-musical-instruments-on-white-background-elaine-plesser.jpg?&targetx=0&targety=-100&imagewidth=700&imageheight=700&modelwidth=700&modelheight=500&backgroundcolor=878787&orientation=0);
   background-size: 100%;
-  background-repeat: no-repeat;
-  font-family: 'Open Sans', sans-serif;
-  
+  font-family: "Open Sans", sans-serif;
 }
+
 #container-about header {
   color: #fff;
-  background-color: #103D5D;
-  padding: 33px 0 25px 15px;
+  background-color: #103d5d;
+  padding: auto;
+  width: 119.5%;
+  margin: auto;
+  position: relative;
+  margin-left: -110px;
+  padding-right: 100px;
+  padding-left: 100px;
+  height: 90px;
+}
+#container-about header button {
+  height: 80px;
+  padding-top: 5px;
+  border-radius: 20%;
+  margin-top: 10px;
 }
 #container-about header p {
   width: 400px;
@@ -25,11 +37,14 @@ body {
   display: inline-block;
   margin: 0;
   vertical-align: middle;
-  
+  color: #fff;
+  padding-bottom: 10px;
+  position: relative;
+  margin-top: -40px;
 }
 #container-about .fa {
   font-size: 22px;
-  transform: translateY(50deg);  
+  transform: translateY(50deg);
 }
 #container-about header i {
   vertical-align: middle;
@@ -46,19 +61,18 @@ body {
   text-align: center;
   padding-top: 70px;
   font-size: 60px;
-  color: #0f3d5d;
+  color: ;
   padding-bottom: 5px;
 }
 
 #container-about p {
-    text-align: center;
-    color: #0f3d5d;
-    font-weight: bold;
-    font-size: 25px;
+  text-align: center;
+  color: #0f3d5d;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 #container-about .wrapper {
-  max-width: 1100px;
   margin: 0 auto;
 }
 #container-about .user-profile {

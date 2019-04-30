@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import Songlist from './songlist';
+import Songlist from "./songlist";
 import Lyrics from "./lyrics";
 
-import "./Covers.css";
+import "./covers.css";
 
 class Covers extends Component {
   state = {
@@ -26,28 +26,28 @@ class Covers extends Component {
   //     .catch(err => console.log(err));
   // };
 
-  handleSongClick = (event) => {
+  handleSongClick = event => {
     const { sid } = event.currentTarget.dataset;
-    API.searchLyrics(sid, (lyrics) => {
+    API.searchLyrics(sid, lyrics => {
       this.setState({ lyrics });
     });
   };
 
   handleClickBack = () => {
     this.setState({ lyrics: [] });
-  }
+  };
 
   componentDidMount() {
-    API.searchSongs((songList) => {
+    API.searchSongs(songList => {
       this.setState({ songList });
-    })
+    });
   }
 
   render() {
     const { songList, lyrics } = this.state;
 
     console.log(songList);
-    console.log(lyrics)
+    console.log(lyrics);
     console.log(lyrics.length);
 
     return (
@@ -59,11 +59,14 @@ class Covers extends Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-        {this.state.lyrics.length ? (
-          <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack}/>
-        ) : (
-          <Songlist songList={songList} onClickSong={this.handleSongClick} /> 
-        )}
+            {this.state.lyrics.length ? (
+              <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack} />
+            ) : (
+              <Songlist
+                songList={songList}
+                onClickSong={this.handleSongClick}
+              />
+            )}
           </div>
         </div>
       </div>
