@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import ImageUploader from "react-images-upload";
 
 import Container from "../../components/Container";
 import Row from "../../components/Row";
@@ -126,13 +125,6 @@ class Dashboard extends Component {
                       this.props.user.displayName || this.props.user.email
                     }
                   />
-                  <ImageUploader
-                    withIcon={true}
-                    buttonText="Choose images"
-                    onChange={this.onDrop}
-                    imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                    maxFileSize={5242880}
-                  />
                   <input
                     type="text"
                     required="required"
@@ -185,6 +177,15 @@ class Dashboard extends Component {
                                   Delete
                               </button>
                               ) : null}
+                            <div className="picture">
+                              <input
+                                style={{ display: "none" }}
+                                type="file"
+                                onChange={this.fileSelectedHandler}
+                                ref={fileInput => this.fileInput = fileInput} />
+                              <button onClick={() => this.fileInput.click()}>Pick File</button>
+                              <button onClick={this.fileUploadHandler}>Upload</button>
+                            </div>
                           </p>
                         </li>
                       );
