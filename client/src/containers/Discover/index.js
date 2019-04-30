@@ -138,11 +138,7 @@ class Discover extends React.Component {
                 <Row>
                   <Col size="md-12">
                     <Row>
-                      <h1 className="text-center">Find Musicians</h1>
-                      <br />
-                      <h2 className="text-center">
-                        Thumbs up on any musican you would like to save!
-                      </h2>
+                      <h2 className="text-center">Discover New Contacts</h2>
                       <br />
                     </Row>
                   </Col>
@@ -159,9 +155,9 @@ class Discover extends React.Component {
                       <Row>
                         <h3>Instrument: {person.title}</h3>
                       </Row>
-                      <Row>
-                        <button onClick={this.handleYeaClick}>Hell Yea</button>
-                        <button onClick={this.handleBtnClick}>No thanks</button>
+                      <Row> 
+                        <button onClick={this.handleBtnClick}>Nah.</button>
+                        <button onClick={this.handleYeaClick}>Hell Yeah!</button>
                       </Row>
                     </Col>
                   </div>

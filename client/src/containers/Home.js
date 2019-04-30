@@ -46,77 +46,81 @@ class Home extends Component {
   }
 
   render() {
-  return (
-    <div className="container" id="container-about">
-      <header>
-        <div className="wrapper">
-          <h1>I Play Music</h1>
-          {this.state.user ? (
-            <button onClick={this.logout}>Logout</button>
-          ) : (
-              <button onClick={this.login}>Log In</button>
-            )}
-        </div>
-      </header>
-      {this.state.user ? (
-        <div>
-          <div className="user-profile">
-            <img src={this.state.user.photoURL} />
+    return (
+      <div className="container" id="container-about">
+        <header>
+          <div className="wrapper">
+            <h1>KC Artist Connect</h1>
+            {this.state.user ? (
+              <button onClick={this.logout}>Logout</button>
+            ) : (
+                <button onClick={this.login}>Log In</button>
+              )}
           </div>
-          <Router>
-            <div>
-              <NavTabs />
-              <Route
-                exact
-                path="/dashboard"
-                render={props => (
-                  <Dashboard user={this.state.user} {...props} />
-                )}
-              />
-              <Route
-                exact
-                path="/discover"
-                render={props => (
-                  <Discover user={this.state.user} {...props} />
-                )}
-              />
-              <Route
-                exact
-                path="/saved"
-                render={props => (
-                <Saved user={this.state.user} {...props} />
-                )}
-              />
-              <Route
-                exact
-                path="/covers"
-                render={props => <Lyrics user={this.state.user} {...props} />}
-              />
-            <Route exact path="/" render={(props)=>{
-              return (
-                <div>
-                  <h1>Welcome</h1>
-                  <p>
-                    here!!!!!!
-                    <br />
-                    Place where you can connect with other musicians
+        </header>
+        {this.state.user ? (
+          <div>
+            <div className="user-profile">
+              <img src={this.state.user.photoURL} />
+            </div>
+            <Router>
+              <div>
+                <NavTabs />
+                <Route
+                  exact
+                  path="/dashboard"
+                  render={props => (
+                    <Dashboard user={this.state.user} {...props} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/discover"
+                  render={props => (
+                    <Discover user={this.state.user} {...props} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/saved"
+                  render={props => (
+                    <Saved user={this.state.user} {...props} />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/covers"
+                  render={props => <Lyrics user={this.state.user} {...props} />}
+                />
+                <Route exact path="/" render={(props) => {
+                  return (
+                    <div>
+                      <p>
+                        <br />
+                        KC Artist Connect is a place to discover, connect, and collaborate with other local musicians.
+                        Whether you are looking to form a new band or to meet up for a casual jam session, KC Artist Connect
+                        makes it easy to find contacts for your next musical adventure. 
+                        <br />
+                        <br />
+                        Create your personal music profile, discover fellow local musicians, save new contacts, and browse songs to
+                        get your creativity flowing. We can't wait to hear what you come up with!
                   </p>
-                </div>
-              )
-            }} />
+                    </div>
+                  )
+                }} />
+              </div>
+            </Router>
           </div>
-          </Router>
-        </div>
-        
-      ) : (
-          <div className="wrapper" id="wrapper">
-            <h1>Welcome</h1>
-            <p>
-              Place where you can connect with other musicians
+
+        ) : (
+            <div className="wrapper" id="wrapper">
+              <h1>KC Artist Connect</h1>
+              <p>
+                Discover, Connect, and Collaborate with Local Musicians
             </p>
-          </div>
-        )}
-    </div>
+            </div>
+          )}
+      </div>
     );
   }
 }

@@ -56,7 +56,7 @@ class Saved extends React.Component {
   render() {
     console.log(this.state.currentSaved);
     if (this.state.currentSaved.length === 0) {
-      return <h1>No Saved</h1>;
+      return <h2>No Saved Contacts Yet</h2>;
     }
     return (
       <div>
@@ -68,7 +68,7 @@ class Saved extends React.Component {
                   <Col size="md-12">
                     <Row>
                       <h2 className="text-center">
-                        View or Delete your Saved Musicians
+                        View or Delete Contacts
                       </h2>
                     </Row>
                   </Col>

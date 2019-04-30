@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import Songlist from './songlist';
 import Lyrics from "./lyrics";
 
-import "./Covers.css";
+import "./covers.css";
 
 class Covers extends Component {
   state = {
