@@ -1,3 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #2e5077;
   font-family: 'Open Sans', sans-serif;
@@ -68,108 +74,125 @@ body {
   max-width: 100%;
 }
 
-.container-footer {
-  position: fixed;
-  bottom: 150px;
-  left: -400px;
-}
-
-#menu {
-  width: 150px;
-  height: 150px;
+.menu {
+  background-color: #611c35;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  display: inline-block;
+  cursor: pointer;
+  pointer-events: none;
+  padding: 2%;
+  width: 85%;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -75px 0 0 -75px;
-  list-style: none;
-  font-size: 200%;
+  bottom: 20px;
+  left: 20px;
 }
-
-.menu-button {
-  opacity: 0;
-  z-index: -1;
+.menu:hover {
+  pointer-events: all;
 }
-
-.menu-button {
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin: -75px 0 0 -75px;
-  border-radius: 50%;
-  background: #424242;
-  background-size: 100%;
-  overflow: hidden;
-  text-decoration: none;
+.label {
+  display: inline-block;
+  cursor: pointer;
+  pointer-events: all;
 }
-
-#menu:not(:target)>a:first-of-type,
-#menu:target>a:last-of-type {
-  opacity: 1;
-  z-index: 1;
-}
-
-#menu:not(:target)>.icon-plus:before,
-#menu:target>.icon-minus:before {
-  opacity: 1;
-}
-
-.menu-item {
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  left: 55%;
-  line-height: 5px;
-  top: 50%;
-  margin: -50px 0 0 -50px;
-  border-radius: 50%;
-  background-color: #424242;
-  transform: translate(0px, 0px);
-  transition: transform 500ms;
-  z-index: -2;
-  transition: .5s;
-}
-
-.menu-item:hover{
-opacity: 0.5;
-box-shadow: 0 5px 10px black; 
-}
-
-
-.menu-item a {
-  color: #fff;
+.spacer {
+  display: inline-block;
+  width: 80px;
+  margin-left: 15px;
+  margin-right: 15px;
+  vertical-align: middle;
+  cursor: pointer;
   position: relative;
-  top: 30%;
-  left: 0;
-  text-decoration: none;
 }
-
-#menu:target>.menu-item:nth-child(6) {
-  transform: rotate(60deg) translateY(-150px) rotate(300deg);
+.spacer:before {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #ffffff;
+  height: 1px;
+  width: 0%;
+  transition: width 0.25s ease;
+  transition-delay: 0.7s;
+}
+.item {
+  position: relative;
+  display: inline-block;
+  margin-right: 30px;
+  top: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease, top 0.5s ease;
+  transition-delay: 0;
+}
+span {
+  transition: color 0.5s ease;
+}
+.item:hover span {
+  color: #ff0000;
+}
+.menu:hover .spacer:before {
+  width: 100%;
   transition-delay: 0s;
 }
-
-#menu:target>.menu-item:nth-child(5) {
-  transform: rotate(20deg) translateY(-155px) rotate(-20deg);
-  transition-delay: 0.1s;
+.menu:hover .item {
+  opacity: 1;
+  top: 0px;
 }
-
-#menu:target>.menu-item:nth-child(3) {
-  transform: rotate(-20deg) translateY(-155px) rotate(20deg);
-  transition-delay: 0.2s;
+.item:nth-child(1) {
+  transition-delay: 0.45s;
 }
-
-#menu:target>.menu-item:nth-child(4) {
-  transform: rotate(-60deg) translateY(-150px) rotate(60deg);
+.item:nth-child(2) {
+  transition-delay: 0.4s;
+}
+.item:nth-child(3) {
+  transition-delay: 0.35s;
+}
+.item:nth-child(4) {
   transition-delay: 0.3s;
 }
-
-.content{
-position: absolute;
-text-align: center;
-margin: -10px 0 0 -30px;
-top: 70%;
-left: 50%;
-font-size: 20px;
+.item:nth-child(5) {
+  transition-delay: 0.25s;
+}
+.item:nth-child(6) {
+  transition-delay: 0.2s;
+}
+.item:nth-child(7) {
+  transition-delay: 0.15s;
+}
+.item:nth-child(8) {
+  transition-delay: 0.1s;
+}
+.item:nth-child(9) {
+  transition-delay: 0.05s;
+}
+.item:nth-child(10) {
+  transition-delay: 0s;
+}
+.menu:hover .item:nth-child(1) {
+  transition-delay: 0.25s;
+}
+.menu:hover .item:nth-child(2) {
+  transition-delay: 0.3s;
+}
+.menu:hover .item:nth-child(3) {
+  transition-delay: 0.35s;
+}
+.menu:hover .item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+.menu:hover .item:nth-child(5) {
+  transition-delay: 0.45s;
+}
+.menu:hover .item:nth-child(6) {
+  transition-delay: 0.5s;
+}
+.menu:hover .item:nth-child(7) {
+  transition-delay: 0.55s;
+}
+.menu:hover .item:nth-child(8) {
+  transition-delay: 0.6s;
+}
+.menu:hover .item:nth-child(9) {
+  transition-delay: 0.65s;
+}
+.menu:hover .item:nth-child(10) {
+  transition-delay: 0.7s;
 }

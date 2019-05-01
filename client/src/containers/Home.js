@@ -120,39 +120,17 @@ class Home extends Component {
             </p>
             </div>
           )}
-          <div class="container container-footer">
-     <ul id="menu">
-            <a class="menu-button icon-plus" href="#menu" title="Show navigation"></a>
-            <a class="menu-button icon-minus" href="#0" title="Hide navigation"></a>
-            <li class="menu-item">
-                <a href="#menu">
-                    <span class="fa fa-github"></span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="#menu">
-                    <span class="fa fa-linkedin"></span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="#menu">
-                    <span class="fa fa-instagram"></span>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="#menu">
-                    <span class="fa fa-twitter"></span>
-                </a>
-            </li>
-        </ul>
-  
-  <div class="content">
-    <div class="text">
-      <h6>Links</h6>
-    </div>
-  </div>
-</div>
-
+          <div class="footer">
+          <div class="menu">
+            <div class="label">Information</div>
+            <div class="spacer"></div>
+            <div class="item"><span>GitHub</span></div>
+            <div class="item"><span>Instagram</span></div>
+            <div class="item"><span>Github</span></div>
+            <div class="item"><span>LinkedIn</span></div>
+            <div class="item"><span>MixCloud</span></div>
+          </div>
+          </div>
       </div>
     );
   }
