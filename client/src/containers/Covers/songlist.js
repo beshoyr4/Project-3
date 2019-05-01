@@ -1,5 +1,5 @@
 import React from "react";
-import "./covers.css";
+import "./Covers.css";
 
 const Songlist = ({ songList, onClickSong }) => {
   return (
