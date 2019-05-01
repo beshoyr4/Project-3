@@ -1,56 +1,57 @@
 .nav-tabs {
-    list-style-type:none;
-    margin:0;
-    padding:0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 /*Create a horizontal list with spacing*/
 .nav-items {
-    display:inline-block;
-    margin-right: 1px;
+  display: inline-block;
+  margin-right: 1px;
 }
 
 /*Style for menu links*/
 li a {
-    display:block;
-    min-width:140px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #d7e8ba;
-    background: #611c35;
-    text-decoration: none;
+  display: block;
+  min-width: 140px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #d7e8ba;
+  background: #611c35;
+  text-decoration: none;
 }
 /*Hover state for top level links*/
 li:hover a {
-    background: #d7e8ba;
+  background: #d7e8ba;
 }
 /*Style for dropdown links*/
 li:hover ul a {
-    background: #d7e8ba;
-    color: #611c35;
-    height: 40px;
-    line-height: 40px;
+  background: #d7e8ba;
+  color: #611c35;
+  height: 40px;
+  line-height: 40px;
 }
 /*Hover state for dropdown links*/
 li:hover ul a:hover {
-    background: #d7e8ba;
-    color: #d7e8ba;
+  background: #d7e8ba;
+  color: #d7e8ba;
 }
 
 /*Responsive Styles*/
-@media screen and (max-width : 760px){
-    /*Make dropdown links appear inline*/
-    ul {
-        position: static;
-        display: none;
-    }
-    /*Create vertical spacing*/
-    li {
-        margin-bottom: 1px;
-    }
-    /*Make all menu links full width*/
-    ul li, li a {
-        width: 100%;
-    }
+@media screen and (max-width: 760px) {
+  /*Make dropdown links appear inline*/
+  ul {
+    position: static;
+    display: none;
+  }
+  /*Create vertical spacing*/
+  li {
+    margin-bottom: 1px;
+  }
+  /*Make all menu links full width*/
+  ul li,
+  li a {
+    width: 100%;
+  }
 }

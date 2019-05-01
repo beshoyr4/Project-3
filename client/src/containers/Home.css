@@ -6,17 +6,35 @@
 
 body {
   background-color: #2e5077;
-  font-family: 'Open Sans', sans-serif;
-  
+  font-family: "Open Sans", sans-serif;
 }
 #container-about header {
   color: #fff;
   background-color: #4da1a9;
-  padding: 33px 0 25px 15px;
-
+  padding: auto;
+  width: 126%;
+  margin: auto;
+  position: relative;
+  margin-left: -145px;
+  padding-right: 100px;
+  padding-left: 100px;
+  height: 70px;
 }
+#container-about header button {
+  height: 40px;
+  padding-top: 5px;
+  border-radius: 20%;
+  margin-top: 10px;
+}
+
 #container-about header p {
   margin-left: 0%;
+  width: 400px;
+  margin: 0 auto;
+}
+#container-about header .wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 #container-about header h1 {
@@ -26,11 +44,13 @@ body {
   letter-spacing: 0.3px;
   display: inline-block;
   vertical-align: middle;
-  
+  padding-bottom: 10px;
+  position: relative;
+  margin-top: -50px;
 }
 #container-about .fa {
   font-size: 22px;
-  transform: translateY(50deg);  
+  transform: translateY(50deg);
 }
 #container-about header i {
   vertical-align: middle;
@@ -52,10 +72,10 @@ body {
 }
 
 #container-about p {
-    text-align: center;
-    color: #0f3d5d;
-    font-weight: bold;
-    font-size: 25px;
+  text-align: center;
+  color: #0f3d5d;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 #container-about .wrapper {
