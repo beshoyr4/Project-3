@@ -5,6 +5,7 @@ import firebase, { auth, provider } from "../../firebase.js";
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
+import { Animated } from "react-animated-css";
 
 import "./Saved.css";
 
@@ -66,37 +67,47 @@ class Saved extends React.Component {
               <Row>
                 <Row>
                   <Col size="md-12">
-                    <Row>
-                      <h2 className="text-center">
-                        View or Delete Contacts
-                      </h2>
-                    </Row>
+                    <Animated
+                      animationIn="bounceInLeft"
+                      animationOut="fadeOut"
+                      isVisible={true}
+                    >
+                      <Row>
+                        <h2 className="text-center">View or Delete Contacts</h2>
+                      </Row>
+                    </Animated>
                   </Col>
                 </Row>
                 <Row>
-                  {this.state.currentSaved.map(fave => (
-                    <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
-                      <div className="card">
-                        <Row>
-                          <img src="https://place-hold.it/100x100" />
-                        </Row>
-                        <Row>
-                          <h2>{fave.user}</h2>
-                        </Row>
-                        <Row>
-                          <p>{fave.instrument}</p>
-                        </Row>
-                        <Row>
-                          <button
-                            onClick={() => this.handleDelete(fave.faveId)}
-                          >
-                            Delete
-                          </button>
-                        </Row>
-                      </div>
-                      <div />
-                    </Col>
-                  ))}
+                  <Animated
+                    animationIn="bounceInLeft"
+                    animationOut="fadeOut"
+                    isVisible={true}
+                  >
+                    {this.state.currentSaved.map(fave => (
+                      <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
+                        <div className="card">
+                          <Row>
+                            <img src="https://place-hold.it/100x100" />
+                          </Row>
+                          <Row>
+                            <h2>{fave.user}</h2>
+                          </Row>
+                          <Row>
+                            <p>{fave.instrument}</p>
+                          </Row>
+                          <Row>
+                            <button
+                              onClick={() => this.handleDelete(fave.faveId)}
+                            >
+                              Delete
+                            </button>
+                          </Row>
+                        </div>
+                        <div />
+                      </Col>
+                    ))}
+                  </Animated>
                 </Row>
               </Row>
             </div>

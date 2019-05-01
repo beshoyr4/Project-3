@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import musicLoader from "./assets/music-loader.gif";
 import API from "../../utils/API";
-import Songlist from './songlist';
+import Songlist from "./songlist";
 import Lyrics from "./lyrics";
 
-import "./Covers.css";
+import "./covers.css";
 
 class Covers extends Component {
   state = {
@@ -14,25 +14,24 @@ class Covers extends Component {
     loading: true
   };
 
-  handleSongClick = (event) => {
-    this.setState({ loading: true })
+  handleSongClick = event => {
+    this.setState({ loading: true });
     const { sid } = event.currentTarget.dataset;
-    API.searchLyrics(sid, (lyrics) => {
-      this.setState({ lyrics })
-      .then(() => {
-        this.setState({ loading: true })
+    API.searchLyrics(sid, lyrics => {
+      this.setState({ lyrics }).then(() => {
+        this.setState({ loading: true });
       });
     });
   };
 
   handleClickBack = () => {
     this.setState({ lyrics: [] });
-  }
+  };
 
   componentDidMount() {
-    API.searchSongs((songList) => {
+    API.searchSongs(songList => {
       this.setState({ songList });
-    })
+    });
   }
 
   render() {
@@ -47,17 +46,17 @@ class Covers extends Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-        {
-          this.state.lyrics.length
-          ? (
-            <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack}/>
-          ) : (
-            <div>
-              <Songlist songList={songList} onClickSong={this.handleSongClick} />
-              { loading && <img src={musicLoader} alt="Loading" /> }
-            </div>
-          )
-        }
+            {this.state.lyrics.length ? (
+              <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack} />
+            ) : (
+              <div>
+                <Songlist
+                  songList={songList}
+                  onClickSong={this.handleSongClick}
+                />
+                {loading && <img src={musicLoader} alt="Loading" />}
+              </div>
+            )}
           </div>
         </div>
       </div>
