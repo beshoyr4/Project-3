@@ -102,8 +102,8 @@ body {
   cursor: pointer;
   pointer-events: none;
   padding: 2%;
-  width: 85%;
-  position: absolute;
+  width: 40%;
+  position: fixed;
   bottom: 20px;
   left: 20px;
 }

@@ -131,9 +131,7 @@ class Home extends Component {
             <div class="spacer"></div>
             <div class="item"><span>GitHub</span></div>
             <div class="item"><span>Instagram</span></div>
-            <div class="item"><span>Github</span></div>
             <div class="item"><span>LinkedIn</span></div>
-            <div class="item"><span>MixCloud</span></div>
           </div>
           </div>
       </div>
