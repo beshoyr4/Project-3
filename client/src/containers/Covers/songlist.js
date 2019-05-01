@@ -1,5 +1,5 @@
 import React  from "react";
-import "./covers.css";
+import "./Covers.css";
 
 const Songlist = ({ songList, onClickSong }) => {
     return (
@@ -10,7 +10,7 @@ const Songlist = ({ songList, onClickSong }) => {
                 !!songList.length && songList.map((song) => {
                   return (
                     <li key={song.songid} data-sid={song.songid} onClick={onClickSong}>
-                      {song.artistname} {song.songname} {song.albumname}
+                      Artist: {song.artistname} Song: {song.songname} Album: {song.albumname}
                     </li>
                   )
                 })
