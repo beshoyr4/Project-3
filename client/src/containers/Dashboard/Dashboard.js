@@ -5,10 +5,11 @@ import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import firebase, { auth, provider } from "../../firebase.js";
-import axios from "axios";
 import { Animated } from "react-animated-css";
 
 import "./Dashboard.css";
+
+const storage = firebase.storage().ref();
 
 class Dashboard extends Component {
   constructor() {
@@ -79,30 +80,14 @@ class Dashboard extends Component {
     event.preventDefault();
     this.setState({
       selectedFile: event.target.files[0]
-    });
-  };
+    })
+  }
 
-  fileUploadHandler = event => {
-    event.preventDefault();
-    const fd = new FormData();
-    fd.append("image", this.state.selectedFile, this.state.selectedFile.name);
-    axios
-      .post(
-        "https://us-central1-profile-7ee82.cloudfunctions.net/uploadFile",
-        fd,
-        {
-          onUploadProgress: progressEvent => {
-            console.log(
-              "Upload Progress " +
-                Math.round((progressEvent.loaded / progressEvent.total) * 100) +
-                "%"
-            );
-          }
-        }
-      )
-      .then(res => {
-        console.log(res);
-      });
+  fileUploadHandler = () => {
+    console.log(this.state.selectedFile)
+    const { selectedFile } = this.state
+    storage.child(`profile/${selectedFile.name}`).put(selectedFile, { contentType: selectedFile.type })
+
   };
 
   // End Profile Photo Uploader
