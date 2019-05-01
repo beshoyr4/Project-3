@@ -1,35 +1,27 @@
 import React, { Component } from "react";
+import musicLoader from "./assets/music-loader.gif";
 import API from "../../utils/API";
 import Songlist from './songlist';
 import Lyrics from "./lyrics";
 
-import "./covers.css";
+import "./Covers.css";
 
 class Covers extends Component {
   state = {
     songList: [],
     lyrics: [],
-    search: ""
+    search: "",
+    loading: true
   };
 
-  // searches the lyrics API storing the data in lyrics array
-  // searchLyrics = query => {
-  //   API.searchLyrics(query)
-  //     .then(res =>
-  //       this.setState({
-  //           lyrics: res.results.itemlist.image,
-  //           search: ""
-  //         },
-  //         console.log(res.results.itemslist.image)
-  //       )
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
   handleSongClick = (event) => {
+    this.setState({ loading: true })
     const { sid } = event.currentTarget.dataset;
     API.searchLyrics(sid, (lyrics) => {
-      this.setState({ lyrics });
+      this.setState({ lyrics })
+      .then(() => {
+        this.setState({ loading: true })
+      });
     });
   };
 
@@ -44,11 +36,7 @@ class Covers extends Component {
   }
 
   render() {
-    const { songList, lyrics } = this.state;
-
-    console.log(songList);
-    console.log(lyrics)
-    console.log(lyrics.length);
+    const { songList, lyrics, loading } = this.state;
 
     return (
       <div className="container" id="covers-container">
@@ -59,11 +47,17 @@ class Covers extends Component {
         </div>
         <div className="row">
           <div className="col-md-12">
-        {this.state.lyrics.length ? (
-          <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack}/>
-        ) : (
-          <Songlist songList={songList} onClickSong={this.handleSongClick} /> 
-        )}
+        {
+          this.state.lyrics.length
+          ? (
+            <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack}/>
+          ) : (
+            <div>
+              <Songlist songList={songList} onClickSong={this.handleSongClick} />
+              { loading && <img src={musicLoader} alt="Loading" /> }
+            </div>
+          )
+        }
           </div>
         </div>
       </div>
