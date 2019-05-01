@@ -4,6 +4,7 @@ import firebase from "../../firebase";
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
+import { Animated } from "react-animated-css";
 
 import "./style.css";
 
@@ -14,7 +15,7 @@ class Discover extends React.Component {
       people: [],
       active: 0
     };
-};
+  }
 
   componentDidMount() {
     firebase
@@ -37,54 +38,55 @@ class Discover extends React.Component {
       });
   }
 
-    componentDidMount() {
-        firebase.database().ref('items')
-            .on('value', (snapshot) => {
-                let items = snapshot.val();
-                let newState = [];
-                for (let item in items) {
-                    newState.push({
-                        id: item,
-                        title: items[item].title,
-                        user: items[item].user
-                    });
-                };
-                this.setState({
-                    people: newState
-                });
-            });
-    };
-
-    handleBtnClick = event => {
-        // Load next person when button is clicked
-        let currentActive = this.state.active;
-        if (currentActive === this.state.people.length -1) {
-            currentActive = 0;
-        } else {
-            currentActive ++
-        };
-        this.setState(state => {
-            return {
-                active: currentActive
-            };
+  componentDidMount() {
+    firebase
+      .database()
+      .ref("items")
+      .on("value", snapshot => {
+        let items = snapshot.val();
+        let newState = [];
+        for (let item in items) {
+          newState.push({
+            id: item,
+            title: items[item].title,
+            user: items[item].user
+          });
+        }
+        this.setState({
+          people: newState
         });
-        console.log(this.state.active);
+      });
+  }
+
+  handleBtnClick = event => {
+    // Load next person when button is clicked
+    let currentActive = this.state.active;
+    if (currentActive === this.state.people.length - 1) {
+      currentActive = 0;
+    } else {
+      currentActive++;
+    }
+    this.setState(state => {
+      return {
+        active: currentActive
       };
+    });
+    console.log(this.state.active);
+  };
 
-    //   handleYesBtnClick = event => {
-    //       this.setState(state => {
-    //           return {
-    //               favorites: [...this.state.favorites, this.state.people[this.state.active].id]
-    //                 };
-    //             });
-    //       console.log(this.state.favorites);
-    //       this.handleBtnClick(event);
-    //   }
+  //   handleYesBtnClick = event => {
+  //       this.setState(state => {
+  //           return {
+  //               favorites: [...this.state.favorites, this.state.people[this.state.active].id]
+  //                 };
+  //             });
+  //       console.log(this.state.favorites);
+  //       this.handleBtnClick(event);
+  //   }
 
-    //   componentWillUnmount() {
-    //     firebase.database().ref('items')
-    //   }
-
+  //   componentWillUnmount() {
+  //     firebase.database().ref('items')
+  //   }
 
   handleYeaClick = e => {
     console.log("saved");
@@ -137,30 +139,44 @@ class Discover extends React.Component {
               <Row>
                 <Row>
                   <Col size="md-12">
-                    <Row>
-                      <h2 className="text-center">Discover New Contacts</h2>
-                      <br />
-                    </Row>
+                    <Animated
+                      animationIn="bounceInLeft"
+                      animationOut="fadeOut"
+                      isVisible={true}
+                    >
+                      <Row>
+                        <h2 className="text-center">Discover New Contacts</h2>
+                        <br />
+                      </Row>
+                    </Animated>
                   </Col>
                 </Row>
                 <Row>
-                  <div className="card">
-                    <Col size="md-12">
-                      <Row>
-                        <img src="https://place-hold.it/200x200" />
-                      </Row>
-                      <Row>
-                        <h3>Name: {person.user}</h3>
-                      </Row>
-                      <Row>
-                        <h3>Instrument: {person.title}</h3>
-                      </Row>
-                      <Row> 
-                        <button onClick={this.handleBtnClick}>Nah.</button>
-                        <button onClick={this.handleYeaClick}>Hell Yeah!</button>
-                      </Row>
-                    </Col>
-                  </div>
+                  <Animated
+                    animationIn="bounceInLeft"
+                    animationOut="fadeOut"
+                    isVisible={true}
+                  >
+                    <div className="card">
+                      <Col size="md-12">
+                        <Row>
+                          <img src="https://place-hold.it/200x200" />
+                        </Row>
+                        <Row>
+                          <h3>Name: {person.user}</h3>
+                        </Row>
+                        <Row>
+                          <h3>Instrument: {person.title}</h3>
+                        </Row>
+                        <Row>
+                          <button onClick={this.handleBtnClick}>Nah.</button>
+                          <button onClick={this.handleYeaClick}>
+                            Hell Yeah!
+                          </button>
+                        </Row>
+                      </Col>
+                    </div>
+                  </Animated>
                 </Row>
               </Row>
             </div>
