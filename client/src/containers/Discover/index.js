@@ -16,74 +16,54 @@ class Discover extends React.Component {
       active: 0,
       currentSaved: []
     };
-};
-
-  componentDidMount() {
-    firebase
-      .database()
-      .ref("items")
-      .on("value", snapshot => {
-        let items = snapshot.val();
-        let newState = [];
-        
-        for (let item in items) {
-          newState.push({
-            id: item,
-            title: items[item].title,
-            user: items[item].user
-          });
-        }
-        console.log(items);
-        this.setState({
-          people: newState
-        });
-      });
   }
 
-    componentDidMount() {
-        firebase.database().ref('items')
-            .on('value', (snapshot) => {
-                let items = snapshot.val();
-                let newState = [];
-                for (let item in items) {
-                    newState.push({
-                        id: item,
-                        title: items[item].title,
-                        user: items[item].user
-                    });
-                };
-                this.setState({
-                    people: newState
-                });
+  componentDidMount() {
+    
+    firebase.database()
+    .ref('items')
+    .on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      
+      for (let item in items) {
+        newState.push({
+          id: item,
+          title: items[item].title,
+          user: items[item].user
+        });
+        };
+        this.setState({
+        people: newState
+      });
+    });
+    
+    let ref = firebase.database().ref("saved");
+    console.log(this.props.user.displayName);
+        ref
+          .orderByChild("currentuser")
+          .equalTo(this.props.user.displayName)
+          .on("value", snapshot => {
+            let saved = snapshot.val();
+            const faveArr = [];
+    console.log(saved);
+            for (let fave in saved) {
+              const user = saved[fave].stored.user;
+              const instrument = saved[fave].stored.title;
+              const userId = saved[fave].stored.id;
+              const faveId = fave;
+    
+              faveArr.push({
+                user,
+                instrument,
+                userId,
+                faveId
+              });
+            }
+            this.setState({
+              currentSaved: faveArr
             });
-
-            let ref = firebase.database().ref("saved");
-            console.log(this.props.user.displayName);
-                ref
-                  .orderByChild("currentuser")
-                  .equalTo(this.props.user.displayName)
-                  .on("value", snapshot => {
-                    let saved = snapshot.val();
-                    const faveArr = [];
-            console.log(saved);
-                    for (let fave in saved) {
-                      const user = saved[fave].stored.user;
-                      const instrument = saved[fave].stored.title;
-                      const userId = saved[fave].stored.id;
-                      const faveId = fave;
-            
-                      faveArr.push({
-                        user,
-                        instrument,
-                        userId,
-                        faveId
-                      });
-                    }
-                    this.setState({
-                      currentSaved: faveArr
-                    });
-                  });
-            
+          });
     };
 
     handleBtnClick = event => {
@@ -100,7 +80,7 @@ class Discover extends React.Component {
             };
         });
         console.log(this.state.active);
-      };
+    };
 
     //   handleYesBtnClick = event => {
     //       this.setState(state => {
@@ -121,10 +101,12 @@ class Discover extends React.Component {
     console.log("saved");
 
     e.preventDefault();
+
     const currentYes = this.state.people[this.state.active];
     let alreadyPaired = false;
     const currentSaved = this.state.currentSaved;
     console.log(currentYes);
+    
     if(currentYes.user === this.props.user.displayName){
       alert("You can't start a band with yourself!")
       return
@@ -173,8 +155,9 @@ class Discover extends React.Component {
     }
   };
 
+
   render() {
-    console.log(this.state.currentSaved);
+    console.log(this.state.people);
     const person = this.state.people[this.state.active];
     if (!person) {
       return null;
@@ -187,34 +170,44 @@ class Discover extends React.Component {
               <Row>
                 <Row>
                   <Col size="md-12">
-                    <Row>
-                      <h1 className="text-center">Find Musicians</h1>
-                      <br />
-                      <h2 className="text-center">
-                        Thumbs up on any musican you would like to save!
-                      </h2>
-                      <br />
-                    </Row>
+                    <Animated
+                      animationIn="bounceInLeft"
+                      animationOut="fadeOut"
+                      isVisible={true}
+                    >
+                      <Row>
+                        <h2 className="text-center">Discover New Contacts</h2>
+                        <br />
+                      </Row>
+                    </Animated>
                   </Col>
                 </Row>
                 <Row>
-                  <div className="card">
-                    <Col size="md-12">
-                      <Row>
-                        <img src="https://place-hold.it/200x200" />
-                      </Row>
-                      <Row>
-                        <h3>Name: {person.user}</h3>
-                      </Row>
-                      <Row>
-                        <h3>Instrument: {person.title}</h3>
-                      </Row>
-                      <Row>
-                        <button onClick={this.handleYeaClick}>Hell Yea</button>
-                        <button onClick={this.handleBtnClick}>No thanks</button>
-                      </Row>
-                    </Col>
-                  </div>
+                  <Animated
+                    animationIn="bounceInLeft"
+                    animationOut="fadeOut"
+                    isVisible={true}
+                  >
+                    <div className="card">
+                      <Col size="md-12">
+                        <Row>
+                          <img src="https://place-hold.it/200x200" />
+                        </Row>
+                        <Row>
+                          <h3>Name: {person.user}</h3>
+                        </Row>
+                        <Row>
+                          <h3>Instrument: {person.title}</h3>
+                        </Row>
+                        <Row>
+                          <button onClick={this.handleBtnClick}>Nah.</button>
+                          <button onClick={this.handleYeaClick}>
+                            Hell Yeah!
+                          </button>
+                        </Row>
+                      </Col>
+                    </div>
+                  </Animated>
                 </Row>
               </Row>
             </div>
