@@ -23,7 +23,7 @@ class Dashboard extends Component {
       selectedFile: null,
       image: ""
     };
-  }
+  };
 
   handleChange = e => {
     this.setState({
@@ -63,17 +63,17 @@ class Dashboard extends Component {
             id: item,
             ...items[item]
           });
-        }
+        };
         this.setState({
           items: newState
         });
       });
-  }
+  };
 
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
-  }
+  };
 
   // Profile Photo Uploader
 
@@ -81,22 +81,17 @@ class Dashboard extends Component {
     event.preventDefault();
     this.setState({
       selectedFile: event.target.files[0]
-    })
-  }
+    });
+  };
 
   fileUploadHandler = () => {
     console.log(this.state.selectedFile)
     const { selectedFile } = this.state
-    // storage.child(`profile/${selectedFile.name}`).put(selectedFile, { contentType: selectedFile.type }).then(response => {
-    //   console.log("This is our reponse ", response);
-    //   this.setState({image: response.ref.location.bucket + "/" + response.ref.location.path})
-    // })
 
     let uploadTask = storage.child(`profile/${selectedFile.name}`).put(selectedFile);
 
     uploadTask.on('state_changed', (snapshot) => {
-      // Observe state change events such as progress, pause, and resume
-      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log('Upload is ' + progress + '% done');
       // eslint-disable-next-line default-case
@@ -112,16 +107,11 @@ class Dashboard extends Component {
       // Handle unsuccessful uploads
     }, () => {
       // Handle successful uploads on complete
-      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
       uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
         console.log('File available at', downloadURL);
         if (downloadURL){
           this.setState({image: downloadURL})
-          // console.log("this", this)
-        }
-        
-        
-
+        };
       });
     });
   };
@@ -129,7 +119,7 @@ class Dashboard extends Component {
   componentDidUpdate(){
     console.log("Component updated ", this.state)
     console.log("This is our storage reference", storage)
-  }
+  };
   // End Profile Photo Uploader
 
   render() {
@@ -142,7 +132,7 @@ class Dashboard extends Component {
           }}
         />
       );
-    }
+    };
 
     return (
       <div>
@@ -189,7 +179,6 @@ class Dashboard extends Component {
                       onChange={this.handleChange}
                       value={this.state.experience}
                     />
-
                     <button>Submit</button>
                   </form>
                 </section>
@@ -222,7 +211,7 @@ class Dashboard extends Component {
                                 <button
                                   onClick={() => this.removeItem(item.id)}
                                 >
-                                  Delete
+                                  Delete Profile
                                 </button>
                               ) : null}
                               <div className="picture">
@@ -245,7 +234,7 @@ class Dashboard extends Component {
                             </p>
                           </li>
                         );
-                      })}
+                      })};
                     </ul>
                   </div>
                 </section>
@@ -255,7 +244,7 @@ class Dashboard extends Component {
         </Container>
       </div>
     );
-  }
-}
+  };
+};
 
 export default Dashboard;
