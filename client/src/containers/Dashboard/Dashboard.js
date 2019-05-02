@@ -20,7 +20,8 @@ class Dashboard extends Component {
       experience: "",
       username: "",
       items: [],
-      selectedFile: null
+      selectedFile: null,
+      image: ""
     };
   }
 
@@ -86,10 +87,49 @@ class Dashboard extends Component {
   fileUploadHandler = () => {
     console.log(this.state.selectedFile)
     const { selectedFile } = this.state
-    storage.child(`profile/${selectedFile.name}`).put(selectedFile, { contentType: selectedFile.type })
+    // storage.child(`profile/${selectedFile.name}`).put(selectedFile, { contentType: selectedFile.type }).then(response => {
+    //   console.log("This is our reponse ", response);
+    //   this.setState({image: response.ref.location.bucket + "/" + response.ref.location.path})
+    // })
 
+    let uploadTask = storage.child(`profile/${selectedFile.name}`).put(selectedFile);
+
+    uploadTask.on('state_changed', (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload is ' + progress + '% done');
+      // eslint-disable-next-line default-case
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          console.log('Upload is running');
+          break;
+      }
+    }, function(error) {
+      // Handle unsuccessful uploads
+    }, () => {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        console.log('File available at', downloadURL);
+        if (downloadURL){
+          this.setState({image: downloadURL})
+          // console.log("this", this)
+        }
+        
+        
+
+      });
+    });
   };
 
+  componentDidUpdate(){
+    console.log("Component updated ", this.state)
+    console.log("This is our storage reference", storage)
+  }
   // End Profile Photo Uploader
 
   render() {
@@ -186,6 +226,7 @@ class Dashboard extends Component {
                                 </button>
                               ) : null}
                               <div className="picture">
+                                <img src={this.state.image} alt="Profile Pic" />
                                 <input
                                   style={{ display: "none" }}
                                   type="file"
