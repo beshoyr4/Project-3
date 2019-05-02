@@ -1,34 +1,33 @@
 import React from "react";
-// import firebase from "../../firebase";
 import firebase, { auth, provider } from "../../firebase.js";
-
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import { Animated } from "react-animated-css";
-
+import Modal from "../Modal"
 import "./Saved.css";
 
 class Saved extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentSaved: []
+      currentSaved: [],
+      isShowing: false,
+      sidx: null
     };
     this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     let ref = firebase.database().ref("saved");
-
+console.log(this.props.user.displayName);
     ref
       .orderByChild("currentuser")
       .equalTo(this.props.user.displayName)
       .on("value", snapshot => {
         let saved = snapshot.val();
-        console.log(saved);
         const faveArr = [];
-
+console.log(saved);
         for (let fave in saved) {
           const user = saved[fave].stored.user;
           const instrument = saved[fave].stored.title;
@@ -46,19 +45,50 @@ class Saved extends React.Component {
           currentSaved: faveArr
         });
       });
-    // });
   }
+  
   handleDelete(objectId) {
     let ref = firebase.database().ref("saved");
     ref.child(objectId).remove();
     console.log(objectId);
   }
 
+  openModalHandler = (evt) => {
+    const { sidx } = evt.currentTarget.dataset
+    this.setState({
+        isShowing: true,
+        sidx
+    });
+  }
+
+  closeModalHandler = (evt) => {
+    console.log('close modal');
+    
+    this.setState({
+        isShowing: false
+    });
+  }
+
+  renderModalContent() {
+    const data = this.state.currentSaved[this.state.sidx]
+
+    console.log(data);
+    
+    return (
+    <div>
+      <h1>{ data.user }</h1>
+      <h2>{ data.instrument }</h2>
+      <h2>Contact Info</h2>
+    </div>
+    )
+  }
+
   render() {
-    console.log(this.state.currentSaved);
     if (this.state.currentSaved.length === 0) {
-      return <h2>No Saved Contacts Yet</h2>;
+      return <h1>No Saved</h1>;
     }
+    console.log(this.state.currentSaved);
+
     return (
       <div>
         <Container id="saved-container">
@@ -84,7 +114,8 @@ class Saved extends React.Component {
                     animationOut="fadeOut"
                     isVisible={true}
                   >
-                    {this.state.currentSaved.map(fave => (
+                    {
+                    this.state.currentSaved.map((fave, idx) => (
                       <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
                         <div className="card">
                           <Row>
@@ -97,22 +128,30 @@ class Saved extends React.Component {
                             <p>{fave.instrument}</p>
                           </Row>
                           <Row>
-                            <button
-                              onClick={() => this.handleDelete(fave.faveId)}
-                            >
+                            <button onClick={() => this.handleDelete(fave.faveId)} >
                               Delete
                             </button>
                           </Row>
+                          <Row>
+                            <button className="open-modal-btn" data-sidx={idx} onClick={this.openModalHandler}>Open</button>
+                          </Row>
                         </div>
-                        <div />
                       </Col>
-                    ))}
+                    ))
+                    }
                   </Animated>
                 </Row>
               </Row>
             </div>
           </section>
         </Container>
+        {
+          this.state.isShowing && 
+            <Modal onClose={ this.closeModalHandler }>
+              { this.renderModalContent() }
+            </Modal>
+        }
+
       </div>
     );
   }
