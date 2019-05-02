@@ -4,6 +4,7 @@ import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import { Animated } from "react-animated-css";
+import Modal from "../Modal"
 import "./Saved.css";
 
 class Saved extends React.Component {
@@ -113,7 +114,8 @@ console.log(saved);
                     animationOut="fadeOut"
                     isVisible={true}
                   >
-                    {this.state.currentSaved.map(fave => (
+                    {
+                    this.state.currentSaved.map((fave, idx) => (
                       <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
                         <div className="card">
                           <Row>
@@ -126,28 +128,29 @@ console.log(saved);
                             <p>{fave.instrument}</p>
                           </Row>
                           <Row>
-                            <button
-                              onClick={() => this.handleDelete(fave.faveId)}
-                            >
+                            <button onClick={() => this.handleDelete(fave.faveId)} >
                               Delete
                             </button>
                           </Row>
+                          <Row>
+                            <button className="open-modal-btn" data-sidx={idx} onClick={this.openModalHandler}>Open</button>
+                          </Row>
                         </div>
-                        <div />
                       </Col>
-                    ))}
+                    ))
+                    }
                   </Animated>
                 </Row>
               </Row>
             </div>
           </section>
         </Container>
-        {/* {
+        {
           this.state.isShowing && 
             <Modal onClose={ this.closeModalHandler }>
               { this.renderModalContent() }
             </Modal>
-        } */}
+        }
 
       </div>
     );

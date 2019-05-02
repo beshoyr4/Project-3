@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SavedModal from '../../components/SavedModal/SavedModal';
-import Saved from '../Saved'
 
 export default (props) => {
     return (
