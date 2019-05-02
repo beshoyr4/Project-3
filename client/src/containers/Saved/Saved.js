@@ -1,12 +1,9 @@
 import React from "react";
-// import firebase from "../../firebase";
 import firebase, { auth, provider } from "../../firebase.js";
-
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
 import { Animated } from "react-animated-css";
-
 import "./Saved.css";
 
 class Saved extends React.Component {
@@ -90,7 +87,7 @@ console.log(saved);
       return <h1>No Saved</h1>;
     }
     console.log(this.state.currentSaved);
-    
+
     return (
       <div>
         <Container id="saved-container">
@@ -145,6 +142,13 @@ console.log(saved);
             </div>
           </section>
         </Container>
+        {/* {
+          this.state.isShowing && 
+            <Modal onClose={ this.closeModalHandler }>
+              { this.renderModalContent() }
+            </Modal>
+        } */}
+
       </div>
     );
   }
