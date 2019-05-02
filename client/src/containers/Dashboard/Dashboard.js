@@ -4,12 +4,17 @@ import { Redirect } from "react-router-dom";
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
-import firebase, { auth, provider } from "../../firebase.js";
+import firebase, { auth, provider, database } from "../../firebase.js";
 import { Animated } from "react-animated-css";
 
 import "./Dashboard.css";
 
 const storage = firebase.storage().ref();
+
+const imgStyle = {
+  maxHeight: "400px",
+  maxWidth: "400px"
+}
 
 class Dashboard extends Component {
   constructor() {
@@ -103,26 +108,55 @@ class Dashboard extends Component {
           console.log('Upload is running');
           break;
       }
-    }, function(error) {
+    }, function (error) {
       // Handle unsuccessful uploads
     }, () => {
       // Handle successful uploads on complete
       uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
         console.log('File available at', downloadURL);
-        if (downloadURL){
-          this.setState({image: downloadURL})
+        if (downloadURL) {
+          this.setState({ image: downloadURL })
         };
       });
     });
   };
 
-  componentDidUpdate(){
-    console.log("Component updated ", this.state)
-    console.log("This is our storage reference", storage)
-  };
+  // https://medium.com/@650egor/react-30-day-challenge-day-4-firebase-photo-upload-delete-f7c59d73ae36
+  // storePhoto() {
+  //   const key = database.ref().child(this.state.user.uid).push().key
+  //   const img = storage.ref().child(this.state.user.uid).child(key)
+  //   img.put(this.state.file).then((snap) => {
+  //     database.ref().child(this.state.user.uid).child(key).set({
+  //       "url": snap.metadata.downloadURLs[0]
+  //     })
+  //   })
+  //   this.setState({
+  //     file: null,
+  //     url: null,
+  //   })
+  // }
+
+  // componentDidMount() {
+  //   const ref = database.ref().child(this.state.user.uid)
+  //   ref.on('child_added', (child) => {
+  //     let images = this.state.images.slice()
+  //     images.push({
+  //       key: child.key,
+  //       url: child.val().url
+  //     })
+  //     this.setState({ images })
+  //   })
+  // }
+
   // End Profile Photo Uploader
 
   render() {
+
+    const imgStyle = {
+      maxHeight: "200px",
+      maxWidth: "200px"
+    };
+
     if (this.props.user === null) {
       return (
         <Redirect
@@ -207,15 +241,15 @@ class Dashboard extends Component {
                               Looking: {item.experience}
                               <br />
                               {item.user === this.props.user.displayName ||
-                              item.user === this.props.user.email ? (
-                                <button
-                                  onClick={() => this.removeItem(item.id)}
-                                >
-                                  Delete Profile
+                                item.user === this.props.user.email ? (
+                                  <button
+                                    onClick={() => this.removeItem(item.id)}
+                                  >
+                                    Delete Profile
                                 </button>
-                              ) : null}
+                                ) : null}
                               <div className="picture">
-                                <img src={this.state.image} alt="Profile Pic" />
+                                <img src={this.state.image} alt="Me" style={imgStyle} />
                                 <input
                                   style={{ display: "none" }}
                                   type="file"
