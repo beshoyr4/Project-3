@@ -84,7 +84,7 @@ body {
 }
 #container-about .user-profile {
   position: fixed;
-  bottom: 20px;
+  bottom: 55px;
   right: 40px;
   width: 100px;
   height: 100px;
@@ -101,11 +101,11 @@ body {
   display: inline-block;
   cursor: pointer;
   pointer-events: none;
-  padding: 2%;
-  width: 40%;
+  padding: 1%;
+  width: 100%;
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 0px;
+  left: 0px;
 }
 .menu:hover {
   pointer-events: all;

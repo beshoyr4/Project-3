@@ -118,22 +118,26 @@ class Home extends Component {
             </Router>
           </div>
         ) : (
-            <div className="wrapper" id="wrapper">
-              <h1>KC Artist Connect</h1>
-              <p>
-                Discover, Connect, and Collaborate with Local Musicians
-            </p>
-            </div>
-          )}
-          <div class="footer">
+          <div className="wrapper" id="wrapper">
+            <h1>KC Artist Connect</h1>
+            <p>Discover, Connect, and Collaborate with Local Musicians</p>
+          </div>
+        )}
+        <div class="footer">
           <div class="menu">
             <div class="label">Information</div>
-            <div class="spacer"></div>
-            <div class="item"><span>GitHub</span></div>
-            <div class="item"><span>Instagram</span></div>
-            <div class="item"><span>LinkedIn</span></div>
+            <div class="spacer" />
+            <div class="item">
+              <span>GitHub</span>
+            </div>
+            <div class="item">
+              <span>Instagram</span>
+            </div>
+            <div class="item">
+              <span>LinkedIn</span>
+            </div>
           </div>
-          </div>
+        </div>
       </div>
     );
   }
