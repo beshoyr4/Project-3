@@ -26,9 +26,9 @@ class Dashboard extends Component {
       username: "",
       items: [],
       selectedFile: null,
-      image: ""
+      image: []
     };
-  }
+  };
 
   handleChange = e => {
     this.setState({
@@ -73,12 +73,12 @@ class Dashboard extends Component {
           items: newState
         });
       });
-  }
+  };
 
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
-  }
+  };
 
   // Profile Photo Uploader
 
@@ -119,6 +119,11 @@ class Dashboard extends Component {
         // Handle successful uploads on complete
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           console.log("File available at", downloadURL);
+          // query to add profile pic url to firebase db under user
+          console.log(this.state.items);
+          firebase.database().ref(`items/${this.state.items[0].id}`).update({
+            profilePicUrl: downloadURL
+          });
           if (downloadURL) {
             this.setState({ image: downloadURL });
           }
@@ -126,33 +131,6 @@ class Dashboard extends Component {
       }
     );
   };
-
-  // https://medium.com/@650egor/react-30-day-challenge-day-4-firebase-photo-upload-delete-f7c59d73ae36
-  // storePhoto() {
-  //   const key = database.ref().child(this.state.user.uid).push().key
-  //   const img = storage.ref().child(this.state.user.uid).child(key)
-  //   img.put(this.state.file).then((snap) => {
-  //     database.ref().child(this.state.user.uid).child(key).set({
-  //       "url": snap.metadata.downloadURLs[0]
-  //     })
-  //   })
-  //   this.setState({
-  //     file: null,
-  //     url: null,
-  //   })
-  // }
-
-  // componentDidMount() {
-  //   const ref = database.ref().child(this.state.user.uid)
-  //   ref.on('child_added', (child) => {
-  //     let images = this.state.images.slice()
-  //     images.push({
-  //       key: child.key,
-  //       url: child.val().url
-  //     })
-  //     this.setState({ images })
-  //   })
-  // }
 
   // End Profile Photo Uploader
 
@@ -171,7 +149,7 @@ class Dashboard extends Component {
           }}
         />
       );
-    }
+    };
 
     return (
       <div>
@@ -254,11 +232,13 @@ class Dashboard extends Component {
                                 </button>
                               ) : null}
                               <div className="picture">
+                              {this.state.items[0].profilePicUrl &&
                                 <img
-                                  src={this.state.image}
+                                  src={this.state.items[0].profilePicUrl}
                                   alt="Me"
                                   style={imgStyle}
                                 />
+                              }
                                 <input
                                   style={{ display: "none" }}
                                   type="file"
