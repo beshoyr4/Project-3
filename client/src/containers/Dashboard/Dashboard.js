@@ -4,12 +4,17 @@ import { Redirect } from "react-router-dom";
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
-import firebase, { auth, provider } from "../../firebase.js";
+import firebase, { auth, provider, database } from "../../firebase.js";
 import { Animated } from "react-animated-css";
 
 import "./Dashboard.css";
 
 const storage = firebase.storage().ref();
+
+const imgStyle = {
+  maxHeight: "400px",
+  maxWidth: "400px"
+};
 
 class Dashboard extends Component {
   constructor() {
@@ -23,7 +28,7 @@ class Dashboard extends Component {
       selectedFile: null,
       email: ""
     };
-  }
+  };
 
   handleChange = e => {
     this.setState({
@@ -70,12 +75,12 @@ class Dashboard extends Component {
           items: newState
         });
       });
-  }
+  };
 
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
-  }
+  };
 
   // Profile Photo Uploader
 
@@ -83,19 +88,60 @@ class Dashboard extends Component {
     event.preventDefault();
     this.setState({
       selectedFile: event.target.files[0]
-    })
-  }
+    });
+  };
 
   fileUploadHandler = () => {
-    console.log(this.state.selectedFile)
-    const { selectedFile } = this.state
-    storage.child(`profile/${selectedFile.name}`).put(selectedFile, { contentType: selectedFile.type })
+    console.log(this.state.selectedFile);
+    const { selectedFile } = this.state;
 
+    let uploadTask = storage
+      .child(`profile/${selectedFile.name}`)
+      .put(selectedFile);
+
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        // eslint-disable-next-line default-case
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log("Upload is paused");
+            break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log("Upload is running");
+            break;
+        }
+      },
+      function(error) {
+        // Handle unsuccessful uploads
+      },
+      () => {
+        // Handle successful uploads on complete
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          console.log("File available at", downloadURL);
+          // query to add profile pic url to firebase db under user
+          console.log(this.state.items);
+          firebase.database().ref(`items/${this.state.items[0].id}`).update({
+            profilePicUrl: downloadURL
+          });
+          if (downloadURL) {
+            this.setState({ image: downloadURL });
+          }
+        });
+      }
+    );
   };
 
   // End Profile Photo Uploader
 
   render() {
+    const imgStyle = {
+      maxHeight: "200px",
+      maxWidth: "200px"
+    };
+
     if (this.props.user === null) {
       return (
         <Redirect
@@ -105,7 +151,7 @@ class Dashboard extends Component {
           }}
         />
       );
-    }
+    };
 
     return (
       <div>
@@ -160,7 +206,6 @@ class Dashboard extends Component {
                       onChange={this.handleChange}
                       value={this.state.experience}
                     />
-
                     <button>Submit</button>
                   </form>
                 </section>
@@ -170,7 +215,7 @@ class Dashboard extends Component {
           <Row>
             <Col size="md-12">
               <Animated
-                animationIn="bounceInLeft"
+                animationIn="bounceInRight"
                 animationOut="fadeOut"
                 isVisible={true}
               >
@@ -195,10 +240,17 @@ class Dashboard extends Component {
                                 <button
                                   onClick={() => this.removeItem(item.id)}
                                 >
-                                  Delete
+                                  Delete Profile
                                 </button>
                               ) : null}
                               <div className="picture">
+                              {this.state.items[0].profilePicUrl &&
+                                <img
+                                  src={this.state.items[0].profilePicUrl}
+                                  alt="Me"
+                                  style={imgStyle}
+                                />
+                              }
                                 <input
                                   style={{ display: "none" }}
                                   type="file"
@@ -218,6 +270,7 @@ class Dashboard extends Component {
                           </li>
                         );
                       })}
+                      ;
                     </ul>
                   </div>
                 </section>
