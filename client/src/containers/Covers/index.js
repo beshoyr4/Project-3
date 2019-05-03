@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import Songlist from "./songlist";
 import Lyrics from "./lyrics";
 
-import "./covers.css";
+import "./Covers.css";
 
 class Covers extends Component {
   state = {
