@@ -4,6 +4,7 @@ import Nav from "./Nav.css";
 
 function NavTabs() {
   return (
+    <nav>
     <ul className="nav nav-tabs" id="nav">
       <li className="nav-item">
         <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
@@ -39,6 +40,7 @@ function NavTabs() {
         </Link>
       </li>
     </ul>
+    </nav>
   );
 }
 

@@ -48,93 +48,102 @@ class Home extends Component {
   render() {
     return (
       <div className="container" id="container-about">
-        <header>
-          <div className="wrapper">
-            <h1>KC Artist Connect</h1>
-            {this.state.user ? (
-              <button onClick={this.logout}>Logout</button>
-            ) : (
-              <button onClick={this.login}>Log In</button>
-            )}
-          </div>
-        </header>
-        {this.state.user ? (
-          <div>
-            <div className="user-profile">
-              <img src={this.state.user.photoURL} />
-            </div>
-            <Router>
-              <div>
-                <NavTabs />
-                <Route
-                  exact
-                  path="/dashboard"
-                  render={props => (
-                    <Dashboard user={this.state.user} {...props} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/discover"
-                  render={props => (
-                    <Discover user={this.state.user} {...props} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/saved"
-                  render={props => <Saved user={this.state.user} {...props} />}
-                />
-                <Route
-                  exact
-                  path="/covers"
-                  render={props => <Lyrics user={this.state.user} {...props} />}
-                />
-                <Route
-                  exact
-                  path="/"
-                  render={props => {
-                    return (
-                      <div>
-                        <p>
-                          <br />
-                          KC Artist Connect is a place to discover, connect, and
-                          collaborate with other local musicians. Whether you
-                          are looking to form a new band or to meet up for a
-                          casual jam session, KC Artist Connect makes it easy to
-                          find contacts for your next musical adventure.
-                          <br />
-                          <br />
-                          Create your personal music profile, discover fellow
-                          local musicians, save new contacts, and browse songs
-                          to get your creativity flowing. We can't wait to hear
-                          what you come up with!
-                        </p>
-                      </div>
-                    );
-                  }}
-                />
-              </div>
-            </Router>
-          </div>
-        ) : (
-            <div className="wrapper" id="wrapper">
+        <div className="wrapper">
+          <header>
+            <div className="header">
               <h1>KC Artist Connect</h1>
-              <p>
-                Discover, Connect, and Collaborate with Local Musicians
-            </p>
+              {this.state.user ? (
+                <button onClick={this.logout}>Logout</button>
+              ) : (
+                <button onClick={this.login}>Log In</button>
+              )}
             </div>
-          )}
-          <div class="footer">
-          <div class="menu">
-            <div class="label">Information</div>
+          </header>
+          {this.state.user ? (
+            <div>
+              <div className="user-profile">
+                <img src={this.state.user.photoURL} />
+              </div>
+              <Router>
+                <div>
+                  <NavTabs />
+                  <Route
+                    exact
+                    path="/dashboard"
+                    render={props => (
+                      <Dashboard user={this.state.user} {...props} />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/discover"
+                    render={props => (
+                      <Discover user={this.state.user} {...props} />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/saved"
+                    render={props => <Saved user={this.state.user} {...props} />}
+                  />
+                  <Route
+                    exact
+                    path="/covers"
+                    render={props => <Lyrics user={this.state.user} {...props} />}
+                  />
+                  <Route
+                    exact
+                    path="/"
+                    render={props => {
+                      return (
+                        <div>
+                          <p>
+                            <br />
+                            KC Artist Connect is a place to discover, connect, and
+                            collaborate with other local musicians. Whether you
+                            are looking to form a new band or to meet up for a
+                            casual jam session, KC Artist Connect makes it easy to
+                            find contacts for your next musical adventure.
+                            <br />
+                            <br />
+                            Create your personal music profile, discover fellow
+                            local musicians, save new contacts, and browse songs
+                            to get your creativity flowing. We can't wait to hear
+                            what you come up with!
+                          </p>
+                        </div>
+                      );
+                    }}
+                  />
+                </div>
+              </Router>
+            </div>
+          ) : (
+              <div className="wrapper" id="wrapper">
+                <h1>KC Artist Connect</h1>
+                <p>
+                  Discover, Connect, and Collaborate with Local Musicians
+              </p>
+              </div>
+            )}
+            </div>
+
+            <footer>
+            <div class="footer">
+              <div class="menu">
+            <div class="label">Contacts</div>
             <div class="spacer"></div>
             <div class="item"><span>GitHub</span></div>
-            <div class="item"><span>Instagram</span></div>
-            <div class="item"><span>LinkedIn</span></div>
+            <div class="item"><span>Ashley</span></div>
+            <div class="item"><span>Beshoy</span></div>
+            <div class="item"><span>Cait</span></div>
+            <div class="item"><span>Joe</span></div>
+
+              </div>
           </div>
-          </div>
+        </footer>  
       </div>
+      
     );
   }
 }
