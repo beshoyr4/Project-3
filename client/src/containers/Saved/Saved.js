@@ -32,12 +32,14 @@ console.log(saved);
           const user = saved[fave].stored.user;
           const instrument = saved[fave].stored.title;
           const userId = saved[fave].stored.id;
+          // const profilePic = saved[fave].stored.pic
           const faveId = fave;
 
           faveArr.push({
             user,
             instrument,
             userId,
+            // profilePic,
             faveId
           });
         }
@@ -118,9 +120,9 @@ console.log(saved);
                     this.state.currentSaved.map((fave, idx) => (
                       <Col size="sm-3 md-3 lg-3" key={fave.faveId}>
                         <div className="card">
-                          <Row>
-                            <img src="https://place-hold.it/100x100" />
-                          </Row>
+                        <Row>
+                          <img src={fave.profilePic} alt={fave.title} />
+                        </Row>
                           <Row>
                             <h2>{fave.user}</h2>
                           </Row>

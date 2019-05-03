@@ -1,6 +1,5 @@
 import React from "react";
 import firebase from "../../firebase";
-
 import Container from "../../components/Container";
 import Row from "../../components/Row";
 import Col from "../../components/Col";
@@ -30,7 +29,8 @@ class Discover extends React.Component {
           newState.push({
             id: item,
             title: items[item].title,
-            user: items[item].user
+            user: items[item].user,
+            profilePic: items[item].profilePicUrl
           });
         }
         this.setState({
@@ -81,20 +81,6 @@ class Discover extends React.Component {
     });
     console.log(this.state.active);
   };
-
-  //   handleYesBtnClick = event => {
-  //       this.setState(state => {
-  //           return {
-  //               favorites: [...this.state.favorites, this.state.people[this.state.active].id]
-  //                 };
-  //             });
-  //       console.log(this.state.favorites);
-  //       this.handleBtnClick(event);
-  //   }
-
-  //   componentWillUnmount() {
-  //     firebase.database().ref('items')
-  //   }
 
   handleYeaClick = e => {
     console.log("saved");
@@ -191,7 +177,7 @@ class Discover extends React.Component {
                     <div className="card">
                       <Col size="md-12">
                         <Row>
-                          <img src="https://place-hold.it/200x200" />
+                          <img src={person.profilePic} alt={person.title} />
                         </Row>
                         <Row>
                           <h3>Name: {person.user}</h3>
@@ -199,6 +185,7 @@ class Discover extends React.Component {
                         <Row>
                           <h3>Instrument: {person.title}</h3>
                         </Row>
+
                         <Row>
                           <button onClick={this.handleBtnClick}>Nah.</button>
                           <button onClick={this.handleYeaClick}>
