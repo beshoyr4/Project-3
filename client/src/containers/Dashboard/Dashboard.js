@@ -26,7 +26,7 @@ class Dashboard extends Component {
       username: "",
       items: [],
       selectedFile: null,
-      image: []
+      email: ""
     };
   };
 
@@ -43,14 +43,16 @@ class Dashboard extends Component {
       title: this.state.instrument,
       user: this.props.user.displayName || this.props.user.email,
       expertise: this.state.expertise,
-      experience: this.state.experience
+      experience: this.state.experience,
+      email: this.state.email
     };
     itemsRef.push(item);
     this.setState({
       instrument: "",
       expertise: "",
       experience: "",
-      username: ""
+      username: "",
+      email: ""
     });
   };
 
@@ -160,7 +162,7 @@ class Dashboard extends Component {
             isVisible={true}
           >
             <Row>
-              <Col size="md-12">
+              <div className="col-md-7.5">
                 <section className="add-item">
                   <form onSubmit={this.handleSubmit}>
                     <input
@@ -171,6 +173,14 @@ class Dashboard extends Component {
                       defaultValue={
                         this.props.user.displayName || this.props.user.email
                       }
+                    />
+                    <input
+                      type="text"
+                      required="required"
+                      name="email"
+                      placeholder="What's your email?"
+                      onChange={this.handleChange}
+                      value={this.state.email}
                     />
                     <input
                       type="text"
@@ -199,7 +209,7 @@ class Dashboard extends Component {
                     <button>Submit</button>
                   </form>
                 </section>
-              </Col>
+              </div>
             </Row>
           </Animated>
           <Row>
@@ -217,6 +227,8 @@ class Dashboard extends Component {
                           <li key={item.id}>
                             <h3>{item.user}</h3>
                             <p>
+                              Email: {item.email}
+                              <br />
                               Instrument: {item.title}
                               <br />
                               Experience Level: {item.expertise}

@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import Songlist from "./songlist";
 import Lyrics from "./lyrics";
 
-import "./covers.css";
+import "./Covers.css";
 
 class Covers extends Component {
   state = {
@@ -18,8 +18,9 @@ class Covers extends Component {
     this.setState({ loading: true });
     const { sid } = event.currentTarget.dataset;
     API.searchLyrics(sid, lyrics => {
-      this.setState({ lyrics }).then(() => {
-        this.setState({ loading: true });
+      this.setState({ 
+        lyrics, 
+        loading: false 
       });
     });
   };
@@ -30,7 +31,7 @@ class Covers extends Component {
 
   componentDidMount() {
     API.searchSongs(songList => {
-      this.setState({ songList });
+      this.setState({ songList, loading: false  });
     });
   }
 
