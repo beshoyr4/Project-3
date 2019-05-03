@@ -19,83 +19,82 @@ class Discover extends React.Component {
   }
 
   componentDidMount() {
-    
-    firebase.database()
-    .ref('items')
-    .on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      
-      for (let item in items) {
-        newState.push({
-          id: item,
-          title: items[item].title,
-          user: items[item].user
-        });
-        };
+    firebase
+      .database()
+      .ref("items")
+      .on("value", snapshot => {
+        let items = snapshot.val();
+        let newState = [];
+
+        for (let item in items) {
+          newState.push({
+            id: item,
+            title: items[item].title,
+            user: items[item].user
+          });
+        }
         this.setState({
-        people: newState
+          people: newState
+        });
       });
-    });
-    
+
     let ref = firebase.database().ref("saved");
     console.log(this.props.user.displayName);
-        ref
-          .orderByChild("currentuser")
-          .equalTo(this.props.user.displayName)
-          .on("value", snapshot => {
-            let saved = snapshot.val();
-            const faveArr = [];
-    console.log(saved);
-            for (let fave in saved) {
-              const user = saved[fave].stored.user;
-              const instrument = saved[fave].stored.title;
-              const userId = saved[fave].stored.id;
-              const faveId = fave;
-    
-              faveArr.push({
-                user,
-                instrument,
-                userId,
-                faveId
-              });
-            }
-            this.setState({
-              currentSaved: faveArr
-            });
+    ref
+      .orderByChild("currentuser")
+      .equalTo(this.props.user.displayName)
+      .on("value", snapshot => {
+        let saved = snapshot.val();
+        const faveArr = [];
+        console.log(saved);
+        for (let fave in saved) {
+          const user = saved[fave].stored.user;
+          const instrument = saved[fave].stored.title;
+          const userId = saved[fave].stored.id;
+          const faveId = fave;
+
+          faveArr.push({
+            user,
+            instrument,
+            userId,
+            faveId
           });
-    };
-
-    handleBtnClick = event => {
-        // Load next person when button is clicked
-        let currentActive = this.state.active;
-        if (currentActive === this.state.people.length -1) {
-            currentActive = 0;
-        } else {
-            currentActive ++
-        };
-        this.setState(state => {
-            return {
-                active: currentActive
-            };
+        }
+        this.setState({
+          currentSaved: faveArr
         });
-        console.log(this.state.active);
-    };
+      });
+  }
 
-    //   handleYesBtnClick = event => {
-    //       this.setState(state => {
-    //           return {
-    //               favorites: [...this.state.favorites, this.state.people[this.state.active].id]
-    //                 };
-    //             });
-    //       console.log(this.state.favorites);
-    //       this.handleBtnClick(event);
-    //   }
+  handleBtnClick = event => {
+    // Load next person when button is clicked
+    let currentActive = this.state.active;
+    if (currentActive === this.state.people.length - 1) {
+      currentActive = 0;
+    } else {
+      currentActive++;
+    }
+    this.setState(state => {
+      return {
+        active: currentActive
+      };
+    });
+    console.log(this.state.active);
+  };
 
-    //   componentWillUnmount() {
-    //     firebase.database().ref('items')
-    //   }
+  //   handleYesBtnClick = event => {
+  //       this.setState(state => {
+  //           return {
+  //               favorites: [...this.state.favorites, this.state.people[this.state.active].id]
+  //                 };
+  //             });
+  //       console.log(this.state.favorites);
+  //       this.handleBtnClick(event);
+  //   }
 
+  //   componentWillUnmount() {
+  //     firebase.database().ref('items')
+  //   }
 
   handleYeaClick = e => {
     console.log("saved");
@@ -106,27 +105,30 @@ class Discover extends React.Component {
     let alreadyPaired = false;
     const currentSaved = this.state.currentSaved;
     console.log(currentYes);
-    
-    if(currentYes.user === this.props.user.displayName){
-      alert("You can't start a band with yourself!")
-      return
+
+    if (currentYes.user === this.props.user.displayName) {
+      alert("You can't start a band with yourself!");
+      return;
     }
-    for(let i=0; i<currentSaved.length; i++){
-      if(currentSaved[i].user === currentYes.user && currentSaved[i].instrument === currentYes.title){
+    for (let i = 0; i < currentSaved.length; i++) {
+      if (
+        currentSaved[i].user === currentYes.user &&
+        currentSaved[i].instrument === currentYes.title
+      ) {
         alreadyPaired = true;
-        break
+        break;
       }
     }
-    if(alreadyPaired){
-      alert("You've already been paired with this user.")
-    }else{
+    if (alreadyPaired) {
+      alert("You've already been paired with this user.");
+    } else {
       const savedRef = firebase.database().ref("saved");
       const saved = {
         // this is the logged in user:
         currentuser: this.props.user.displayName || this.props.user.email,
         // this is the card info to be saved:
         stored: this.state.people[this.state.active]
-  
+
         // expertise: this.state.expertise,
         // experience: this.state.experience
         // title: this.state.instrument,
@@ -139,7 +141,7 @@ class Discover extends React.Component {
         experience: "",
         username: ""
       });
-  
+
       let currentActive = this.state.active;
       if (currentActive === this.state.people.length - 1) {
         currentActive = 0;
@@ -150,11 +152,9 @@ class Discover extends React.Component {
         return {
           active: currentActive
         };
-      }); 
-  
+      });
     }
   };
-
 
   render() {
     console.log(this.state.people);
@@ -171,7 +171,7 @@ class Discover extends React.Component {
                 <Row>
                   <Col size="md-12">
                     <Animated
-                      animationIn="bounceInLeft"
+                      animationIn="fadeInDownBig"
                       animationOut="fadeOut"
                       isVisible={true}
                     >
@@ -184,7 +184,7 @@ class Discover extends React.Component {
                 </Row>
                 <Row>
                   <Animated
-                    animationIn="bounceInLeft"
+                    animationIn="fadeInUpBig"
                     animationOut="fadeOut"
                     isVisible={true}
                   >
