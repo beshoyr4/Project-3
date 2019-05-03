@@ -113,7 +113,7 @@ class Dashboard extends Component {
             isVisible={true}
           >
             <Row>
-              <Col size="md-12">
+              <div className="col-md-7.5">
                 <section className="add-item">
                   <form onSubmit={this.handleSubmit}>
                     <input
@@ -153,7 +153,7 @@ class Dashboard extends Component {
                     <button>Submit</button>
                   </form>
                 </section>
-              </Col>
+              </div>
             </Row>
           </Animated>
           <Row>

@@ -47,18 +47,18 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="container" id="container-about">
-        <div className="wrapper">
-          <header>
+      <div className="main-wrapper" id="container-about">
+      <header>
             <div className="header">
               <h1>KC Artist Connect</h1>
               {this.state.user ? (
-                <button onClick={this.logout}>Logout</button>
+                <div className="login" onClick={this.logout}><img width="60px" alt="Google Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/></div>
               ) : (
-                <button onClick={this.login}>Log In</button>
+                <div className="login" onClick={this.login}><img width="60px" alt="Google Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/></div>
               )}
             </div>
           </header>
+        <div className="container">
           {this.state.user ? (
             <div>
               <div className="user-profile">

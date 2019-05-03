@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #2e5077;
+  background-color: #d3d0cb;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -34,13 +34,12 @@ h1 {
 }
 
 header {
-  color: #fff;
-  background-color: #4da1a9;
-  padding: auto;
-  width: 126%;
+  background-color: #6e8898;
+  padding: 10%;
+  width: 100%;
   margin: auto;
   position: relative;
-  margin-left: -145px;
+  /* margin-left: -145px; */
   padding-right: 100px;
   padding-left: 100px;
   height: 70px;
@@ -81,30 +80,32 @@ header .wrapper {
   justify-content: space-between;
 }
 
-p {
-  text-align: center;
-  color: #0f3d5d;
-  font-weight: bold;
-  font-size: 25px;
-}
-
 .label {
   display: inline-block;
   cursor: pointer;
   pointer-events: all;
 }
 
+.login {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 100px;
+}
+
  .menu {
-  background-color: #611c35;
+  background-color: #6e8898;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.8);
   display: inline-block;
   cursor: pointer;
   pointer-events: none;
   padding: 2%;
-  width: 95%;
+  height: auto;
+  width: 100%;
   position: absolute;
   bottom: 0px;
+  left: 0;
 }
  .menu:hover {
   pointer-events: all;
@@ -213,12 +214,20 @@ p {
   transition-delay: 0.7s;
 }
 
+p {
+  text-align: center;
+  color: #0f3d5d;
+  font-weight: bold;
+  font-size: 25px;
+}
+
 .user-profile {
   position: fixed;
   bottom: 20px;
   right: 40px;
   width: 100px;
   height: 100px;
+  z-index: 2;
 }
 .user-profile img {
   border-radius: 50%;
@@ -226,5 +235,5 @@ p {
 }
 
 .wrapper {
-  padding-bottom: 2.5rem;
+  padding-bottom: 3.5rem;
 }
