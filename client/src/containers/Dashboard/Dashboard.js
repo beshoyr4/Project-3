@@ -20,7 +20,8 @@ class Dashboard extends Component {
       experience: "",
       username: "",
       items: [],
-      selectedFile: null
+      selectedFile: null,
+      email: ""
     };
   }
 
@@ -37,14 +38,16 @@ class Dashboard extends Component {
       title: this.state.instrument,
       user: this.props.user.displayName || this.props.user.email,
       expertise: this.state.expertise,
-      experience: this.state.experience
+      experience: this.state.experience,
+      email: this.state.email
     };
     itemsRef.push(item);
     this.setState({
       instrument: "",
       expertise: "",
       experience: "",
-      username: ""
+      username: "",
+      email: ""
     });
   };
 
@@ -128,6 +131,14 @@ class Dashboard extends Component {
                     <input
                       type="text"
                       required="required"
+                      name="email"
+                      placeholder="What's your email?"
+                      onChange={this.handleChange}
+                      value={this.state.email}
+                    />
+                    <input
+                      type="text"
+                      required="required"
                       name="instrument"
                       placeholder="What instrument do you play?"
                       onChange={this.handleChange}
@@ -171,6 +182,8 @@ class Dashboard extends Component {
                           <li key={item.id}>
                             <h3>{item.user}</h3>
                             <p>
+                              Email: {item.email}
+                              <br />
                               Instrument: {item.title}
                               <br />
                               Experience Level: {item.expertise}
