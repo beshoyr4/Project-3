@@ -97,6 +97,7 @@ class Home extends Component {
                     render={props => {
                       return (
                         <div>
+                          <h2>KC Artist Connect</h2>
                           <p>
                             <br />
                             KC Artist Connect is a place to discover, connect, and
@@ -129,15 +130,15 @@ class Home extends Component {
             </div>
 
             <footer>
-            <div class="footer">
-              <div class="menu">
-            <div class="label">Contacts</div>
-            <div class="spacer"></div>
-            <div class="item"><span>GitHub</span></div>
-            <div class="item"><span>Ashley</span></div>
-            <div class="item"><span>Beshoy</span></div>
-            <div class="item"><span>Cait</span></div>
-            <div class="item"><span>Joe</span></div>
+            <div className="footer">
+              <div className="menu">
+            <div className="label">Contacts</div>
+            <div className="spacer"></div>
+            <a className="item" target="_blank" href="https://github.com/beshoyr4/Project-3"><span>GitHub</span></a>
+            <a className="item" target="_blank" href="https://github.com/beshoyr4/ashbshaw"><span>Ashley</span></a>
+            <a className="item" target="_blank" href="https://github.com/beshoyr4"><span>Beshoy</span></a>
+            <a className="item" target="_blank" href="https://github.com/cait-sidener"><span>Cait</span></a>
+            <a className="item" target="_blank" href="https://github.com/beshoyr4/JoeScholz"><span>Joe</span></a>
 
               </div>
           </div>

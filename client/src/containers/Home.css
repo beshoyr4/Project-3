@@ -14,9 +14,25 @@ body {
   min-height: 100vh;
 }
 
-.wrapper {
-  padding-bottom: 2.5rem;
+.fa {
+  font-size: 22px;
+  transform: translateY(50deg);
 }
+
+h1 {
+  text-align: center;
+  padding-top: 70px;
+  font-size: 60px;
+  color: #0f3d5d;
+  padding-bottom: 5px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
 header {
   color: #fff;
   background-color: #4da1a9;
@@ -29,21 +45,12 @@ header {
   padding-left: 100px;
   height: 70px;
 }
+
 header button {
   height: 40px;
   padding-top: 5px;
   border-radius: 20%;
   margin-top: 10px;
-}
-
-header p {
-  margin-left: 0%;
-  width: 400px;
-  margin: 0 auto;
-}
-header .wrapper {
-  display: flex;
-  justify-content: space-between;
 }
 
 header h1 {
@@ -57,27 +64,21 @@ header h1 {
   position: relative;
   margin-top: -50px;
 }
-.fa {
-  font-size: 22px;
-  transform: translateY(50deg);
-}
+
 header i {
   vertical-align: middle;
   margin-left: 12px;
 }
-.header {
-  display: flex;
-  width: 100%;
+
+header p {
+  margin-left: 0%;
+  width: 400px;
   margin: 0 auto;
-  padding-top: 30px;
 }
 
-h1 {
-  text-align: center;
-  padding-top: 70px;
-  font-size: 60px;
-  color: #0f3d5d;
-  padding-bottom: 5px;
+header .wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 p {
@@ -87,20 +88,10 @@ p {
   font-size: 25px;
 }
 
-.header {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.user-profile {
-  position: fixed;
-  bottom: 20px;
-  right: 40px;
-  width: 100px;
-  height: 100px;
-}
-.user-profile img {
-  border-radius: 50%;
-  max-width: 100%;
+.label {
+  display: inline-block;
+  cursor: pointer;
+  pointer-events: all;
 }
 
  .menu {
@@ -111,18 +102,14 @@ p {
   cursor: pointer;
   pointer-events: none;
   padding: 2%;
-  width: 100%;
+  width: 95%;
   position: absolute;
   bottom: 0px;
 }
  .menu:hover {
   pointer-events: all;
 }
-.label {
-  display: inline-block;
-  cursor: pointer;
-  pointer-events: all;
-}
+
  .spacer {
   display: inline-block;
   width: 80px;
@@ -142,6 +129,7 @@ p {
   transition-delay: 0.7s;
 }
  .item {
+   color: #fff;
   position: relative;
   display: inline-block;
   margin-right: 30px;
@@ -223,4 +211,20 @@ p {
 }
  .menu:hover .item:nth-child(10) {
   transition-delay: 0.7s;
+}
+
+.user-profile {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  width: 100px;
+  height: 100px;
+}
+.user-profile img {
+  border-radius: 50%;
+  max-width: 100%;
+}
+
+.wrapper {
+  padding-bottom: 2.5rem;
 }

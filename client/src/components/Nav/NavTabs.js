@@ -36,7 +36,7 @@ function NavTabs() {
         <Link to="/covers" className={window.location.pathname === "/covers"
             ? "nav-link active"
             : "nav-link"}>
-          Create a Cover
+          Get Inspired
         </Link>
       </li>
     </ul>
