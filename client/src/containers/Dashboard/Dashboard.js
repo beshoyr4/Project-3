@@ -14,7 +14,7 @@ const storage = firebase.storage().ref();
 const imgStyle = {
   maxHeight: "400px",
   maxWidth: "400px"
-}
+};
 
 class Dashboard extends Component {
   constructor() {
@@ -28,7 +28,7 @@ class Dashboard extends Component {
       selectedFile: null,
       image: ""
     };
-  };
+  }
 
   handleChange = e => {
     this.setState({
@@ -68,17 +68,17 @@ class Dashboard extends Component {
             id: item,
             ...items[item]
           });
-        };
+        }
         this.setState({
           items: newState
         });
       });
-  };
+  }
 
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
-  };
+  }
 
   // Profile Photo Uploader
 
@@ -90,35 +90,41 @@ class Dashboard extends Component {
   };
 
   fileUploadHandler = () => {
-    console.log(this.state.selectedFile)
-    const { selectedFile } = this.state
+    console.log(this.state.selectedFile);
+    const { selectedFile } = this.state;
 
-    let uploadTask = storage.child(`profile/${selectedFile.name}`).put(selectedFile);
+    let uploadTask = storage
+      .child(`profile/${selectedFile.name}`)
+      .put(selectedFile);
 
-    uploadTask.on('state_changed', (snapshot) => {
-
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
-      // eslint-disable-next-line default-case
-      switch (snapshot.state) {
-        case firebase.storage.TaskState.PAUSED: // or 'paused'
-          console.log('Upload is paused');
-          break;
-        case firebase.storage.TaskState.RUNNING: // or 'running'
-          console.log('Upload is running');
-          break;
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        // eslint-disable-next-line default-case
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+            console.log("Upload is paused");
+            break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+            console.log("Upload is running");
+            break;
+        }
+      },
+      function(error) {
+        // Handle unsuccessful uploads
+      },
+      () => {
+        // Handle successful uploads on complete
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          console.log("File available at", downloadURL);
+          if (downloadURL) {
+            this.setState({ image: downloadURL });
+          }
+        });
       }
-    }, function (error) {
-      // Handle unsuccessful uploads
-    }, () => {
-      // Handle successful uploads on complete
-      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-        console.log('File available at', downloadURL);
-        if (downloadURL) {
-          this.setState({ image: downloadURL })
-        };
-      });
-    });
+    );
   };
 
   // https://medium.com/@650egor/react-30-day-challenge-day-4-firebase-photo-upload-delete-f7c59d73ae36
@@ -151,7 +157,6 @@ class Dashboard extends Component {
   // End Profile Photo Uploader
 
   render() {
-
     const imgStyle = {
       maxHeight: "200px",
       maxWidth: "200px"
@@ -166,7 +171,7 @@ class Dashboard extends Component {
           }}
         />
       );
-    };
+    }
 
     return (
       <div>
@@ -222,7 +227,7 @@ class Dashboard extends Component {
           <Row>
             <Col size="md-12">
               <Animated
-                animationIn="bounceInLeft"
+                animationIn="bounceInRight"
                 animationOut="fadeOut"
                 isVisible={true}
               >
@@ -241,15 +246,19 @@ class Dashboard extends Component {
                               Looking: {item.experience}
                               <br />
                               {item.user === this.props.user.displayName ||
-                                item.user === this.props.user.email ? (
-                                  <button
-                                    onClick={() => this.removeItem(item.id)}
-                                  >
-                                    Delete Profile
+                              item.user === this.props.user.email ? (
+                                <button
+                                  onClick={() => this.removeItem(item.id)}
+                                >
+                                  Delete Profile
                                 </button>
-                                ) : null}
+                              ) : null}
                               <div className="picture">
-                                <img src={this.state.image} alt="Me" style={imgStyle} />
+                                <img
+                                  src={this.state.image}
+                                  alt="Me"
+                                  style={imgStyle}
+                                />
                                 <input
                                   style={{ display: "none" }}
                                   type="file"
@@ -268,7 +277,8 @@ class Dashboard extends Component {
                             </p>
                           </li>
                         );
-                      })};
+                      })}
+                      ;
                     </ul>
                   </div>
                 </section>
@@ -278,7 +288,7 @@ class Dashboard extends Component {
         </Container>
       </div>
     );
-  };
-};
+  }
+}
 
 export default Dashboard;
