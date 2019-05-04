@@ -25,6 +25,6 @@
     "if-env": "^1.0.4",
     "react-animated-css": "^1.0.5",
     "react-bootstrap": "^1.0.0-beta.8",
-    "react-responsive": "^6.1.2"
+    "react-google-font-loader": "^1.0.5"
   }
 }

@@ -28,7 +28,7 @@ class Dashboard extends Component {
       selectedFile: null,
       email: ""
     };
-  };
+  }
 
   handleChange = e => {
     this.setState({
@@ -75,12 +75,12 @@ class Dashboard extends Component {
           items: newState
         });
       });
-  };
+  }
 
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
     itemRef.remove();
-  };
+  }
 
   // Profile Photo Uploader
 
@@ -122,9 +122,13 @@ class Dashboard extends Component {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           console.log("File available at", downloadURL);
           // query to add profile pic url to firebase db under user
-          firebase.database().ref(`items/${this.state.items[0].id}`).update({
-            profilePicUrl: downloadURL
-          });
+          console.log(this.state.items);
+          firebase
+            .database()
+            .ref(`items/${this.state.items[0].id}`)
+            .update({
+              profilePicUrl: downloadURL
+            });
           if (downloadURL) {
             this.setState({ image: downloadURL });
           }
@@ -150,7 +154,7 @@ class Dashboard extends Component {
           }}
         />
       );
-    };
+    }
 
     return (
       <div>
@@ -243,13 +247,13 @@ class Dashboard extends Component {
                                 </button>
                               ) : null}
                               <div className="picture">
-                              {this.state.items[0].profilePicUrl &&
-                                <img
-                                  src={this.state.items[0].profilePicUrl}
-                                  alt="Me"
-                                  style={imgStyle}
-                                />
-                              }
+                                {this.state.items[0].profilePicUrl && (
+                                  <img
+                                    src={this.state.items[0].profilePicUrl}
+                                    alt="Me"
+                                    style={imgStyle}
+                                  />
+                                )}
                                 <input
                                   style={{ display: "none" }}
                                   type="file"

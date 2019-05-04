@@ -30,7 +30,8 @@ class Discover extends React.Component {
             id: item,
             title: items[item].title,
             user: items[item].user,
-            profilePic: items[item].profilePicUrl
+            profilePic: items[item].profilePicUrl,
+            email: items[item].email
           });
         }
         this.setState({
@@ -51,13 +52,17 @@ class Discover extends React.Component {
           const user = saved[fave].stored.user;
           const instrument = saved[fave].stored.title;
           const userId = saved[fave].stored.id;
+          const email = saved[fave].stored.email;
+          const profilePic = saved[fave].stored.profilePic;
           const faveId = fave;
 
           faveArr.push({
             user,
+            email,
             instrument,
             userId,
-            faveId
+            faveId,
+            profilePic
           });
         }
         this.setState({
@@ -123,6 +128,7 @@ class Discover extends React.Component {
         expertise: "",
         experience: "",
         username: ""
+        
       });
 
       let currentActive = this.state.active;
