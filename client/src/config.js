@@ -3,10 +3,6 @@ export default {
       REGION: "us-east-2",
       BUCKET: "project3-app-uploads"
     },
-    apiGateway: {
-      REGION: "us-east-2",
-      URL: "https://ly55wbovq4.execute-api.us-east-2.amazonaws.com/prod"
-    },
     cognito: {
       REGION: "us-east-2",
       USER_POOL_ID: "us-east-2_hPoOGEr2m",

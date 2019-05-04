@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "aws-amplify": "^1.1.26",
     "firebase": "^5.9.4",
     "http2": "^3.3.7",
     "react": "^16.8.6",
@@ -29,8 +28,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "aws-sdk": "^2.438.0"
-  }
+  ]
 }
