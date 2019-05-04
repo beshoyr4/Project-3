@@ -18,9 +18,9 @@ class Covers extends Component {
     this.setState({ loading: true });
     const { sid } = event.currentTarget.dataset;
     API.searchLyrics(sid, lyrics => {
-      this.setState({ 
-        lyrics, 
-        loading: false 
+      this.setState({
+        lyrics,
+        loading: false
       });
     });
   };
@@ -31,7 +31,7 @@ class Covers extends Component {
 
   componentDidMount() {
     API.searchSongs(songList => {
-      this.setState({ songList, loading: false  });
+      this.setState({ songList, loading: false });
     });
   }
 
