@@ -6,7 +6,7 @@
 
 body {
   background-color: #d3d0cb;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Comfortaa";
 }
 
 #container-about {
@@ -21,8 +21,8 @@ body {
 
 h1 {
   text-align: center;
-  padding-top: 70px;
-  font-size: 60px;
+  padding-top: 20px;
+  font-size: 40px;
   color: #0f3d5d;
   padding-bottom: 5px;
 }
@@ -42,7 +42,7 @@ header {
   /* margin-left: -145px; */
   padding-right: 100px;
   padding-left: 100px;
-  height: 70px;
+  height: 40px;
 }
 
 header button {
@@ -54,12 +54,12 @@ header button {
 
 header h1 {
   color: #ffa630;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.3px;
   display: inline-block;
   vertical-align: middle;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   position: relative;
   margin-top: -50px;
 }
@@ -130,7 +130,7 @@ header .wrapper {
   transition-delay: 0.7s;
 }
  .item {
-   color: #fff;
+  color: #fff;
   position: relative;
   display: inline-block;
   margin-right: 30px;
@@ -215,10 +215,10 @@ header .wrapper {
 }
 
 p {
-  text-align: center;
+  text-align: justify;
   color: #0f3d5d;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 18px;
 }
 
 .user-profile {
