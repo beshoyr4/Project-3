@@ -74,13 +74,13 @@ class Saved extends React.Component {
     const data = this.state.currentSaved[this.state.sidx]
     
     return (
-    <div>
-      <img src={ data.profilePic } alt={ data.user } />
-      <h1>{ data.user }</h1>
-      <h2>{ data.instrument }</h2>
-      <h2>{ data.email }</h2>
-    </div>
-    )
+      <div>
+        <img src={data.profilePic} alt={data.user} />
+        <h1>{data.user}</h1>
+        <h2>{data.instrument}</h2>
+        <h2>{data.email}</h2>
+      </div>
+    );
   }
 
   render() {
@@ -107,7 +107,11 @@ class Saved extends React.Component {
               >
                 {this.state.currentSaved.map((fave, idx) => (
                   <div className="card">
-                    <img className="imageContainer" src={fave.profilePic} alt={fave.title} />
+                    <img
+                      className="imageContainer"
+                      src={fave.profilePic}
+                      alt={fave.title}
+                    />
                     <h2>{fave.user}</h2>
 
                     <p>{fave.instrument}</p>
