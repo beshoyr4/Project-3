@@ -31,20 +31,23 @@ class Saved extends React.Component {
           const user = saved[fave].stored.user;
           const instrument = saved[fave].stored.title;
           const userId = saved[fave].stored.id;
-          // const profilePic = saved[fave].stored.pic
+          const email = saved[fave].stored.email;
+          const profilePic = saved[fave].stored.profilePic;
           const faveId = fave;
 
           faveArr.push({
             user,
+            email,
             instrument,
             userId,
-            // profilePic,
+            profilePic,
             faveId
           });
         }
         this.setState({
           currentSaved: faveArr
         });
+        console.log(faveArr);
       });
   }
 
@@ -76,12 +79,13 @@ class Saved extends React.Component {
     console.log(data);
 
     return (
-      <div>
-        <h1>{data.user}</h1>
-        <h2>{data.instrument}</h2>
-        <h2>Contact Info</h2>
-      </div>
-    );
+    <div>
+      <img src={ data.profilePic } alt={ data.user } />
+      <h1>{ data.user }</h1>
+      <h2>{ data.instrument }</h2>
+      <h2>{ data.email }</h2>
+    </div>
+    )
   }
 
   render() {
