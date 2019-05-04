@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard";
 import Discover from "./Discover";
 import Saved from "./Saved";
 import Lyrics from "./Covers";
+import Logo from "../components/Logo"
 
 class Home extends Component {
   constructor() {
@@ -50,7 +51,7 @@ class Home extends Component {
       <div className="main-wrapper" id="container-about">
       <header>
             <div className="header">
-              <h1>KC Artist Connect</h1>
+              <h1><Logo></Logo>KC Artist Connect</h1>
               {this.state.user ? (
                 <div className="login" onClick={this.logout}><img width="60px" alt="Google Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/></div>
               ) : (
@@ -129,7 +130,7 @@ class Home extends Component {
             )}
             </div>
 
-            <footer>
+            <footer style={{ height: 100 }}>>
             <div className="footer">
               <div className="menu">
             <div className="label">Contacts</div>

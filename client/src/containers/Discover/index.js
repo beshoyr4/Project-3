@@ -183,10 +183,10 @@ class Discover extends React.Component {
                           <img className="imageCont" src={person.profilePic} alt={person.title} />
                         </div>
                         <div className="row">
-                          <h3>Name: {person.user}</h3>
+                          <h3 className="discover-info">Name: {person.user}</h3>
                         </div>
                         <div className="row">
-                          <h3>Instrument: {person.title}</h3>
+                          <h3 className="discover-info">Instrument: {person.title}</h3>
                         </div>
 
                         <div className="row">

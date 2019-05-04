@@ -1,7 +1,3 @@
-#discover-container {
-  margin-bottom: 10%;
-}
-
 #discover-container .display-item {
   width: 200%;
   margin-left: 50px;
@@ -51,7 +47,13 @@
   margin: auto 320px 20px;
 }
 #discover-container .card h3 {
-  margin: 7px 60px 10px;
+  display: flex;
+  justify-content: center;
   color: #0f3d5d;
+  margin-left: 60px;
+  margin-bottom: 8%;
 }
 
+.discover-info {
+  font-size: 1.3em;
+}
