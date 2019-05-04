@@ -55,3 +55,7 @@
   color: #0f3d5d;
 }
 
+.imageContainer {
+  max-height: 30%;
+}
+

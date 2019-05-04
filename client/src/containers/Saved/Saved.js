@@ -107,7 +107,7 @@ class Saved extends React.Component {
               >
                 {this.state.currentSaved.map((fave, idx) => (
                   <div className="card">
-                    <img src={fave.profilePic} alt={fave.title} />
+                    <img className="imageContainer" src={fave.profilePic} alt={fave.title} />
                     <h2>{fave.user}</h2>
 
                     <p>{fave.instrument}</p>
