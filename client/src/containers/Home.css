@@ -1,12 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
 
+.about-header {
+  text-align: center;
+  margin-bottom: -4%;
+  margin-top: -4%;
+}
+
 body {
   background-color: #d3d0cb;
-  font-family: "Comfortaa";
+  font-family: "Open Sans";
+  text-transform:uppercase;
+
 }
 
 #container-about {
@@ -19,12 +29,22 @@ body {
   transform: translateY(50deg);
 }
 
-h1 {
+.connect {
   text-align: center;
-  padding-top: 20px;
-  font-size: 40px;
+  font-size: 2.5em;
+  color: #e2c044;
+  padding-bottom: 10%;
+  margin-top: -10%;
+}
+
+.title {
   color: #0f3d5d;
-  padding-bottom: 5px;
+  text-align: center;
+}
+
+.google {
+  margin-top: 40%;
+  margin-right: 40%;
 }
 
 .header {
@@ -35,26 +55,24 @@ h1 {
 
 header {
   background-color: #6e8898;
-  padding: 10%;
   width: 100%;
   margin: auto;
   position: relative;
-  /* margin-left: -145px; */
-  padding-right: 100px;
-  padding-left: 100px;
-  height: 40px;
+  padding-right: 10%;
+  padding-left: 10%;
+  height: 10%;
 }
 
 header button {
   height: 40px;
   padding-top: 5px;
   border-radius: 20%;
-  margin-top: 10px;
+  margin-top: 3%;
 }
 
 header h1 {
-  color: #ffa630;
-  font-size: 20px;
+  color: #e2c044;
+  font-size: 25px;
   font-weight: 600;
   letter-spacing: 0.3px;
   display: inline-block;
@@ -106,7 +124,7 @@ header .wrapper {
   position: absolute;
   bottom: 0px;
   left: 0;
-  z-index: -1;
+  margin-top: 50px;
 }
 .menu:hover {
   pointer-events: all;
@@ -216,8 +234,8 @@ span {
 }
 
 p {
-  text-align: justify;
-  color: #0f3d5d;
+  text-align: center;
+  color: #2e5266;
   font-weight: bold;
   font-size: 18px;
 }
@@ -237,4 +255,10 @@ p {
 
 .wrapper {
   padding-bottom: 3.5rem;
+}
+
+@media only screen and (max-width: 300px) {
+  body {
+    background-color: purple;
+  }
 }

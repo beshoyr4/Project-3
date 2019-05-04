@@ -8,7 +8,7 @@ const SavedModal = (props) => {
         <div className="modal-wrapper">
             <div className="modal-header">
                 <h3>Full Profile Info</h3>
-                <button className="close-modal-btn" onClick={ props.onClose }>×</button>
+                <button className="close-modal-btn" onClick={ props.onClose }>X</button>
             </div>
             <div className="modal-body">
                 { props.children }
