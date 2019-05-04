@@ -247,3 +247,9 @@ p {
 .wrapper {
   padding-bottom: 3.5rem;
 }
+
+@media only screen and (max-width: 300px) {
+  body {
+    background-color: purple;
+  }
+}

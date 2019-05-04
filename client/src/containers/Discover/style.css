@@ -48,3 +48,7 @@
   color: #0f3d5d;
 }
 
+#image {
+  max-height: 20%;
+}
+

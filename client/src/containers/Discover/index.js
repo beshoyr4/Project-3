@@ -172,7 +172,8 @@ class Discover extends React.Component {
                     <div className="card">
                       <div className="col-md-12">
                         <div className="row">
-                          <img src={person.profilePic} alt={person.title} />
+                        
+                          <img className="image" src={person.profilePic} alt={person.title} />
                         </div>
                         <div className="row">
                           <h3>Name: {person.user}</h3>
