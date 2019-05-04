@@ -1,5 +1,4 @@
 #discover-container .display-item {
-  text-align: center;
   width: 200%;
   margin-left: 50px;
 }
@@ -7,7 +6,7 @@
 #discover-container button {
   border-radius: 2px;
   min-width: 88px;
-  background-color: #fa6900;
+  background-color: #2e5267;
   cursor: pointer;
   border: 0;
   min-width: 120px;
@@ -30,23 +29,31 @@
 
 #discover-container .card button {
   padding: auto;
-  margin: 10px 35px;
+  margin: 10px 53px;
   border-radius: 10px;
 }
 #discover-container .card img {
-  margin: 5px 100px 5px;
+  margin: 3% auto;
+  margin-left: 30%;
+  max-width: 150px;
+  height: 150px;
 }
 #discover-container h1 {
-  text-align: center;
   color: #0f3d5d;
   margin: auto 400px;
 }
 #discover-container h2 {
-  text-align: center;
   color: #0f3d5d;
   margin: auto 320px 20px;
 }
 #discover-container .card h3 {
-  margin: 7px 60px 10px;
+  display: flex;
+  justify-content: center;
   color: #0f3d5d;
+  margin-left: 60px;
+  margin-bottom: 8%;
+}
+
+.discover-info {
+  font-size: 1.3em;
 }

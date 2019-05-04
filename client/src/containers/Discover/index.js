@@ -84,18 +84,15 @@ class Discover extends React.Component {
         active: currentActive
       };
     });
-    console.log(this.state.active);
   };
 
   handleYeaClick = e => {
-    console.log("saved");
 
     e.preventDefault();
 
     const currentYes = this.state.people[this.state.active];
     let alreadyPaired = false;
     const currentSaved = this.state.currentSaved;
-    console.log(currentYes);
 
     if (currentYes.user === this.props.user.displayName) {
       alert("You can't start a band with yourself!");
@@ -149,64 +146,63 @@ class Discover extends React.Component {
   };
 
   render() {
-    console.log(this.state.people);
     const person = this.state.people[this.state.active];
     if (!person) {
       return null;
     }
     return (
       <div>
-        <Container id="discover-container">
+        <div className="container" id="discover-container">
           <section className="display-item">
             <div className="wrapper">
-              <Row>
-                <Row>
-                  <Col size="md-12">
+              <div className="row">
+                  <div className="col-md-12">
+
                     <Animated
                       animationIn="fadeInDownBig"
                       animationOut="fadeOut"
                       isVisible={true}
                     >
-                      <Row>
-                        <h2 className="text-center">Discover New Contacts</h2>
+                
+                        <h2>Discover New Contacts</h2>
                         <br />
-                      </Row>
                     </Animated>
-                  </Col>
-                </Row>
-                <Row>
+                    </div>
+                  </div>
+                <div className="row">
                   <Animated
                     animationIn="fadeInUpBig"
                     animationOut="fadeOut"
                     isVisible={true}
                   >
                     <div className="card">
-                      <Col size="md-12">
-                        <Row>
-                          <img src={person.profilePic} alt={person.user} />
-                        </Row>
-                        <Row>
-                          <h3>Name: {person.user}</h3>
-                        </Row>
-                        <Row>
-                          <h3>Instrument: {person.title}</h3>
-                        </Row>
+                        <div className="row">
+                        <div className="col-md-12">
 
-                        <Row>
+                        
+                          <img className="imageCont" src={person.profilePic} alt={person.title} />
+                        </div>
+                        <div className="row">
+                          <h3 className="discover-info">Name: {person.user}</h3>
+                        </div>
+                        <div className="row">
+                          <h3 className="discover-info">Instrument: {person.title}</h3>
+                        </div>
+
+                        <div className="row">
                           <button onClick={this.handleBtnClick}>Nah.</button>
                           <button onClick={this.handleYeaClick}>
                             Hell Yeah!
                           </button>
-                        </Row>
-                      </Col>
+                        </div>
+                      </div>
                     </div>
                   </Animated>
-                </Row>
-              </Row>
-            </div>
+                </div>
+              </div>
           </section>
-        </Container>
-      </div>
+          </div>
+        </div>
     );
   }
 }
