@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 * {
   margin: 0px;
   padding: 0px;
@@ -6,7 +8,9 @@
 
 body {
   background-color: #d3d0cb;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans";
+  text-transform:uppercase;
+
 }
 
 #container-about {
@@ -19,12 +23,17 @@ body {
   transform: translateY(50deg);
 }
 
-h1 {
+.connect {
   text-align: center;
-  padding-top: 70px;
-  font-size: 60px;
+  font-size: 2.5em;
+  color: #e2c044;
+  padding-bottom: 10%;
+  margin-top: -10%;
+}
+
+.title {
   color: #0f3d5d;
-  padding-bottom: 5px;
+  text-align: center;
 }
 
 .header {
@@ -35,7 +44,7 @@ h1 {
 
 header {
   background-color: #6e8898;
-  padding: 10%;
+  padding: 7%;
   width: 100%;
   margin: auto;
   position: relative;
@@ -53,7 +62,7 @@ header button {
 }
 
 header h1 {
-  color: #ffa630;
+  color: #e2c044;
   font-size: 25px;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -106,6 +115,8 @@ header .wrapper {
   position: absolute;
   bottom: 0px;
   left: 0;
+  z-index: -1;
+  margin-top: 50px;
 }
  .menu:hover {
   pointer-events: all;
@@ -216,7 +227,7 @@ header .wrapper {
 
 p {
   text-align: center;
-  color: #0f3d5d;
+  color: #2e5266;
   font-weight: bold;
   font-size: 25px;
 }

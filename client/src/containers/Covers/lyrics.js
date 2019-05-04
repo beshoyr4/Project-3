@@ -5,7 +5,6 @@ const Lyrics = ({ lyrics, onClickBack }) => {
     if (!lyrics) {
         return '';
     }
-    console.log(lyrics);
     return (
         <div className="row">
             <div className="col-md-12">

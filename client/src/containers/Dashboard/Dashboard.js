@@ -122,7 +122,6 @@ class Dashboard extends Component {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           console.log("File available at", downloadURL);
           // query to add profile pic url to firebase db under user
-          console.log(this.state.items);
           firebase.database().ref(`items/${this.state.items[0].id}`).update({
             profilePicUrl: downloadURL
           });

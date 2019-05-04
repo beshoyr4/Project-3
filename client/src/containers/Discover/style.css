@@ -1,5 +1,4 @@
 #discover-container .display-item {
-  text-align: center;
   width: 200%;
   margin-left: 50px;
 }
@@ -37,12 +36,10 @@
   margin: 5px 100px 5px;
 }
 #discover-container h1 {
-  text-align: center;
   color: #0f3d5d;
   margin: auto 400px;
 }
 #discover-container h2 {
-  text-align: center;
   color: #0f3d5d;
   margin: auto 320px 20px;
 }
@@ -50,3 +47,4 @@
   margin: 7px 60px 10px;
   color: #0f3d5d;
 }
+

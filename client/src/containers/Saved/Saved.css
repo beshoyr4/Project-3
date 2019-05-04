@@ -19,14 +19,14 @@
 
 #saved-container .card {
   border: 3px solid #103d5d;
-  width: 275px;
-  height: 275px;
-  margin: 5px 20px;
-  padding: 5px 20px 5px 5px;
+  width: 700%;
+  height: 700%;
+  margin: 5% 5%;
+  padding: 10%, 10%;
   border-radius: 50px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
     0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-  margin-left: auto;
+  
 }
 
 #saved-container .card button {
@@ -36,15 +36,16 @@
 }
 
 #saved-container .card img {
-  margin: auto 90px;
+  width: 30%;
+  height: 30%;
 }
 
 #saved-container h2 {
-  margin-left: 60px;
+  margin-left: 15%;
 }
 
 #saved-container p {
-  margin-left: 120px;
+  margin-left: 30%;
 }
 
 #saved-container .text-center {

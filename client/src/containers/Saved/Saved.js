@@ -20,14 +20,12 @@ class Saved extends React.Component {
 
   componentDidMount() {
     let ref = firebase.database().ref("saved");
-console.log(this.props.user.displayName);
     ref
       .orderByChild("currentuser")
       .equalTo(this.props.user.displayName)
       .on("value", snapshot => {
         let saved = snapshot.val();
         const faveArr = [];
-console.log(saved);
         for (let fave in saved) {
           const user = saved[fave].stored.user;
           const instrument = saved[fave].stored.title;
@@ -52,7 +50,6 @@ console.log(saved);
   handleDelete(objectId) {
     let ref = firebase.database().ref("saved");
     ref.child(objectId).remove();
-    console.log(objectId);
   }
 
   openModalHandler = (evt) => {
@@ -64,7 +61,6 @@ console.log(saved);
   }
 
   closeModalHandler = (evt) => {
-    console.log('close modal');
     
     this.setState({
         isShowing: false
@@ -73,8 +69,6 @@ console.log(saved);
 
   renderModalContent() {
     const data = this.state.currentSaved[this.state.sidx]
-
-    console.log(data);
     
     return (
     <div>
@@ -89,7 +83,6 @@ console.log(saved);
     if (this.state.currentSaved.length === 0) {
       return <h1>No Saved</h1>;
     }
-    console.log(this.state.currentSaved);
 
     return (
       <div>
