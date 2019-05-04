@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { auth, provider } from "../firebase";
 
-
-import Logo from "../components/Logo";
 import "./Home.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from "../components/Nav";
@@ -10,7 +8,6 @@ import Dashboard from "./Dashboard";
 import Discover from "./Discover";
 import Saved from "./Saved";
 import Lyrics from "./Covers";
-
 
 class Home extends Component {
   constructor() {
@@ -53,9 +50,7 @@ class Home extends Component {
       <div className="main-wrapper" id="container-about">
       <header>
             <div className="header">
-              
-              <h1 className="connect"><Logo></Logo>KC Artist Connect</h1>
-              
+              <h1>KC Artist Connect</h1>
               {this.state.user ? (
                 <div className="login" onClick={this.logout}><img width="60px" alt="Google Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/></div>
               ) : (
@@ -67,7 +62,7 @@ class Home extends Component {
           {this.state.user ? (
             <div>
               <div className="user-profile">
-                <img src={this.state.user.photoURL} />
+                <img alt="User" src={this.state.user.photoURL} />
               </div>
               <Router>
                 <div>
@@ -102,7 +97,7 @@ class Home extends Component {
                     render={props => {
                       return (
                         <div>
-                          <h2 className="title"><Logo></Logo>KC Artist Connect</h2>
+                          <h2>KC Artist Connect</h2>
                           <p>
                             <br />
                             KC Artist Connect is a place to discover, connect, and
@@ -134,7 +129,7 @@ class Home extends Component {
             )}
             </div>
 
-            <footer style={{ height: 100 }}>
+            <footer>
             <div className="footer">
               <div className="menu">
             <div className="label">Contacts</div>
