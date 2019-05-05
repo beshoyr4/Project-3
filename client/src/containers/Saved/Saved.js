@@ -1,5 +1,5 @@
 import React from "react";
-import firebase, { auth, provider } from "../../firebase.js";
+import firebase from "../../firebase.js";
 import Container from "../../components/Container";
 
 import { Animated } from "react-animated-css";
@@ -45,7 +45,6 @@ class Saved extends React.Component {
         this.setState({
           currentSaved: faveArr
         });
-        console.log(faveArr);
       });
   }
 
@@ -63,7 +62,6 @@ class Saved extends React.Component {
   };
 
   closeModalHandler = evt => {
-    console.log("close modal");
 
     this.setState({
       isShowing: false
@@ -93,12 +91,13 @@ class Saved extends React.Component {
         <Container id="saved-container">
           <section className="display-item">
             <div className="wrapper">
+            <h2 className="text-center">View or Delete Contacts</h2>
+
               <Animated
                 animationIn="bounceInLeft"
                 animationOut="fadeOut"
                 isVisible={true}
               >
-                <h2 className="text-center">View or Delete Contacts</h2>
               </Animated>
               <Animated
                 animationIn="bounceInLeft"

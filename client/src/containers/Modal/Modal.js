@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SavedModal from '../../components/SavedModal/SavedModal';
 
 export default (props) => {
