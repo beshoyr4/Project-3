@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
-import Container from "../../components/Container";
-import firebase, { auth, provider, database } from "../../firebase.js";
+import firebase from "../../firebase.js";
 import { Animated } from "react-animated-css";
 
 import "./Dashboard.css";
 
 const storage = firebase.storage().ref();
-
-const imgStyle = {
-  maxHeight: "400px",
-  maxWidth: "400px"
-};
 
 class Dashboard extends Component {
   constructor() {
@@ -62,7 +56,6 @@ class Dashboard extends Component {
       .on("value", snapshot => {
         let items = snapshot.val();
         let newState = [];
-        console.log(items);
         for (let item in items) {
           newState.push({
             id: item,
@@ -90,7 +83,6 @@ class Dashboard extends Component {
   };
 
   fileUploadHandler = () => {
-    console.log(this.state.selectedFile);
     const { selectedFile } = this.state;
 
     let uploadTask = storage
@@ -119,8 +111,6 @@ class Dashboard extends Component {
         // Handle successful uploads on complete
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           console.log("File available at", downloadURL);
-          // query to add profile pic url to firebase db under user
-          console.log(this.state.items);
           firebase
             .database()
             .ref(`items/${this.state.items[0].id}`)
@@ -134,8 +124,6 @@ class Dashboard extends Component {
       }
     );
   };
-
-  // End Profile Photo Uploader
 
   render() {
     const imgStyle = {
@@ -155,60 +143,67 @@ class Dashboard extends Component {
     }
 
     return (
-      <div>
-        <Container id="dashboard-container">
+        <div id="dashboard-container">
+          <div className="row">
+            <div className="col-md-12">
+              <h2>Profile</h2>
+              <br/>
+            </div>
+          </div>
           <Animated
             animationIn="bounceInLeft"
             animationOut="fadeOut"
             isVisible={true}
           >
-            <div>
-              <section className="add-item">
-                <form onSubmit={this.handleSubmit}>
-                  <input
-                    type="text"
-                    required="required"
-                    name="username"
-                    placeholder="What's your name?"
-                    defaultValue={
-                      this.props.user.displayName || this.props.user.email
-                    }
-                  />
-                  <input
-                    type="text"
-                    required="required"
-                    name="email"
-                    placeholder="What's your email?"
-                    onChange={this.handleChange}
-                    value={this.state.email}
-                  />
-                  <input
-                    type="text"
-                    required="required"
-                    name="instrument"
-                    placeholder="What instrument do you play?"
-                    onChange={this.handleChange}
-                    value={this.state.instrument}
-                  />
-                  <input
-                    type="text"
-                    required="required"
-                    name="expertise"
-                    placeholder="Novice, Ameteur, or Expert"
-                    onChange={this.handleChange}
-                    value={this.state.expertise}
-                  />
-                  <input
-                    type="text"
-                    name="experience"
-                    required="required"
-                    placeholder="Start a Band or Jam Session"
-                    onChange={this.handleChange}
-                    value={this.state.experience}
-                  />
-                  <button>Submit</button>
-                </form>
-              </section>
+            <div className="row">
+              <div className="col-md-12">
+                <section className="add-item">
+                  <form onSubmit={this.handleSubmit}>
+                    <input
+                      type="text"
+                      required="required"
+                      name="username"
+                      placeholder="What's your name?"
+                      defaultValue={
+                        this.props.user.displayName || this.props.user.email
+                      }
+                    />
+                    <input
+                      type="text"
+                      required="required"
+                      name="email"
+                      placeholder="What's your email?"
+                      onChange={this.handleChange}
+                      value={this.state.email}
+                    />
+                    <input
+                      type="text"
+                      required="required"
+                      name="instrument"
+                      placeholder="What instrument do you play?"
+                      onChange={this.handleChange}
+                      value={this.state.instrument}
+                    />
+                    <input
+                      type="text"
+                      required="required"
+                      name="expertise"
+                      placeholder="Novice, Ameteur, or Expert"
+                      onChange={this.handleChange}
+                      value={this.state.expertise}
+                    />
+                    <input
+                      type="text"
+                      name="experience"
+                      required="required"
+                      placeholder="Start a Band or Jam Session"
+                      onChange={this.handleChange}
+                      value={this.state.experience}
+                    />
+                    <button>Submit</button>
+                  </form>
+                </section>
+              </div>
             </div>
           </Animated>
           <Animated
@@ -268,8 +263,7 @@ class Dashboard extends Component {
               </div>
             </section>
           </Animated>
-        </Container>
-      </div>
+        </div>
     );
   }
 }

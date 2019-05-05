@@ -1,8 +1,5 @@
 import React from "react";
 import firebase from "../../firebase";
-import Container from "../../components/Container";
-import Row from "../../components/Row";
-import Col from "../../components/Col";
 import { Animated } from "react-animated-css";
 
 import "./style.css";
@@ -40,14 +37,12 @@ class Discover extends React.Component {
       });
 
     let ref = firebase.database().ref("saved");
-    console.log(this.props.user.displayName);
     ref
       .orderByChild("currentuser")
       .equalTo(this.props.user.displayName)
       .on("value", snapshot => {
         let saved = snapshot.val();
         const faveArr = [];
-        console.log(saved);
         for (let fave in saved) {
           const user = saved[fave].stored.user;
           const instrument = saved[fave].stored.title;
@@ -151,58 +146,55 @@ class Discover extends React.Component {
       return null;
     }
     return (
-      <div>
         <div className="container" id="discover-container">
-          <section className="display-item">
             <div className="wrapper">
               <div className="row">
-                  <div className="col-md-12">
-
+                <div className="col-md-12">
+                  <h2>Discover New Contacts</h2>
+                  <br />
+                </div>
+              </div>
                     <Animated
                       animationIn="fadeInDownBig"
                       animationOut="fadeOut"
                       isVisible={true}
-                    >
-                
-                        <h2>Discover New Contacts</h2>
-                        <br />
-                    </Animated>
-                    </div>
-                  </div>
+                  >                    
                 <div className="row">
-                  <Animated
-                    animationIn="fadeInUpBig"
-                    animationOut="fadeOut"
-                    isVisible={true}
-                  >
+                  <div className="col-md-12">
                     <div className="card">
                         <div className="row">
-                        <div className="col-md-12">
+                          <div className="col-md-12">
 
                         
-                          <img className="imageCont" src={person.profilePic} alt={person.title} />
+                            <img className="imageCont" src={person.profilePic} alt={person.title} />
+                          </div>
                         </div>
                         <div className="row">
-                          <h3 className="discover-info">Name: {person.user}</h3>
+                          <div className="col-md-12">
+                            <h3 className="discover-info">Name: {person.user}</h3>
+                          </div>
                         </div>
                         <div className="row">
-                          <h3 className="discover-info">Instrument: {person.title}</h3>
+                          <div className="col-md-12">
+                            <h3 className="discover-info">Instrument: {person.title}</h3>
+                          </div>
                         </div>
 
                         <div className="row">
-                          <button onClick={this.handleBtnClick}>Nah.</button>
-                          <button onClick={this.handleYeaClick}>
-                            Hell Yeah!
-                          </button>
+                          <div className="col-md-12">
+                            <button className="yes-or-no" onClick={this.handleBtnClick}>Nah.</button>
+                            <button className="yes-or-no" onClick={this.handleYeaClick}>
+                              Hell Yeah!
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Animated>
+                  </div>
                 </div>
+                </Animated>
+
               </div>
-          </section>
-          </div>
-        </div>
+            </div>
     );
   }
 }

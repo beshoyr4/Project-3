@@ -1,13 +1,10 @@
-#saved-container .display-item {
-  text-align: center;
-  width: 100%;
-  margin-left: auto;
+.imageContainer {
+  max-height: 30%;
 }
 
 #saved-container button {
-  border-radius: 2px;
   min-width: 44px;
-  background-color: #2e5266;
+  background-color: #000;
   cursor: pointer;
   border: 0;
   min-width: 120px;
@@ -15,15 +12,22 @@
   font-size: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   padding: 10px 6px;
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0;
+}
+
+#saved-container button:hover {
+  transform: translateY(-0.25em);
+  color:#e2c044;
 }
 
 #saved-container .card {
-  border: 3px solid #103d5d;
   width: 250px;
   height: 350px;
   margin: 10px;
-  padding: auto;
-  border-radius: 50px;
+  padding: 1em;
+  border-radius: 0 !important;
+  border-top: 3px solid !important;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
     0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
   margin-left: auto;
@@ -33,16 +37,21 @@
 #saved-container .card button {
   padding: auto;
   margin: auto;
-  border-radius: 10px;
 }
 
 #saved-container .card img {
   margin: auto;
 }
 
+#saved-container .display-item {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+}
+
 #saved-container h2 {
   text-align: center;
-  padding-top: 5px;
+  margin-top: 5px;
 }
 
 #saved-container p {
@@ -50,10 +59,7 @@
 }
 
 #saved-container .text-center {
-  margin: auto 250px 10px;
-  text-align: center;
-  color: #0f3d5d;
-}
-.imageContainer {
-  max-height: 30%;
+  text-align: left !important;
+  padding-top: 20px;
+  color: #000;
 }

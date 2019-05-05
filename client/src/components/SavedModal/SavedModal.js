@@ -3,7 +3,6 @@ import React from 'react';
 import './SavedModal.css';
 
 const SavedModal = (props) => {
-    console.log(props);
     return (
         <div className="modal-wrapper">
             <div className="modal-header">
