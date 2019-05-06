@@ -1,6 +1,3 @@
-.imageContainer {
-  max-height: 30%;
-}
 
 #saved-container button {
   min-width: 44px;
@@ -41,6 +38,7 @@
 
 #saved-container .card img {
   margin: auto;
+  max-height: 30%;
 }
 
 #saved-container .display-item {

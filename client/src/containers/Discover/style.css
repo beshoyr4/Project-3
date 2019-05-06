@@ -12,6 +12,7 @@
 }
 
 #discover-container .card {
+  text-align: center;
   border-radius: 0 !important;
   border-top: 3px solid;
   display: block;
@@ -43,14 +44,15 @@
   display: flex;
   justify-content: center;
   color: #000;
-  margin-left: 60px;
   padding-bottom: 2%;
+  text-align: center;
 }
 
 #discover-container .card img {
-  margin: 3% 40%;
-  max-width: 150px;
-  height: 150px;
+  margin: 3%;
+  max-height: 150px;
+  max-width: 30%;
+  text-align: center;
 }
 
 #discover-container .display-item {
@@ -68,7 +70,3 @@
 .discover-info {
   font-size: 1.3em;
 }
-
-/* .imageCont{
-  align-self: auto;
-} */
