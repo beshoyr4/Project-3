@@ -10,7 +10,9 @@ const SavedModal = (props) => {
                 <button className="close-modal-btn" onClick={ props.onClose }>X</button>
             </div>
             <div className="modal-body">
-                { props.children }
+                <div className="modal-content">
+                    { props.children }
+                </div>
             </div>
         </div>
     )

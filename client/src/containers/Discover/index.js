@@ -159,16 +159,16 @@ class Discover extends React.Component {
                       animationOut="fadeOut"
                       isVisible={true}
                   >                    
-                <div className="row">
-                  <div className="col-md-12">
+                {/* <div className="row"> */}
+                  {/* <div className="col-md-12"> */}
                     <div className="card">
-                        <div className="row">
-                          <div className="col-md-12">
+                        {/* <div className="row"> */}
+                          {/* <div className="col-md-12"> */}
 
-                        
+                          <div>
                             <img className="imageCont" src={person.profilePic} alt={person.title} />
                           </div>
-                        </div>
+                        {/* </div> */}
                         <div className="row">
                           <div className="col-md-12">
                             <h3 className="discover-info">Name: {person.user}</h3>
@@ -188,9 +188,9 @@ class Discover extends React.Component {
                             </button>
                           </div>
                         </div>
-                      </div>
+                      {/* </div> */}
                   </div>
-                </div>
+                {/* </div> */}
                 </Animated>
 
               </div>

@@ -1,5 +1,5 @@
 .modal-wrapper {
-  width: 50%;
+  width: 40%;
   height: 500px;
   align-self: center;
   position: fixed;
@@ -36,7 +36,14 @@
 }
 .modal-body h1 {
   font-size: 30px;
+  text-align: center;
+  margin-left: 0;
 }
 .modal-body h2 {
-  font-size: 25px;
+  font-size: 1em;
+}
+
+.modal-body img {
+  height: 200px;
+  margin: 3%;
 }
