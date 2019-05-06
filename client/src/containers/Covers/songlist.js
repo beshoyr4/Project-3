@@ -14,8 +14,8 @@ const Songlist = ({ songList, onClickSong }) => {
                   data-sid={song.songid}
                   onClick={onClickSong}
                 >
-                  Artist: {song.artistname} Song: {song.songname} Album:{" "}
-                  {song.albumname}
+                  Artist: {song.artistname} <br /> Song: {song.songname} <br />
+                  Album: {song.albumname}
                 </li>
               );
             })}

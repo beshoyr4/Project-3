@@ -40,25 +40,21 @@ class Covers extends Component {
 
     return (
       <div className="container" id="covers-container">
-        <div className="row">
-          <div className="col-md-12">
-            <h1>Start a Cover Band</h1>
-          </div>
+        <div>
+          <h1>Start a Cover Band</h1>
         </div>
-        <div className="row">
-          <div className="col-md-12">
-            {this.state.lyrics.length ? (
-              <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack} />
-            ) : (
-              <div>
-                <Songlist
-                  songList={songList}
-                  onClickSong={this.handleSongClick}
-                />
-                {loading && <img src={musicLoader} alt="Loading" />}
-              </div>
-            )}
-          </div>
+        <div>
+          {this.state.lyrics.length ? (
+            <Lyrics lyrics={lyrics} onClickBack={this.handleClickBack} />
+          ) : (
+            <div>
+              <Songlist
+                songList={songList}
+                onClickSong={this.handleSongClick}
+              />
+              {loading && <img src={musicLoader} alt="Loading" />}
+            </div>
+          )}
         </div>
       </div>
     );
