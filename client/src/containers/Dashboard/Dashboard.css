@@ -113,6 +113,17 @@ p {
   font-family: "Comfortaa";
 }
 
+.picture {
+  float: left;
+  margin: 5%;
+  margin-left: 20%;
+}
+
+.buttons {
+  float: left;
+  margin: 5%;
+}
+
 @media only screen and (max-width: 820px) {
   body {
   width: 100%;
