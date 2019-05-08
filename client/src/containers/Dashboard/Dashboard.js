@@ -104,7 +104,7 @@ class Dashboard extends Component {
             break;
         }
       },
-      function(error) {
+      function (error) {
         // Handle unsuccessful uploads
       },
       () => {
@@ -143,127 +143,130 @@ class Dashboard extends Component {
     }
 
     return (
-        <div id="dashboard-container">
+      <div id="dashboard-container">
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Profile</h2>
+            <br />
+          </div>
+        </div>
+        <Animated
+          animationIn="bounceInLeft"
+          animationOut="fadeOut"
+          isVisible={true}
+        >
           <div className="row">
             <div className="col-md-12">
-              <h2>Profile</h2>
-              <br/>
+              <section className="add-item">
+                <form onSubmit={this.handleSubmit}>
+                  <input
+                    type="text"
+                    required="required"
+                    name="username"
+                    placeholder="What's your name?"
+                    defaultValue={
+                      this.props.user.displayName || this.props.user.email
+                    }
+                  />
+                  <input
+                    type="text"
+                    required="required"
+                    name="email"
+                    placeholder="What's your email?"
+                    onChange={this.handleChange}
+                    value={this.state.email}
+                  />
+                  <input
+                    type="text"
+                    required="required"
+                    name="instrument"
+                    placeholder="What instrument do you play?"
+                    onChange={this.handleChange}
+                    value={this.state.instrument}
+                  />
+                  <input
+                    type="text"
+                    required="required"
+                    name="expertise"
+                    placeholder="Novice, Ameteur, or Expert"
+                    onChange={this.handleChange}
+                    value={this.state.expertise}
+                  />
+                  <input
+                    type="text"
+                    name="experience"
+                    required="required"
+                    placeholder="Start a Band or Jam Session"
+                    onChange={this.handleChange}
+                    value={this.state.experience}
+                  />
+                  <button>Submit</button>
+                </form>
+              </section>
             </div>
           </div>
-          <Animated
-            animationIn="bounceInLeft"
-            animationOut="fadeOut"
-            isVisible={true}
-          >
-            <div className="row">
-              <div className="col-md-12">
-                <section className="add-item">
-                  <form onSubmit={this.handleSubmit}>
-                    <input
-                      type="text"
-                      required="required"
-                      name="username"
-                      placeholder="What's your name?"
-                      defaultValue={
-                        this.props.user.displayName || this.props.user.email
-                      }
-                    />
-                    <input
-                      type="text"
-                      required="required"
-                      name="email"
-                      placeholder="What's your email?"
-                      onChange={this.handleChange}
-                      value={this.state.email}
-                    />
-                    <input
-                      type="text"
-                      required="required"
-                      name="instrument"
-                      placeholder="What instrument do you play?"
-                      onChange={this.handleChange}
-                      value={this.state.instrument}
-                    />
-                    <input
-                      type="text"
-                      required="required"
-                      name="expertise"
-                      placeholder="Novice, Ameteur, or Expert"
-                      onChange={this.handleChange}
-                      value={this.state.expertise}
-                    />
-                    <input
-                      type="text"
-                      name="experience"
-                      required="required"
-                      placeholder="Start a Band or Jam Session"
-                      onChange={this.handleChange}
-                      value={this.state.experience}
-                    />
-                    <button>Submit</button>
-                  </form>
-                </section>
-              </div>
-            </div>
-          </Animated>
-          <Animated
-            animationIn="bounceInRight"
-            animationOut="fadeOut"
-            isVisible={true}
-          >
-            <section className="display-item">
-              <div className="wrapper">
-                <ul>
-                  {this.state.items.map(item => {
-                    return (
-                      <li key={item.id}>
-                        <h3>{item.user}</h3>
-                        <p>
-                          Email: {item.email}
-                          <br />
-                          Instrument: {item.title}
-                          <br />
-                          Experience Level: {item.expertise}
-                          <br />
-                          Looking: {item.experience}
-                          <br />
-                          {item.user === this.props.user.displayName ||
-                          item.user === this.props.user.email ? (
-                            <button onClick={() => this.removeItem(item.id)}>
-                              Delete Profile
-                            </button>
-                          ) : null}
-                          <div className="picture">
-                            {this.state.items[0].profilePicUrl && (
-                              <img
-                                src={this.state.items[0].profilePicUrl}
-                                alt="Me"
-                                style={imgStyle}
-                                className="imgContainer"
-                              />
-                            )}
-                            <input
-                              style={{ display: "none" }}
-                              type="file"
-                              onChange={this.fileSelectedHandler}
-                              ref={fileInput => (this.fileInput = fileInput)}
+        </Animated>
+        <Animated
+          animationIn="bounceInRight"
+          animationOut="fadeOut"
+          isVisible={true}
+        >
+          <section className="display-item">
+            <div className="wrapper">
+              <ul>
+                {this.state.items.map(item => {
+                  return (
+                    <li key={item.id}>
+                      <h3>{item.user}</h3>
+                      <p>
+                        Email: {item.email}
+                        <br />
+                        Instrument: {item.title}
+                        <br />
+                        Experience Level: {item.expertise}
+                        <br />
+                        Looking: {item.experience}
+                        <br />
+
+                        <div className="picture">
+                          {this.state.items[0].profilePicUrl && (
+                            <img
+                              src={this.state.items[0].profilePicUrl}
+                              alt="Me"
+                              style={imgStyle}
+                              className="imgContainer"
                             />
-                            <button onClick={() => this.fileInput.click()}>
-                              Pick File
+                          )}
+                        </div>
+                        <div className="buttons">
+                          <input
+                            style={{ display: "none" }}
+                            type="file"
+                            onChange={this.fileSelectedHandler}
+                            ref={fileInput => (this.fileInput = fileInput)}
+                          />
+                          <button onClick={() => this.fileInput.click()}>
+                            Pick File
                             </button>
-                            <button onClick={this.fileUploadHandler}>
-                              Upload
+                          <button onClick={this.fileUploadHandler}>
+                            Upload
                             </button>
-                          </div>
-                        </p>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </section>
-          </Animated>
-        </div>
+                          {item.user === this.props.user.displayName ||
+                            item.user === this.props.user.email ? (
+                              <button onClick={() => this.removeItem(item.id)}>
+                                Delete Profile
+                            </button>
+                            ) : null}
+                        </div>
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </section>
+        </Animated>
+      </div>
     );
   }
 }
