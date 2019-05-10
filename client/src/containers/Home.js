@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { auth, provider } from "../firebase";
-
 import "./Home.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavTabs from "../components/Nav";
