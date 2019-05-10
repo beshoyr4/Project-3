@@ -12,7 +12,8 @@ class Covers extends Component {
     lyrics: [],
     search: "",
     loading: true,
-    saving: false
+    saving: false,
+    selectedSongId: null
   };
 
   handleSongClick = event => {

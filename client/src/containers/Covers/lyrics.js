@@ -15,6 +15,7 @@ const Lyrics = ({ lyrics, onClickBack, saveLyrics, saving }) => {
                 Go Back!
             </button>
             < br/>
+            < br/>
             <button
                 className="goback" 
                 disabled={saving} 
