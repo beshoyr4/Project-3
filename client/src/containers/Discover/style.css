@@ -1,0 +1,72 @@
+#discover-container button {
+  min-width: 88px;
+  background-color: #000;
+  cursor: pointer;
+  border: 0;
+  min-width: 120px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding: 10px 6px;
+  text-align: center;
+}
+
+#discover-container .card {
+  text-align: center;
+  border-radius: 0 !important;
+  border-top: 3px solid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 400px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+#discover-container .card button {
+  padding-bottom: 3%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0;
+}
+
+#discover-container .card button:hover {
+  transform: translateY(-0.25em);
+  color: #e2c044
+}
+
+#discover-container .card h3 {
+  display: flex;
+  justify-content: center;
+  color: #000;
+  padding-bottom: 2%;
+  text-align: center;
+}
+
+#discover-container .card img {
+  margin: 3%;
+  max-height: 150px;
+  max-width: 30%;
+  text-align: center;
+}
+
+#discover-container .display-item {
+  width: 200%;
+  margin-left: 50px;
+}
+
+#discover-container h2 {
+  color: #000;
+  text-align: left; 
+  padding-top: 20px;
+}
+
+
+.discover-info {
+  font-size: 1.3em;
+}

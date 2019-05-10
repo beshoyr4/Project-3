@@ -1,0 +1,28 @@
+h1, h2, h3, h4, p {
+  font-family: "Comfortaa";
+}
+
+nav {
+  position: relative;
+}
+
+.nav .nav-link {
+  color: #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav .nav-item:hover .nav-link {
+  border: 1px solid transparent;
+  color: #c0a022;
+  transform: translateY(-0.25em);
+}
+
+.nav .nav-link.active {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #c0a022;
+}
+
+.nav .nav-link.active:hover {
+  transform: translateY(0);
+}

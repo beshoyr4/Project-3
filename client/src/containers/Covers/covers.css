@@ -1,0 +1,46 @@
+#covers-container {
+  margin-top: 5%;
+  width: 130%;
+}
+
+#covers-container .goback {
+  border-radius: 2px;
+  min-width: 88px;
+  background-color: #000;
+  cursor: pointer;
+  border: 0;
+  min-width: 120px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding: 10px 6px;
+  text-align: center;
+}
+
+#covers-container li {
+  margin-bottom: 2%;
+  text-align: center;
+  font-weight: bold;
+}
+#covers-container li:hover {
+  background: #e1bf44;
+}
+
+#covers-container ul {
+  cursor: pointer;
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  font-family: "Comfortaa";
+  text-align: center;
+}
+
+#start-cover {
+  text-align: left !important;
+  margin-bottom: 5%;
+}

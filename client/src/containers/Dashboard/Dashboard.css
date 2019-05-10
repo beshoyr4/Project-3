@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+#dashboard-container {
+  display: flex;
+}
+
+#dashboard-container .add-item {
+  border-top: 3px solid;
+  margin-right: 50px;
+  background-color: rgb(237, 237, 237);
+  padding: 60px 18px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-right: auto;
+  margin: 70px 0px 90px;
+  padding: auto;
+}
+
+#dashboard-container .add-item form {
+  width: 350px;
+  overflow: scroll;
+}
+
+#dashboard-container button {
+  min-width: 88px;
+  background-color: #000;
+  cursor: pointer;
+  border: 0;
+  min-width: 120px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  padding: 10px 6px;
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0;
+}
+
+#dashboard-container button:hover {
+  transform: translateY(-0.25em);
+  color: #e2c044
+}
+
+#dashboard-container .display-item {
+  width: 100%;
+  margin: 70px 20px;
+}
+
+#dashboard-container .display-item button {
+  margin-top: 20px;
+  margin-left: auto;
+  display: block;
+}
+
+#dashboard-container form button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+#dashboard-container input {
+  font-size: 22px;
+  color: #000;
+  padding: 18px 22px;
+  font-size: 16px;
+  margin-bottom: 17px;
+  border: 0;
+  display: flex;
+  width: 100%;
+}
+
+#dashboard-container h2 {
+  padding-top: 20px;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+#dashboard-container li {
+  width: 550px;
+  list-style-type: none;
+  background-color: rgb(237, 237, 237);
+  color: #000;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+    0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#dashboard-container li h3 {
+  background-color: #000;
+  margin: 0;
+  color: #fff;
+  font-weight: 300;
+  padding: 15px;
+}
+#dashboard-container li p {
+  padding: 15px;
+}
+
+#dashboard-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  font-family: "Comfortaa";
+}
+
+.picture {
+  float: left;
+  margin: 5%;
+  margin-left: 20%;
+}
+
+.buttons {
+  float: left;
+  margin: 5%;
+}
+
+@media only screen and (max-width: 820px) {
+  body {
+  width: 100%;
+  }
+
+  #dashboard-container .add-item {
+    width: 150%;
+    margin-left: -30%;
+  }
+
+  #dashboard-container .display-item {
+    margin-left: -88%;
+    margin-top: 120%;
+  }
+
+}
