@@ -55,7 +55,7 @@ class Songs extends Component {
           <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <h2>My Songs</h2>
+                    <h2 id="start-cover">My Songs</h2>
                 </div>
             </div>
             <div className="row">
