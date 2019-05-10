@@ -17,35 +17,10 @@ class Dashboard extends Component {
       username: "",
       items: [],
       selectedFile: null,
-      email: ""
+      email: "",
+      people: []
     };
   }
-
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const itemsRef = firebase.database().ref("items");
-    const item = {
-      title: this.state.instrument,
-      user: this.props.user.displayName || this.props.user.email,
-      expertise: this.state.expertise,
-      experience: this.state.experience,
-      email: this.state.email
-    };
-    itemsRef.push(item);
-    this.setState({
-      instrument: "",
-      expertise: "",
-      experience: "",
-      username: "",
-      email: ""
-    });
-  };
 
   componentDidMount() {
     const itemsRef = firebase.database().ref("items");
@@ -65,7 +40,64 @@ class Dashboard extends Component {
           items: newState
         });
       });
+    // check ref:
+    let ref = firebase.database().ref("items");
+    ref
+      .on("value", snapshot => {
+        let items = snapshot.val();
+        let checkState = [];
+
+        for (let item in items) {
+          checkState.push({
+            id: item,
+            title: items[item].title,
+            user: items[item].user,
+            profilePic: items[item].profilePicUrl,
+            email: items[item].email
+          });
+          console.log(checkState);
+        }
+        this.setState({
+          people: checkState
+        });
+      });
   }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const userExists = this.state.people.some(user => user.email === this.state.email)
+
+    console.log(userExists);
+
+    if (userExists) {
+      alert("You already have a profile!");
+      return;
+    } else {
+      const itemsRef = firebase.database().ref("items");
+      const item = {
+        title: this.state.instrument,
+        user: this.props.user.displayName || this.props.user.email,
+        expertise: this.state.expertise,
+        experience: this.state.experience,
+        email: this.state.email
+      };
+      itemsRef.push(item);
+      this.setState({
+        instrument: "",
+        expertise: "",
+        experience: "",
+        username: "",
+        email: ""
+      });
+    }
+  };
+
 
   removeItem(itemId) {
     const itemRef = firebase.database().ref(`/items/${itemId}`);
@@ -82,7 +114,9 @@ class Dashboard extends Component {
   };
 
   fileUploadHandler = () => {
-    const { selectedFile } = this.state;
+    const {
+      selectedFile
+    } = this.state;
 
     let uploadTask = storage
       .child(`profile/${selectedFile.name}`)
@@ -117,12 +151,17 @@ class Dashboard extends Component {
               profilePicUrl: downloadURL
             });
           if (downloadURL) {
-            this.setState({ image: downloadURL });
+            this.setState({
+              image: downloadURL
+            });
           }
         });
       }
     );
   };
+
+
+  // End Profile Photo Uploader
 
   render() {
     const imgStyle = {
