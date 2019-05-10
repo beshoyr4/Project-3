@@ -39,6 +39,13 @@ function NavTabs() {
           Get Inspired
         </Link>
       </li>
+      <li className="nav-item">
+        <Link to="/songs" className={window.location.pathname === "/songs"
+            ? "nav-link active"
+            : "nav-link"}>
+          My Songs
+        </Link>
+      </li>
     </ul>
     </nav>
   );

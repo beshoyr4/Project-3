@@ -1,3 +1,6 @@
+#no-saved {
+  margin-top: 10%;
+}
 
 #saved-container button {
   min-width: 44px;
@@ -61,3 +64,4 @@
   padding-top: 20px;
   color: #000;
 }
+

@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard";
 import Discover from "./Discover";
 import Saved from "./Saved";
 import Lyrics from "./Covers";
+import Songs from "./Songs";
 import Logo from "../components/Logo"
 
 class Home extends Component {
@@ -99,6 +100,13 @@ class Home extends Component {
                     path="/covers"
                     render={props => (
                       <Lyrics user={this.state.user} {...props} />
+                    )}
+                  />
+                  <Route
+                    exact
+                    path="/songs"
+                    render={props => (
+                      <Songs user={this.state.user} {...props} />
                     )}
                   />
                   <Route

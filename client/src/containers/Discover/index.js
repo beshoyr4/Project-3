@@ -182,9 +182,9 @@ class Discover extends React.Component {
 
                         <div className="row">
                           <div className="col-md-12">
-                            <button className="yes-or-no" onClick={this.handleBtnClick}>Nah.</button>
+                            <button className="yes-or-no" onClick={this.handleBtnClick}>Next</button>
                             <button className="yes-or-no" onClick={this.handleYeaClick}>
-                              Hell Yeah!
+                              Need
                             </button>
                           </div>
                         </div>

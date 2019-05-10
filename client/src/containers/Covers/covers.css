@@ -39,3 +39,8 @@ p {
   font-family: "Comfortaa";
   text-align: center;
 }
+
+#start-cover {
+  text-align: left !important;
+  margin-bottom: 5%;
+}

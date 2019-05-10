@@ -27,8 +27,8 @@ export default {
          cb(payload);
       });
   },
-  getLyrics: function () {
-    return axios.get("/api/lyrics");
+  getLyrics: function (id) {
+    return axios.get("/api/lyrics/" + id);
   },
   saveLyrics: function (lyricData) {
     return axios.post("/api/lyrics", lyricData);
