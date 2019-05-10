@@ -39,3 +39,16 @@ p {
   font-family: "Comfortaa";
   text-align: center;
 }
+
+/* Mobile responsive */
+
+@media (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+  #container-about {
+    width: 100%;
+    margin: auto;
+    size: 20px;
+  }
+}

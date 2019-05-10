@@ -8,7 +8,7 @@ import Dashboard from "./Dashboard";
 import Discover from "./Discover";
 import Saved from "./Saved";
 import Lyrics from "./Covers";
-import Logo from "../components/Logo"
+import Logo from "../components/Logo";
 
 class Home extends Component {
   constructor() {
@@ -49,22 +49,30 @@ class Home extends Component {
   render() {
     return (
       <div className="main-wrapper" id="container-about">
-      <header>
-            <div className="header">
-              <h1><Logo></Logo>KC Artist Connect</h1>
+        <header>
+          <div className="header">
+            <h1>
+              <Logo />
+              KC Artist Connect
+            </h1>
 
-              {this.state.user ? (
-                <div className="login" onClick={this.logout}>
-                  Logout
-                </div>
-              ) : (
-                <div className="login" onClick={this.login}>
-                  Login
-                  <img className="google" width="60px" alt="Google Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
-                </div>
-              )}
-            </div>
-          </header>
+            {this.state.user ? (
+              <div className="login" onClick={this.logout}>
+                Logout
+              </div>
+            ) : (
+              <div className="login" onClick={this.login}>
+                Login
+                <img
+                  className="google"
+                  width="60px"
+                  alt="Google Logo"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+                />
+              </div>
+            )}
+          </div>
+        </header>
         <div className="container">
           {this.state.user ? (
             <div>
@@ -109,7 +117,7 @@ class Home extends Component {
                       return (
                         <div>
                           <h2 className="about-header">
-                            <Logo></Logo>
+                            <Logo />
                             KC Artist Connect
                           </h2>
                           <p>
@@ -136,36 +144,70 @@ class Home extends Component {
           ) : (
             <div className="wrapper" id="wrapper">
               <h2 className="about-header">
-                <Logo></Logo>
+                <Logo />
                 KC Artist Connect
               </h2>
               <p>
-                KC Artist Connect is a place to discover, connect,
-                and collaborate with other local musicians. Whether
-                you are looking to form a new band or to meet up for
-                a casual jam session, KC Artist Connect makes it
-                easy to find contacts for your next musical
-                adventure.
+                KC Artist Connect is a place to discover, connect, and
+                collaborate with other local musicians. Whether you are looking
+                to form a new band or to meet up for a casual jam session, KC
+                Artist Connect makes it easy to find contacts for your next
+                musical adventure.
               </p>
               <p>
-                Create your personal music profile, discover fellow
-                local musicians, save new contacts, and browse songs
-                to get your creativity flowing. We can't wait to
-                hear what you come up with!
+                Create your personal music profile, discover fellow local
+                musicians, save new contacts, and browse songs to get your
+                creativity flowing. We can't wait to hear what you come up with!
               </p>
             </div>
           )}
         </div>
 
-            <footer style={{ height: 100 }}>
-              <div className="menu">
+        <footer style={{ height: 100 }}>
+          <div className="menu">
             <div className="label">Information</div>
-            <div className="spacer"></div>
-            <a className="item" target="_blank" rel="noopener noreferrer" alt="project" href="https://github.com/beshoyr4/Project-3"><span>GitHub</span></a>
-            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/beshoyr4/ashbshaw"><span>Ashley</span></a>
-            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/beshoyr4"><span>Beshoy</span></a>
-            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/cait-sidener"><span>Cait</span></a>
-            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/beshoyr4/JoeScholz"><span>Joe</span></a>
+            <div className="spacer" />
+            <a
+              className="item"
+              target="_blank"
+              rel="noopener noreferrer"
+              alt="project"
+              href="https://github.com/beshoyr4/Project-3"
+            >
+              <span>GitHub</span>
+            </a>
+            <a
+              className="item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/beshoyr4/ashbshaw"
+            >
+              <span>Ashley</span>
+            </a>
+            <a
+              className="item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/beshoyr4"
+            >
+              <span>Beshoy</span>
+            </a>
+            <a
+              className="item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/cait-sidener"
+            >
+              <span>Cait</span>
+            </a>
+            <a
+              className="item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/beshoyr4/JoeScholz"
+            >
+              <span>Joe</span>
+            </a>
           </div>
         </footer>
       </div>
