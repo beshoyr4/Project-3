@@ -104,7 +104,7 @@ class Dashboard extends Component {
             break;
         }
       },
-      function(error) {
+      function (error) {
         // Handle unsuccessful uploads
       },
       () => {
@@ -254,6 +254,7 @@ class Dashboard extends Component {
                           <button onClick={this.fileUploadHandler}>
                             Upload
                           </button>
+
                         </div>
                       </p>
                     </li>
