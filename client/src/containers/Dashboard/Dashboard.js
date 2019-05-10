@@ -188,7 +188,7 @@ class Dashboard extends Component {
                       type="text"
                       required="required"
                       name="expertise"
-                      placeholder="Novice, Ameteur, or Expert"
+                      placeholder="Novice, Amateur, or Professional"
                       onChange={this.handleChange}
                       value={this.state.expertise}
                     />

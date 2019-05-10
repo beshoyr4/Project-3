@@ -7,6 +7,7 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:server": "nodemon server.js",
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
@@ -22,7 +23,7 @@
     "concurrently": "^4.1.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "mongoose": "^5.5.5",
+    "mongoose": "^5.5.6",
     "nodemon": "^1.18.7"
   },
   "engines": {

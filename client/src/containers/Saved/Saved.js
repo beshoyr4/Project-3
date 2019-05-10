@@ -83,7 +83,7 @@ class Saved extends React.Component {
 
   render() {
     if (this.state.currentSaved.length === 0) {
-      return <h1>No Saved</h1>;
+      return <h2 id="no-saved">No Saved</h2>;
     }
 
     return (
