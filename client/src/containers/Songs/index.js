@@ -22,7 +22,7 @@ class Songs extends Component {
                 this.setState({ songs: result.data.data, selectedSong: null })
             }
         })
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
     };
 
     handleDeleteSong = (evt) => {
@@ -33,7 +33,7 @@ class Songs extends Component {
                 this.loadSongs()
             }
         })
-        .catch(err => console.log(err));
+        // .catch(err => console.log(err));
     }
 
     handleSelectSong = (evt) => {
