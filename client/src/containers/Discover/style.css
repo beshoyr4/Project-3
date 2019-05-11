@@ -24,7 +24,6 @@
     0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-
 #discover-container .card button {
   padding-bottom: 3%;
   display: block;
@@ -37,7 +36,7 @@
 
 #discover-container .card button:hover {
   transform: translateY(-0.25em);
-  color: #e2c044
+  color: #e2c044;
 }
 
 #discover-container .card h3 {
@@ -62,11 +61,16 @@
 
 #discover-container h2 {
   color: #000;
-  text-align: left; 
+  text-align: left;
   padding-top: 20px;
 }
 
-
 .discover-info {
   font-size: 1.3em;
+}
+
+@media all and (max-width: 375px) {
+  #discover-container .card {
+    width: 100%;
+  }
 }

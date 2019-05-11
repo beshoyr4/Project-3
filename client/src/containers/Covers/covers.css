@@ -44,3 +44,26 @@ p {
   text-align: left !important;
   margin-bottom: 5%;
 }
+
+@media only screen and (max-width: 768px) {
+  #covers-container li {
+    margin-left: -20px;
+    font-size: 15px;
+    width: 100%;
+  }
+  #covers-container {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 375px) {
+  #covers-container li {
+    margin-left: -20px;
+    font-size: 10px;
+    width: 100%;
+  }
+
+  #covers-container {
+    width: 100%;
+  }
+}

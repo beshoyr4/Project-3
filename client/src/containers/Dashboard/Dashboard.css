@@ -39,7 +39,7 @@
 
 #dashboard-container button:hover {
   transform: translateY(-0.25em);
-  color: #e2c044
+  color: #e2c044;
 }
 
 #dashboard-container .display-item {
@@ -57,7 +57,6 @@
   width: 100%;
   margin-top: 10px;
 }
-
 
 #dashboard-container input {
   font-size: 22px;
@@ -124,19 +123,27 @@ p {
   margin: 5%;
 }
 
-@media only screen and (max-width: 820px) {
-  body {
-  width: 100%;
-  }
-
-  #dashboard-container .add-item {
-    width: 150%;
-    margin-left: -30%;
-  }
-
+@media only screen and (max-width: 768px) {
   #dashboard-container .display-item {
-    margin-left: -88%;
-    margin-top: 120%;
+    margin-top: 650px;
+    margin-left: -500px;
+    width: 500px;
   }
+  #dashboard-container .add-item {
+    width: 500px;
+  }
+  #dashboard-container .add-item form {
+    width: 100%;
+  }
+}
 
+@media all and (max-width: 375px) {
+  #dashboard-container .add-item {
+    width: 300px;
+    margin-left: -40px;
+  }
+  #dashboard-container .display-item {
+    width: 300px;
+    margin-left: -300px;
+  }
 }
