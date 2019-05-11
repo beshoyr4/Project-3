@@ -169,10 +169,10 @@ class Home extends Component {
             <div className="label">Information</div>
             <div className="spacer"></div>
             <a className="item" target="_blank" rel="noopener noreferrer" alt="project" href="https://github.com/beshoyr4/Project-3"><span>GitHub</span></a>
-            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/beshoyr4/ashbshaw"><span>Ashley</span></a>
+            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/ashbshaw"><span>Ashley</span></a>
             <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/beshoyr4"><span>Beshoy</span></a>
             <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/cait-sidener"><span>Cait</span></a>
-            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/beshoyr4/JoeScholz"><span>Joe</span></a>
+            <a className="item" target="_blank" rel="noopener noreferrer" href="https://github.com/JoeScholz"><span>Joe</span></a>
           </div>
         </footer>
       </div>
