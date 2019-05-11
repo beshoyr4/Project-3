@@ -16,8 +16,7 @@
 body {
   background-color: #d3d0cb;
   font-family: "Open Sans";
-  text-transform:uppercase;
-
+  text-transform: uppercase;
 }
 
 #container-about {
@@ -270,43 +269,78 @@ p {
   padding-bottom: 3.5rem;
 }
 
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 768px) {
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 15px;
+  }
+  .add-item {
+    width: 100px;
+  }
   .about-header {
-    font-size: 1.4em;
-    margin-left: -15%;
+    width: auto;
   }
-  
-  body {
-    width: 100%
-  }
-
-  footer {
-    width: 130%;
-  }
-
-  header {
-    padding: 0;
-    margin: 0;
-  }
-
-  header h1 {
-    font-size: 1em;
-    margin-left: -17%;
-    margin-top: -10%;
-  }
-
   .login {
-    margin-top: 40%;
+    margin: 35px;
+    width: 70px;
+    padding: 0;
   }
-
-  .menu {
-    width:100%;
+  .user-profile img {
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+  .container {
+    width: 100%;
+    display: table;
+    height: auto;
+  }
+  .logo {
+    width: 150px;
+  }
+  .header .logo {
+    margin-left: 35px;
+    margin-top: 10px;
+  }
+  footer {
+    margin-bottom: 0px;
   }
 }
-
-@media only screen and (max-width: 820px) {
-  .login {
-    margin-top: 20%;
+@media all and (max-width: 375px) {
+  body {
+    margin: 0;
+  }
+  header h1 {
+    font-size: 20px;
+  }
+  h2,
+  h1 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 10px;
   }
 
+  .login {
+    padding: 0;
+    margin-top: 90px;
+    margin-right: 0px;
+  }
+  .user-profile img {
+  }
+  .logo {
+    width: 150px;
+  }
+  .header .logo {
+    margin-left: 35px;
+    margin-top: 10px;
+  }
+  footer {
+    margin-bottom: 0px;
+    margin: auto;
+  }
+  #container-about {
+    width: 100%;
+  }
 }
